@@ -4,7 +4,7 @@
 #include "gcode_decoder.h"
 int main()
 {
-
+///test1234567
     Location * loc_current = location_new(999,0,0);///dynamically allocates and constructs a location struct and returns a pointer to that struct
     Location * loc_future = location_new(26.0,13.0,14.0);
     printf("Current_loc\nX:%.3f,Y:%.3f,Z:%.3f\n",loc_current->x_loc,loc_current->y_loc,loc_current->z_loc);
