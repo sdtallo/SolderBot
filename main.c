@@ -2,17 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include "gcode_decoder.h"
+#include "location_list.h"
+
 int main()
 {
-    ///test1234567
-    Location *loc_current = location_new(999, 0, 0); ///dynamically allocates and constructs a location struct and returns a pointer to that struct
-    Location *loc_future = location_new(26.0, 13.0, 14.0);
-    printf("Current_loc\nX:%.3f,Y:%.3f,Z:%.3f\n", loc_current->x_loc, loc_current->y_loc, loc_current->z_loc);
-    printf("Future_loc\nX:%.3f,Y:%.3f,Z:%.3f\n", loc_future->x_loc, loc_future->y_loc, loc_future->z_loc);
-    char gcode1[75];
-    move_loc(loc_current, loc_future, gcode1);
-    printf("%s\n", gcode1);
-    location_free(loc_current);
-    location_free(loc_future);
+    Location **locs = (Location**)malloc(sizeof(Location)*50);
+    int i;
+    for(i=0;i<12;i++){
+        locs[i] = location_new((rand()%100),rand()%100,rand()%10);
+        print_loc(locs[i]);
+    }
+
+    Location_List* head = NULL;
+
+    append(&head,locs[0]);
+    for(i=1;i<11;i++){
+        push(&head,locs[i]);
+    }
+    append(&head,locs[11]);
+
+    printf("Created DLL is: ");
+    printList(head);
+
+    for(i=0;i<12;i++){
+        location_free(locs[i]);
+    }
     return 0;
 }

@@ -11,6 +11,7 @@
                 "-g",
                 "main.c",
                 "gcode_decoder.c",
+                "location_list.c",
                 "-o",
                 "output.exe"
             ],

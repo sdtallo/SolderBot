@@ -1,8 +1,8 @@
 # This file takes a gcode string and sends it
 
 import sys
-import serial
 import time
+import serial
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
 
