@@ -28,7 +28,7 @@ time.sleep(1)
 move = 0
 
 # Read inputs from the file
-with open("gfile.txt", r) as f
+with open("gfile.txt", r) as f:
   line = f.readline()
   if "G0" in line:
     move = 1
