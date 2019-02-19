@@ -1,23 +1,24 @@
 #ifndef GCODE_DECODER_H
 #define GCODE_DECODER_H
 
-typedef struct location Location;
+typedef struct Location Location;
 
-struct location{
-    int x_loc;
-    int y_loc;
-    int z_loc;
+struct Location{
+    double x_loc;
+    double y_loc;
+    double z_loc;
 };
 
-//enum Gcode{"G00"};
-//G00 is a rapid positioning(moves 2 axis at once)
-//G01 is a linear interpolation(moves 1 axis at once)
+Location *location_new(double x, double y, double z);
 
+void location_free(Location *loc);
 
-void gcode_generation(Location *loc,char *gcodeloc);
+void move_loc(Location *future_loc, Location *current_loc, char *gcodeloc);
 
-Location *location_new(int x,int y,int z);
+void move_loc2(Location *future_loc, char *gcodeloc);//doesn't include error messages, just moves to the loation given
 
-void location_free(Location * loc);
+void move_home(Location *current_loc, char *gcodeloc);
+
+void print_loc(Location *loc);
 
 #endif

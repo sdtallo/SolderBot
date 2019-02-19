@@ -2,14 +2,37 @@
 #include <stdlib.h>
 #include <string.h>
 #include "gcode_decoder.h"
+#include "location_list.h"
+
 int main()
 {
+    Location **locs = (Location**)malloc(sizeof(Location)*50);
+    int i;
+    for(i=0;i<12;i++){
+        locs[i] = location_new((rand()%100),rand()%100,rand()%10);
+        print_loc(locs[i]);
+    }
 
-    Location * loc = location_new(26,13,14);///dynamically allocates and constructs a location struct and returns a pointer to that struct
-    printf("X:%d,Y:%d,Z:%d\n",loc->x_loc,loc->y_loc,loc->z_loc);
-    char gcode1[75];
-    gcode_generation(loc,gcode1);
-    printf("%s\n",gcode1);
-    location_free(loc);
+    Location_List* head = NULL;
+    head = createLL(locs[0]);
+    for(i=1;i<11;i++){
+        head = push(head,locs[i]);
+    }
+
+    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+    createFile(tempName);
+
+    append(head,locs[11]);
+
+    printf("Created DLL is: ");
+    printList(head);
+
+    moveAllLoc(head,tempName);
+
+    for(i=0;i<12;i++){
+        location_free(locs[i]);
+    }
+
+    freeList(head);
     return 0;
 }
