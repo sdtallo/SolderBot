@@ -1,4 +1,5 @@
 # This program reads gcode from a file and runs it through the sender
+# Current version of this makes test.py obsolete
 
 import serial
 import time
