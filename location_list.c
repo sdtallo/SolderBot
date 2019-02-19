@@ -143,12 +143,12 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
     char secondCommand[75];
     char thirdCommand[75];
     double upZ = 3;//location of z we want it to go to, to avoid hitting the pins before we move it to the next location;
-
-    Location * moveUp = location_new(firstLoc->x_loc,firstLoc->y_loc,upZ);//creat a location above the first pin to move to
+    double downZ = .8;
+    Location * moveUp = location_new(firstLoc->x_loc,firstLoc->y_loc,downZ);//creat a location above the first pin to move to
     move_loc2(moveUp,firstCommand);
     Location * moveAboveSecond = location_new(secondLoc->x_loc,secondLoc->y_loc,upZ);
     move_loc2(moveAboveSecond,secondCommand);
-    Location * moveDown = location_new(secondLoc->x_loc,secondLoc->y_loc,secondLoc->z_loc);
+    Location * moveDown = location_new(secondLoc->x_loc,secondLoc->y_loc,downZ);
     move_loc2(moveDown,thirdCommand);
 
 
