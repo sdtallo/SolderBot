@@ -23,5 +23,12 @@ namespace GUI_Home
             Form6 f6 = new Form6();
             f6.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form4 f4 = new Form4();
+            f4.ShowDialog();
+        }
     }
 }

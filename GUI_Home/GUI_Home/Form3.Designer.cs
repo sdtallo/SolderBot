@@ -54,9 +54,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(764, 466);
+            this.button1.Location = new System.Drawing.Point(962, 458);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(206, 173);
+            this.button1.Size = new System.Drawing.Size(210, 207);
             this.button1.TabIndex = 6;
             this.button1.Text = "Verify Pin Locations";
             this.button1.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(22, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(965, 125);
+            this.label2.Size = new System.Drawing.Size(1203, 125);
             this.label2.TabIndex = 7;
             this.label2.Text = "Determine all of the holes (on the breadboard) that have pins which need to be so" +
     "ldered, and record them in their respective textboxes by column letter and row n" +
@@ -78,7 +78,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 382);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(965, 52);
+            this.label3.Size = new System.Drawing.Size(1213, 52);
             this.label3.TabIndex = 8;
             this.label3.Text = "When all header pin locations have been entered, verify them.";
             // 
@@ -87,7 +87,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(22, 243);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(965, 125);
+            this.label4.Size = new System.Drawing.Size(1203, 125);
             this.label4.TabIndex = 9;
             this.label4.Text = "For example, if the first 10 pins in the left-most column and third left-most col" +
     "umn on the middle breadboard need to be soldered, type \"A1:A10, C1:C10\" in the M" +
@@ -95,7 +95,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(164, 464);
+            this.textBox1.Location = new System.Drawing.Point(276, 467);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(553, 38);
             this.textBox1.TabIndex = 10;
@@ -103,40 +103,40 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 462);
+            this.label5.Location = new System.Drawing.Point(61, 465);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 52);
+            this.label5.Size = new System.Drawing.Size(153, 52);
             this.label5.TabIndex = 11;
             this.label5.Text = "Left:";
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(22, 533);
+            this.label6.Location = new System.Drawing.Point(61, 542);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 52);
+            this.label6.Size = new System.Drawing.Size(153, 52);
             this.label6.TabIndex = 12;
             this.label6.Text = "Middle:";
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 608);
+            this.label7.Location = new System.Drawing.Point(61, 620);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 52);
+            this.label7.Size = new System.Drawing.Size(153, 52);
             this.label7.TabIndex = 13;
             this.label7.Text = "Right:";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(164, 610);
+            this.textBox2.Location = new System.Drawing.Point(276, 622);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(553, 38);
             this.textBox2.TabIndex = 14;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(161, 535);
+            this.textBox3.Location = new System.Drawing.Point(276, 544);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(553, 38);
             this.textBox3.TabIndex = 15;
@@ -145,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 694);
+            this.ClientSize = new System.Drawing.Size(1243, 718);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label7);

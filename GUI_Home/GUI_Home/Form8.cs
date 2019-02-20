@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI_Home
 {
-    public partial class Form6 : Form
+    public partial class Form8 : Form
     {
-        public Form6()
+        public Form8()
         {
             InitializeComponent();
         }
@@ -20,8 +20,15 @@ namespace GUI_Home
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form8 f8 = new Form8();
-            f8.ShowDialog();
+            Form6 f6 = new Form6();
+            f6.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
         }
     }
 }

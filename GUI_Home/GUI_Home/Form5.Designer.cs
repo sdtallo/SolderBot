@@ -53,6 +53,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "No, Not Quite";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -70,7 +71,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(117, 239);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(774, 53);
+            this.label2.Size = new System.Drawing.Size(792, 96);
             this.label2.TabIndex = 8;
             this.label2.Text = "Are you ready for the machine to begin soldering?";
             // 
