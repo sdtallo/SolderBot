@@ -17,7 +17,7 @@ namespace GUI_Home
             InitializeComponent();
             label6.Text = leftPins;
             label7.Text = middlePins;
-            label8.Text = middlePins;
+            label8.Text = rightPins;
         }
 
         private void button1_Click(object sender, EventArgs e)
