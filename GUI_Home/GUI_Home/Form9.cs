@@ -12,9 +12,12 @@ namespace GUI_Home
 {
     public partial class Form9 : Form
     {
-        public Form9()
+        public Form9(string leftPins, string middlePins, string rightPins)
         {
             InitializeComponent();
+            label6.Text = leftPins;
+            label7.Text = middlePins;
+            label8.Text = middlePins;
         }
 
         private void button1_Click(object sender, EventArgs e)

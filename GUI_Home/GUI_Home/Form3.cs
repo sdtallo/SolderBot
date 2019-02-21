@@ -20,7 +20,7 @@ namespace GUI_Home
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form9 f9 = new Form9();
+            Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
             f9.ShowDialog();
         }
     }
