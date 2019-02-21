@@ -1,8 +1,21 @@
+#!/usr/bin/env
+
 # This program reads gcode from a file and runs it through the sender
 # Current version of this makes test.py obsolete
 
 import serial
 import time
+import RPi.GPIO as GPIO
+
+z_down = "G0 Z0.8 \n" # Height of top of board
+solder_speed = 150 # PWM frequency
+extract_time = 0.5 # How long to extract solder
+solder_time = 5 # How long to hold iron down
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
+p = GPIO.PWM(12, solder_speed)
+
 
 # Open the serial port
 ser = serial.Serial('/dev/ttyUSB0', 115200)
@@ -28,18 +41,21 @@ time.sleep(1)
 move = 0
 
 # Read inputs from the file
-with open("gfile.txt", r) as f:
+with open("gfile.txt", "r") as f:
   line = f.readline()
   if "G0" in line:
     move = 1
   while line:
     ser.write(line)
     grbl_out = ser.readline()
-    time.sleep(3)
+    time.sleep(1)
     if move:
-      ser.write("G0 Z0\n") # Move z down
+      ser.write(z_down) # Move z down
       grbl_out = ser.readline()
-      time.sleep(1)
+      p.start(50)
+      time.sleep(extract_time)
+      p.stop()
+      time.sleep(solder_time)
       ser.write("G0 Z3\n") # Move z up
       grbl_out = ser.readline()
       time.sleep(1)
@@ -49,7 +65,10 @@ with open("gfile.txt", r) as f:
       move = 1
 
 # Return home and close the serial port
-ser.write("G0 X0 Y0 Z0\n")
+ser.write("G0 X0 Y0\n")
+grbl_out = ser.readline()
+time.sleep(1)
+ser.write("G0 Z0\n")
 grbl_out = ser.readline()
 time.sleep(5)
 ser.close()
