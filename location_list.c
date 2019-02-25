@@ -107,10 +107,12 @@ void freeList(Location_List *head){
     Location_List *tempPointer2 = head;
     while(tempPointer1->next != NULL){
         tempPointer1 = tempPointer1->next;
+        if(tempPointer2->prev != NULL)
         free(tempPointer2->prev);
         free(tempPointer2->cur);
+        if(tempPointer2->next != NULL)
         free(tempPointer2->next);
-        tempPointer2 = tempPointer1->next;
+        tempPointer2 = tempPointer1;
     }
     tempPointer1 = NULL;
     tempPointer2 = NULL;
@@ -120,9 +122,32 @@ void freeList(Location_List *head){
 
 void moveAllLoc(Location_List *head,char *fileLoc){
     Location_List *temp = head;
+
+    char firstLoc[15];
+    char tempgloc[15];
+    strcpy(firstLoc, "G00 X");
+    sprintf(tempgloc, "%.3f Y", temp->cur->x_loc);
+    strcat(firstLoc, tempgloc);
+    sprintf(tempgloc, "%.3f", temp->cur->y_loc);
+    strcat(firstLoc, tempgloc);
+
+    FILE* file_ptr = fopen(fileLoc, "a+");
+    if(file_ptr == NULL){
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    fputs (firstLoc, file_ptr);
+    fputs ("\n", file_ptr);
+
+    fclose(file_ptr);
+
     while(temp->next != NULL){
         Location *loc1 = location_new(temp->cur->x_loc,temp->cur->y_loc,temp->cur->z_loc);
         Location *loc2 = location_new(temp->next->cur->x_loc,temp->next->cur->y_loc,temp->next->cur->z_loc);
+
+
+
         moveLocToLoc(loc1,loc2,fileLoc);
 //        solder();
         location_free(loc1);
@@ -162,10 +187,10 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
         printf("Error opening file!\n");
         exit(1);
     }
-    fputs (firstCommand, file_ptr);
-    fputs ("\n", file_ptr);
-    fputs (secondCommand, file_ptr);
-    fputs ("\n", file_ptr);
+//    fputs (firstCommand, file_ptr);
+//    fputs ("\n", file_ptr);
+//    fputs (secondCommand, file_ptr);
+//    fputs ("\n", file_ptr);
     fputs (thirdCommand, file_ptr);
     fputs ("\n", file_ptr);
 

@@ -66,10 +66,10 @@ void move_loc2(Location *future_loc, char *gcodeloc)
     strcpy(gcodeloc, "G00 X");
     sprintf(tempgloc, "%.3f Y", future_loc->x_loc);
     strcat(gcodeloc, tempgloc);
-    sprintf(tempgloc, "%.3f Z", future_loc->y_loc);
+    sprintf(tempgloc, "%.3f", future_loc->y_loc);
     strcat(gcodeloc, tempgloc);
-    sprintf(tempgloc, "%.3f f400", future_loc->z_loc);
-    strcat(gcodeloc, tempgloc);
+//    sprintf(tempgloc, "%.3f f400", future_loc->z_loc);
+//    strcat(gcodeloc, tempgloc);
 }
 
 void move_home(Location *current_loc, char *gcodeloc)
