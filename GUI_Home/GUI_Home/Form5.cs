@@ -27,8 +27,10 @@ namespace GUI_Home
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form4 f4 = new Form4();
-            f4.ShowDialog();
+//            Form9 f9 = new Form9(Lpins, Mpins, Rpins);
+//            f9.ShowDialog();
+            Form3 f3= new Form3();
+            f3.ShowDialog();
         }
     }
 }
