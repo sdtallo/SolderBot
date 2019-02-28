@@ -72,7 +72,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form7";
-            this.Text = "Form7";
+            this.Text = "Solderbot";
             this.ResumeLayout(false);
             this.PerformLayout();
 

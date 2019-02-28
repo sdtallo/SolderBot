@@ -2,7 +2,6 @@ C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\bin\Debug\GUI_Home.exe.config
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\bin\Debug\GUI_Home.exe
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\bin\Debug\GUI_Home.pdb
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.csprojAssemblyReference.cache
-C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form1.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form2.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form3.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form4.resources
@@ -16,3 +15,5 @@ C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.exe
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.pdb
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form8.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form9.resources
+C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form1.resources
+C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form10.resources
