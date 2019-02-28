@@ -48,9 +48,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 102);
+            this.label2.Location = new System.Drawing.Point(22, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1003, 117);
+            this.label2.Size = new System.Drawing.Size(1054, 82);
             this.label2.TabIndex = 2;
             this.label2.Text = "First, hold the header pins against the chip in the orientation you want them to " +
     "be soldered.";
@@ -58,31 +58,31 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 195);
+            this.label3.Location = new System.Drawing.Point(22, 208);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1016, 169);
+            this.label3.Size = new System.Drawing.Size(1064, 150);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Next, with the chip and header pins pressed together, insert the longer end of th" +
-    "e header pins into the breadboard holes, making sure each pin goes into its own " +
-    "hold without being bent.";
+            this.label3.Text = "Next, with the chip and header pins pressed together in your hands, insert the lo" +
+    "nger end of the header pins into the breadboard holes, making sure each pin goes" +
+    " into its own hole without being bent.";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 389);
+            this.label4.Location = new System.Drawing.Point(22, 358);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1003, 122);
+            this.label4.Size = new System.Drawing.Size(983, 82);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Repeat this step until all chips to be soldered are inserted into the breadboard." +
-    "";
+            this.label4.Text = "Repeat this step until all chips and header pins are inserted into the breadboard" +
+    ".";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(298, 500);
+            this.button1.Location = new System.Drawing.Point(316, 493);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(429, 140);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Next Step";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -97,7 +97,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MinimumSize = new System.Drawing.Size(1120, 780);
             this.Name = "Form2";
             this.Text = "Form2";
             this.ResumeLayout(false);
