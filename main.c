@@ -3,6 +3,7 @@
 #include <string.h>
 #include "gcode_decoder.h"
 #include "location_list.h"
+#include "reference_loc.h"
 
 int main()
 {
