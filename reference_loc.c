@@ -43,7 +43,7 @@ Location_List * createLLWiR(refLoc ref,int board, char column, int row){
 
 }
 
-Location_List * addLocRef(Location_List* head,int board, char column, int row, refLoc ref){
+Location_List * addLocRef(Location_List* head, int board, char column, int row, refLoc ref){
     Location * loc = createLocWiRef( ref,  board,  column, row);
     head = push(head,loc);
 
@@ -87,35 +87,35 @@ Location * createLocWiRef(refLoc ref, int board, char column, int row){
 
     locY = boardTopLeftY + (row*.1);
 
-    if(column == 'A'){
+    if(column == 'A' || column == 'a'){
         locX = boardTopLeftX;
 
-    }else if(column == 'B'){
+    }else if(column == 'B' || column == 'b'){
         locX = boardTopLeftX + .1;
 
-    }else if(column == 'C'){
+    }else if(column == 'C' || column == 'c'){
         locX = boardTopLeftX + .2;
 
-    }else if(column == 'D'){
+    }else if(column == 'D' || column == 'd'){
         locX = boardTopLeftX + .3;
 
-    }else if(column == 'E'){
+    }else if(column == 'E' || column == 'e'){
         locX = boardTopLeftX + .4;
 
-    }else if(column == 'F'){
-        locX = boardTopLeftX + .6;
-
-    }else if(column == 'G'){
+    }else if(column == 'F' || column == 'f'){
         locX = boardTopLeftX + .7;
 
-    }else if(column == 'H'){
+    }else if(column == 'G' || column == 'g'){
         locX = boardTopLeftX + .8;
 
-    }else if(column == 'I'){
+    }else if(column == 'H' || column == 'h'){
         locX = boardTopLeftX + .9;
 
+    }else if(column == 'I' || column == 'i'){
+        locX = boardTopLeftX + 1.0;
+
     }else{//else J
-        locX = boardTopLeftX + 1;
+        locX = boardTopLeftX + 1.1;
 
     }
 

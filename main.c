@@ -14,16 +14,21 @@ int main()
         print_loc(locs[i]);
     }
 
+    refLoc * ref;
+    ref = newRefLoc(1.0,5.9,3.4,7.3,3.4,8.7,3.4);
+
     Location_List* head = NULL;
-    head = createLL(locs[0]);
+//    head = createLL(locs[0]);
+    head = createLLWiR(*ref,1,locs[0]->x_loc,locs[0]->y_loc);
     for(i=1;i<11;i++){
-        head = push(head,locs[i]);
+//        head = push(head,locs[i]);
+        head = addLocRef(head, 1, locs[i]->x_loc,locs[i]->y_loc, *ref);
     }
 
     char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
     createFile(tempName);
 
-    append(head,locs[11]);
+//    append(head,locs[11]);
 
     printf("Created DLL is: ");
     printList(head);
