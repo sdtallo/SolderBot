@@ -21,8 +21,10 @@ namespace GUI_Home
             label8.Text = rightPins;
 
             // Call Gcode program here
-            // Trying to open this file (saved in same folder as GUI_Home.exe)
-            System.Diagnostics.Process.Start("testMe.txt");
+            // Trying to open this file (saved in pi, same folder as solderbot-test)
+            // File must be saved in same folder from which mono is run
+            //            System.Diagnostics.Process.Start("testMe.txt");
+            System.Diagnostics.Process.Start("seniorDesignP.exe");
         }
 
         // Pins match what was entered into textboxes
