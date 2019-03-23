@@ -15,18 +15,18 @@ struct refLoc{
     double rightY;
 };
 
-refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);//used to keep track where the board is in reference to solder
+//refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);//used to keep track where the board is in reference to solder
 
-void changeRefLoc(refLoc * ref,double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);
+//void changeRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);
 
-Location_List * createLLWiR(refLoc ref,int board, char column, int row);
+Location_List * createLLWiR(int board, char column, int row);
 
-Location_List * addLocRef(Location_List* head,int board, char column, int row, refLoc ref);
+Location_List * addLocRef(Location_List* head,int board, char column, int row);
 
-void insertAfterRef(Location_List* prev_node, int board, char column, int row, refLoc ref);
+void insertAfterRef(Location_List* prev_node, int board, char column, int row);
 
-void appendRef(Location_List* head, int board, char column, int row, refLoc ref);
+void appendRef(Location_List* head, int board, char column, int row);
 
-Location * createLocWiRef(refLoc ref, int board, char column, int row);//allows converting from user input to actual locations
+Location * createLocWiRef(int board, char column, int row);//allows converting from user input to actual locations
 
 #endif
