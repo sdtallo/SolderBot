@@ -17,6 +17,7 @@ namespace GUI_Home
             InitializeComponent();
         }
 
+        // Back to home page
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();

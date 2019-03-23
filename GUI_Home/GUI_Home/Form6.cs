@@ -15,13 +15,21 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
+            // Call robot
+            // When robot responds back with "done", move to next screen
         }
 
+        // Emergency stop
         private void button1_Click(object sender, EventArgs e)
         {
+            // Make machine stop and raise up slightly
+            // Pass last location soldered to next page as argument
+
             this.Hide();
             Form8 f8 = new Form8();
             f8.ShowDialog();
         }
+
+        // Need event - move to finish screen when robot finishes soldering
     }
 }

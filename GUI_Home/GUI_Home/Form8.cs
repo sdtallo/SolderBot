@@ -17,8 +17,11 @@ namespace GUI_Home
             InitializeComponent();
         }
 
+        // Resume soldering
         private void button1_Click(object sender, EventArgs e)
         {
+            // Pass last location to next page as argument to resume soldering
+
             this.Hide();
             Form6 f6 = new Form6();
             f6.ShowDialog();

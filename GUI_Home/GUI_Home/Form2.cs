@@ -17,6 +17,7 @@ namespace GUI_Home
             InitializeComponent();
         }
 
+        // Next step
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -24,6 +25,7 @@ namespace GUI_Home
             f3.ShowDialog();
         }
 
+        // Recalibrate
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();

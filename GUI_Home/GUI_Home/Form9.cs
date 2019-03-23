@@ -21,16 +21,21 @@ namespace GUI_Home
             label8.Text = rightPins;
 
             // Call Gcode program here
-            Process.Start("testMe.txt");
+            // Trying to open this file (saved in same folder as GUI_Home.exe)
+            System.Diagnostics.Process.Start("testMe.txt");
         }
 
+        // Pins match what was entered into textboxes
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form5 f5 = new Form5();
             f5.ShowDialog();
+
+            // Call Gcode program here...but how???
         }
 
+        // Pins don't match what was entered into textboxes
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,6 +43,7 @@ namespace GUI_Home
             f3.ShowDialog();
         }
 
+        // Recalibrate button
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();

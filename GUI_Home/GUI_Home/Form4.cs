@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Not using this page - image is being a pain
 namespace GUI_Home
 {
     public partial class Form4 : Form

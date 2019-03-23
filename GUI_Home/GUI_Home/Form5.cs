@@ -17,6 +17,7 @@ namespace GUI_Home
             InitializeComponent();
         }
 
+        // Ready for machine to begin soldering
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -24,6 +25,7 @@ namespace GUI_Home
             f6.ShowDialog();
         }
 
+        // Not ready for machine to begin soldering
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -33,6 +35,7 @@ namespace GUI_Home
             f3.ShowDialog();
         }
 
+        // Recalibrate
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
