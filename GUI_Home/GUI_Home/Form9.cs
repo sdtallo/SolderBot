@@ -24,7 +24,7 @@ namespace GUI_Home
             // File must be saved in same folder from which mono is run
             //            System.Diagnostics.Process.Start("seniorDesignP.exe");
  //           pass_to_gcode(leftPins, middlePins, rightPins);
-            System.Diagnostics.Process.Start("seniorDesignP.exe", leftPins + " " + middlePins + " " + rightPins);
+            System.Diagnostics.Process.Start("seniorDesignP.exe", "\"" + leftPins + " " + middlePins + " " + rightPins + "\"");
         }
 
         // Starting code from this website: https://social.msdn.microsoft.com/Forums/vstudio/en-US/9c574d79-13cd-4333-bb7c-dcf2305d8155/how-to-run-an-exe-file-when-cliking-a-button-cnet?forum=csharpgeneral
