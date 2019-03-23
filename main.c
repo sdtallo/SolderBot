@@ -8,26 +8,26 @@
 
 int main()
 {
-    /*
-     * Location **locs = (Location**)malloc(sizeof(Location)*50);
+
+    Location **locs = (Location**)malloc(sizeof(Location)*50);
     int i;
     for(i=0;i<12;i++){
         locs[i] = location_new((rand()%100),rand()%100,rand()%10);
         print_loc(locs[i]);
     }
 
-    refLoc * ref;
-    ref = newRefLoc(1.0,5.9,3.4,7.3,3.4,8.7,3.4);
 
     Location_List* head = NULL;
 // //    head = createLL(locs[0]);
-    head = createLLWiR(*ref,1,locs[0]->x_loc,locs[0]->y_loc);
+    head = createLLWiR(1,locs[0]->x_loc,locs[0]->y_loc);
     for(i=1;i<11;i++){
 // //        head = push(head,locs[i]);
-        head = addLocRef(head, 1, locs[i]->x_loc,locs[i]->y_loc, *ref);
+        head = addLocRef(head, 1, locs[i]->x_loc,locs[i]->y_loc);
     }
 
-    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+//    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+
+    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
     createFile(tempName);
 
 // //    append(head,locs[11]);
@@ -48,9 +48,9 @@ int main()
 
     freeList(head);
     return 0;
-*/
+
     printf("this is our test message ");
-    printf("%lf", absArray[6][5].x_loc);
+//    printf("%lf", absArray[6][5].x_loc);
 
     return 0;
 }

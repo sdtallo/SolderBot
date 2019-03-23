@@ -9,11 +9,9 @@ struct arrayConst {
     double y_loc;
     double z_loc;
 
-
-
 };
 
-extern struct arrayConst absArray[12][6];
+extern struct arrayConst absArray[10][6];
 
 
 
