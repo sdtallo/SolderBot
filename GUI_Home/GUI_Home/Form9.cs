@@ -32,7 +32,7 @@ namespace GUI_Home
             ProcessStartInfo myInfo = new ProcessStartInfo("seniorDesignP.exe", testStr);
             myInfo.RedirectStandardOutput = true;
             myInfo.UseShellExecute = false;
-            myInfo.CreateNoWindow = true;
+            myInfo.CreateNoWindow = false;
             /*
                         using (Process p = Process.Start(myInfo))
                         {
