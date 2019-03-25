@@ -22,25 +22,14 @@ namespace GUI_Home
 
             // Call Gcode program here
             // File must be saved in same folder from which mono is run
-            //            System.Diagnostics.Process.Start("seniorDesignP.exe");
- //           pass_to_gcode(leftPins, middlePins, rightPins);
-            System.Diagnostics.Process.Start("seniorDesignP.exe", "\"" + leftPins + "_" + middlePins + "_" + rightPins + "\"");
+            string argStr = "\"" + leftPins + "_" + middlePins + "_" + rightPins + "\"";
+            string testStr = "a b c";
+            System.Diagnostics.Process.Start("seniorDesignP.exe", testStr);
         }
 
         // Starting code from this website: https://social.msdn.microsoft.com/Forums/vstudio/en-US/9c574d79-13cd-4333-bb7c-dcf2305d8155/how-to-run-an-exe-file-when-cliking-a-button-cnet?forum=csharpgeneral
 
- /*       static void pass_to_gcode(string L_arg, string M_arg, string R_arg)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "seniorDesignP.exe";
-
-            // Create arguments string - 3 total
-            // First for left board, second for middle, third for right
-            string myArgs = L_arg + ", " + M_arg + ", " + R_arg;
-            startInfo.Arguments = myArgs;
-            Process.Start(startInfo, @"something.exe", a + " " + b + " " + c);
-        }
-*/
+        
         // Pins match what was entered into textboxes
         private void button1_Click(object sender, EventArgs e)
         {
