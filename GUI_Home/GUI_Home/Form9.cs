@@ -22,9 +22,25 @@ namespace GUI_Home
 
             // Call Gcode program here
             // File must be saved in same folder from which mono is run
-            string argStr = "\"" + leftPins + "_" + middlePins + "_" + rightPins + "\"";
-            string testStr = "a b c";
-            System.Diagnostics.Process.Start("seniorDesignP.exe", testStr);
+            string argStr = " \" " + leftPins + "_" + middlePins + "_" + rightPins + " \" ";
+            string testStr = "a";
+//            System.Diagnostics.Process.Start("seniorDesignP.exe", testStr);
+
+
+            // Test code from https://stackoverflow.com/questions/14113384/passing-arguments-and-returns-between-c-sharp-application-and-c-exe-file
+
+            ProcessStartInfo myInfo = new ProcessStartInfo("seniorDesignP.exe", testStr);
+            myInfo.RedirectStandardOutput = true;
+            myInfo.UseShellExecute = false;
+            myInfo.CreateNoWindow = true;
+            /*
+                        using (Process p = Process.Start(myInfo))
+                        {
+                            p.WaitForExit();
+                            int a = p.ExitCode;
+                            label1.Text = a.ToString();
+                        }
+            */
         }
 
         // Starting code from this website: https://social.msdn.microsoft.com/Forums/vstudio/en-US/9c574d79-13cd-4333-bb7c-dcf2305d8155/how-to-run-an-exe-file-when-cliking-a-button-cnet?forum=csharpgeneral
