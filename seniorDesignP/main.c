@@ -9,12 +9,12 @@
 int main(int argc, char *argv[])
 {
 
-    int i;
-    for(i = 0;i<argc;++i){
-        printf("%s \n",argv[i]);
-    }
-    return 0;
-    /*
+//    int i;
+//    for(i = 0;i<argc;++i){
+//        printf("%s\n",argv[i]);
+//    }
+//    return 0;
+
     char *t = argv[1];
 //        char *t = "gsdfdfsfdsfdsfds";
     char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
@@ -37,13 +37,19 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    fputs(t,file_ptr);
-    fputs ("\n", file_ptr);
+    int i;
+    for(i = 0;i<argc;++i){
+        fputs("\n",file_ptr);
+        fputs(argv[i],file_ptr);
+        fputs("\n",file_ptr);
+    }
+//    fputs(t,file_ptr);
+//    fputs ("\n", file_ptr);
 
-    fclose(file_ptr);*/
+    fclose(file_ptr);
 
 
-
+    return 0;
     /*
     Location **locs = (Location**)malloc(sizeof(Location)*50);
     int i;
