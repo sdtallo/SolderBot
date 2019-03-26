@@ -11,7 +11,7 @@ struct arrayConst {
 
 };
 
-extern struct arrayConst absArray[9][6];
+extern struct arrayConst absArray[10][6];
 
 
 

@@ -70,8 +70,8 @@ void append(Location_List *head, Location *new_data)
     if (head->next == NULL)
     {
         head->next = new_node;
-        printf("last value is");
-        print_loc(head->next->cur);
+//        printf("last value is ");
+//        print_loc(head->next->cur);
         return;
     }
     /* 5. Else traverse till the last node */
@@ -128,8 +128,13 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     strcpy(firstLoc, "G00 X");
     sprintf(tempgloc, "%.3f Y", temp->cur->x_loc);
     strcat(firstLoc, tempgloc);
-    sprintf(tempgloc, "%.3f", temp->cur->y_loc);
+    sprintf(tempgloc, "%.3f Z", temp->cur->y_loc);
     strcat(firstLoc, tempgloc);
+    sprintf(tempgloc, "%.3f", temp->cur->z_loc);
+    strcat(firstLoc, tempgloc);
+
+
+
 
     FILE* file_ptr = fopen(fileLoc, "a+");
     if(file_ptr == NULL){
@@ -173,7 +178,7 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
     move_loc2(moveUp,firstCommand);
     Location * moveAboveSecond = location_new(secondLoc->x_loc,secondLoc->y_loc,upZ);
     move_loc2(moveAboveSecond,secondCommand);
-    Location * moveDown = location_new(secondLoc->x_loc,secondLoc->y_loc,downZ);
+    Location * moveDown = location_new(secondLoc->x_loc,secondLoc->y_loc,secondLoc->z_loc);
     move_loc2(moveDown,thirdCommand);
 
 
@@ -207,3 +212,5 @@ void createFile(char *fileLoc)
 
     fclose(file_ptr);
 }
+
+

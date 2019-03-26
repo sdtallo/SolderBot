@@ -29,4 +29,16 @@ void appendRef(Location_List* head, int board, char column, int row);
 
 Location * createLocWiRef(int board, char column, int row);//allows converting from user input to actual locations
 
+void pushGivenBoardStr(Location_List * head,int board, char * str1);
+
+void remove_all_chars(char* str, char c);
+
+int countChars( char* s, char c );
+
+int converChartoNum(char c);
+
+char convertNumtoChar(int n);
+
+void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow);
+
 #endif

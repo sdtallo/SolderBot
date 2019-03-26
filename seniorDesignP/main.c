@@ -8,7 +8,88 @@
 
 int main(int argc, char *argv[])
 {
+    char *t = argv[1];
+    //        char *t = "gsdfdfsfdsfdsfds";
+    //    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
 
+    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+
+    createFile(tempName);
+
+
+    char input[] = "A2, C2, E6, B20_A1, B1, C5;D6_A2, C2, E6, B8, F10";
+
+//    printf(input);
+//    printf("\n");
+
+
+
+    int iLen = strlen(input);
+    char *sInput = (char *)malloc((iLen+1) * sizeof(char));
+
+    strcpy(sInput, input);
+    printf("String => %s\n", sInput);
+
+    remove_all_chars(sInput, ' ');
+
+    printf("String without spaces => %s\n", sInput);
+
+    char *sSeparator = "_";
+    char *pToken = strtok(sInput, sSeparator);
+
+    int boardNum = 1;
+    char * board1Str;
+    char * board2Str;
+    char * board3Str;
+
+    while(1)
+    {
+        if(pToken == NULL)
+            break;
+        if(boardNum == 1){
+            iLen = strlen(pToken);
+            board1Str = (char *)malloc((iLen+1) * sizeof(char));
+            strcpy(board1Str, pToken);
+            boardNum += 1;
+        }else if(boardNum == 2){
+            iLen = strlen(pToken);
+            board2Str = (char *)malloc((iLen+1) * sizeof(char));
+            strcpy(board2Str, pToken);
+            boardNum += 1;
+        }else{
+            iLen = strlen(pToken);
+            board3Str = (char *)malloc((iLen+1) * sizeof(char));
+            strcpy(board3Str, pToken);
+        }
+//        printf("Token = %s\n", pToken);
+
+        pToken = strtok(NULL, sSeparator);
+    }
+
+    Location_List* head = NULL;
+    Location * loc0 = location_new(0,0,0);
+    head = createLL(loc0);
+    printf("Board 1 = %s\n", board1Str);
+    printf("Board 2 = %s\n", board2Str);
+    printf("Board 3 = %s\n", board3Str);
+
+    pushGivenBoardStr(head, 1,board1Str);
+    pushGivenBoardStr(head, 2,board2Str);
+    pushGivenBoardStr(head, 3,board3Str);
+
+    printf("Created DLL is: ");
+    printList(head->next);
+
+    moveAllLoc(head->next,tempName);
+
+    freeList(head);
+    return 0;
+
+
+    return 0;
+
+
+    /*
 //    int i;
 //    for(i = 0;i<argc;++i){
 //        printf("%s\n",argv[i]);
@@ -38,7 +119,7 @@ int main(int argc, char *argv[])
     }
 
     int i;
-    for(i = 0;i<argc;++i){
+    for(i = 1;i<argc;++i){
         fputs("\n",file_ptr);
         fputs(argv[i],file_ptr);
         fputs("\n",file_ptr);
