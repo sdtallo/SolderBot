@@ -25,7 +25,7 @@ namespace GUI_Home
             string argStr = " \" " + leftPins + "_" + middlePins + "_" + rightPins + " \" ";
 //            string testStr = "a";
 //            System.Diagnostics.Process.Start("seniorDesignP.exe", "a");
-            System.Diagnostics.Process.Start("helloargs.exe", "printme");
+            System.Diagnostics.Process.Start("seniorDesignP.exe", "a");
 
 
             // Test code from https://stackoverflow.com/questions/14113384/passing-arguments-and-returns-between-c-sharp-application-and-c-exe-file
