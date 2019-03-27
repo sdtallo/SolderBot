@@ -21,4 +21,6 @@ void move_home(Location *current_loc, char *gcodeloc);
 
 void print_loc(Location *loc);
 
+int loc_comp(Location *loc1, Location *loc2);
+
 #endif

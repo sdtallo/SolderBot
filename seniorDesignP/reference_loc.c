@@ -111,6 +111,9 @@ Location * createLocWiRef(int board, char column, int row){
 
     int xArray = newColumn -1;
     int yArray = row -1;
+    if(yArray > 45){
+        yArray = 45;
+    }
     xArray += (board-1)*10;
 
 
@@ -335,4 +338,121 @@ void appendGivenRange(Location_List * head, int board, int firstColumn, int last
         }
     }
 
+}
+
+
+int isNum(char c){
+    int check;
+    if(c == '0'){
+        check = 1;
+
+    }else if(c == '1'){
+        check = 1;
+
+    }else if(c == '2'){
+        check = 1;
+
+    }else if(c == '3'){
+        check = 1;
+
+    }else if(c == '4'){
+        check = 1;
+
+    }else if(c == '5'){
+        check = 1;
+
+    }else if(c == '6'){
+        check = 1;
+
+    }else if(c == '7'){
+        check = 1;;
+
+    }else if(c == '8'){
+        check = 1;
+
+    }else if(c == '9'){//else J
+        check = 1;
+
+    }else {
+        check = 0;
+    }
+    return check;
+}
+
+int isLet(char c){
+
+    int check;
+    if(c == 'A' || c == 'a'){
+        check = 1;
+
+    }else if(c == 'B' || c == 'b'){
+        check = 1;
+
+    }else if(c == 'C' || c == 'c'){
+        check = 1;
+
+    }else if(c == 'D' || c == 'd'){
+        check = 1;
+
+    }else if(c == 'E' || c == 'e'){
+        check = 1;
+
+    }else if(c == 'F' || c == 'f'){
+        check = 1;
+
+    }else if(c == 'G' || c == 'g'){
+        check = 1;
+
+    }else if(c == 'H' || c == 'h'){
+        check = 1;;
+
+    }else if(c == 'I' || c == 'i'){
+        check = 1;
+
+    }else if(c == 'J' || c == 'j'){//else J
+        check = 1;
+
+    }else {
+        check = 0;
+    }
+    return check;
+}
+
+
+int checkFormat(char * c){
+    int itest = strlen(c);
+    char sTest[itest];
+    strcpy(sTest, c);
+    char current;
+    char next;
+    int t = 1;
+    for(int i =0; i<(itest-1);++i){
+        current = sTest[i];
+        next = sTest[i+1];
+        if(current == '_' && isLet(next) == 1){
+
+        }else if(current == '_' && next == '_'){
+
+        }else if(isLet(current) == 1 && isNum(next) == 1){
+
+        }else if(isNum(current) == 1 && isNum(next) == 1){
+
+        }else if(isNum(current) == 1 && next == '_'){
+
+        }else if(isNum(current) == 1 && next == ','){
+
+        }else if(isNum(current) == 1 && next == ';'){
+
+        }else if(current == ';' && isLet(next) == 1){
+
+        }else if(current == ',' && isLet(next) == 1){
+
+        }else{
+            t = 0;
+        }
+    }
+
+
+
+    return t;
 }

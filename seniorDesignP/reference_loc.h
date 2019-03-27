@@ -41,4 +41,11 @@ char convertNumtoChar(int n);
 
 void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow);
 
+int isNum(char c);
+
+int isLet(char c);
+
+int checkFormat(char * c);
+
+
 #endif

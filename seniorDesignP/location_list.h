@@ -35,4 +35,6 @@ void solder(void);//stub function for yet to be written code, just waits 1 secon
 
 void createFile(char *fileLoc);
 
+void deleteRepeats(Location_List * head);
+
 #endif

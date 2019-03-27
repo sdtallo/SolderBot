@@ -214,3 +214,26 @@ void createFile(char *fileLoc)
 }
 
 
+void deleteRepeats(Location_List * head){
+    Location_List * current =head;
+    while(current->next != NULL){
+        Location_List * comp = current->next;
+        while(comp != NULL){
+            int compare = 0;
+            compare = loc_comp(current->cur,comp->cur);
+            if(compare == 1){
+                Location_List * temp = comp->next;
+                comp->prev->next = comp->next;
+                if(comp->next != NULL)
+                    comp->next->prev = comp->prev;
+                comp = temp;
+            }else{
+                comp = comp->next;
+            }
+
+        }
+        current = current->next;
+    }
+}
+
+

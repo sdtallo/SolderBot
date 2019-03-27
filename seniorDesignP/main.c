@@ -17,20 +17,51 @@ int main(int argc, char *argv[])
     createFile(tempName);
 
 
-    char input[] = "A2, C2, E6, B20,F1_A1, B1, C5;D6_A2, C2, E6, B8, F10";
+    char input[] = " A2, B2, A2;B3 _ _ ";
+
+//    char * input = argv[1];
 
 //    printf(input);
 //    printf("\n");
 
 
+    int itest = strlen(input);
+    char *sTest = (char *)malloc((itest+1) * sizeof(char));
+    strcpy(sTest, input);
+    remove_all_chars(sTest, ' ');
+
+    int testS = checkFormat(sTest);
+
+    if(testS == 1){
+        printf("This is a valid string\n");
+    }else{
+            printf("This is NOT a valid string!\n");
+
+            FILE* file_ptr = fopen(tempName, "a+");
+            if(file_ptr == NULL){
+                printf("Error opening file!\n");
+                exit(1);
+            }
+
+            fputs (tempName, file_ptr);
+            fputs ("This is NOT a valid string!\n", file_ptr);
+
+            fclose(file_ptr);
+
+
+            return 0;
+    }
+
 
     int iLen = strlen(input);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
+
+
     strcpy(sInput, input);
     printf("String => %s\n", sInput);
 
-    remove_all_chars(sInput, ' ');
+
 
     printf("String without spaces => %s\n", sInput);
 
@@ -38,29 +69,32 @@ int main(int argc, char *argv[])
     char *pToken = strtok(sInput, sSeparator);
 
     int boardNum = 1;
-    char * board1Str;
-    char * board2Str;
-    char * board3Str;
+    char * board1Str = NULL;;
+    char * board2Str = NULL;;;
+    char * board3Str = NULL;;;
 
     while(1)
     {
-        if(pToken == NULL)
+
+        if(pToken == NULL){
             break;
+        }
         if(boardNum == 1){
             iLen = strlen(pToken);
             board1Str = (char *)malloc((iLen+1) * sizeof(char));
             strcpy(board1Str, pToken);
-            boardNum += 1;
+
         }else if(boardNum == 2){
             iLen = strlen(pToken);
             board2Str = (char *)malloc((iLen+1) * sizeof(char));
             strcpy(board2Str, pToken);
-            boardNum += 1;
-        }else{
+        }else if(boardNum == 3){
             iLen = strlen(pToken);
             board3Str = (char *)malloc((iLen+1) * sizeof(char));
             strcpy(board3Str, pToken);
         }
+        boardNum += 1;
+
 //        printf("Token = %s\n", pToken);
 
         pToken = strtok(NULL, sSeparator);
@@ -69,18 +103,36 @@ int main(int argc, char *argv[])
     Location_List* head = NULL;
     Location * loc0 = location_new(0,0,0);
     head = createLL(loc0);
-    printf("Board 1 = %s\n", board1Str);
-    printf("Board 2 = %s\n", board2Str);
-    printf("Board 3 = %s\n", board3Str);
+    //Make sure Sam send ' _ ' otherwise this method is useless
+    remove_all_chars(board1Str, ' ');
+    remove_all_chars(board2Str, ' ');
+    remove_all_chars(board3Str, ' ');
 
-    pushGivenBoardStr(head, 1,board1Str);
-    pushGivenBoardStr(head, 2,board2Str);
-    pushGivenBoardStr(head, 3,board3Str);
+    printf("Board 1 = .%s.\n", board1Str);
+    printf("Board 2 = .%s.\n", board2Str);
+    printf("Board 3 = .%s.\n", board3Str);
+
+    if(board1Str[0] != '\0'){
+        pushGivenBoardStr(head, 1,board1Str);
+    }
+    if(board2Str[0] != '\0'){
+        pushGivenBoardStr(head, 2,board2Str);
+    }
+    if(board3Str[0] != '\0'){
+        pushGivenBoardStr(head, 3,board3Str);
+    }
+
+
 
     printf("Created DLL is: ");
-    printList(head->next);
 
-    moveAllLoc(head->next,tempName);
+    deleteRepeats(head);
+
+    if(head->next != NULL){
+        printList(head->next);
+        moveAllLoc(head->next,tempName);
+    }
+
 
     freeList(head);
     return 0;
