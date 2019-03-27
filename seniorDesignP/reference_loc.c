@@ -143,11 +143,6 @@ Location * createLocWiRef(int board, char column, int row){
 }
 
 
-
-//void insertGivenArg(){
-
-//}
-
 //https://stackoverflow.com/questions/9895216/how-to-remove-all-occurrences-of-a-given-character-from-string-in-c
 void remove_all_chars(char* str, char c) {
     char *pr = str, *pw = str;

@@ -8,8 +8,6 @@
 
 int main(int argc, char *argv[])
 {
-    char *t = argv[1];
-    //        char *t = "gsdfdfsfdsfdsfds";
     char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
 
     //    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
@@ -101,7 +99,7 @@ int main(int argc, char *argv[])
     Location_List* head = NULL;
     Location * loc0 = location_new(0,0,0);
     head = createLL(loc0);
-    //Make sure Sam send ' _ ' otherwise this method is useless
+    //Make sure Sam send " _ " otherwise this method is useless
     remove_all_chars(board1Str, ' ');
     remove_all_chars(board2Str, ' ');
     remove_all_chars(board3Str, ' ');
