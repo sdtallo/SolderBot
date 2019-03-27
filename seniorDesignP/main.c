@@ -42,8 +42,6 @@ int main(int argc, char *argv[])
                 printf("Error opening file!\n");
                 exit(1);
             }
-
-            fputs (tempName, file_ptr);
             fputs ("This is NOT a valid string!\n", file_ptr);
 
             fclose(file_ptr);
