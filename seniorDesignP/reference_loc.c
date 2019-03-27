@@ -110,7 +110,13 @@ Location * createLocWiRef(int board, char column, int row){
     }
 
     int xArray = newColumn -1;
-    int yArray = row -1;
+    int yArray;
+    if(row > 0){
+        yArray = row -1;
+    }else{
+        yArray = 0;
+    }
+
     if(yArray > 45){
         yArray = 45;
     }
@@ -423,6 +429,14 @@ int checkFormat(char * c){
     int itest = strlen(c);
     char sTest[itest];
     strcpy(sTest, c);
+    char first = sTest[0];
+    char last = sTest[itest-1];
+    if(isLet(first) != 1 && first != '_'){
+        return 0;
+    }
+    if(isNum(last) != 1 && last != '_'){
+        return 0;
+    }
     char current;
     char next;
     int t = 1;
