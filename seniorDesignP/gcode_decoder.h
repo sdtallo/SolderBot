@@ -8,7 +8,7 @@ struct Location{
     double y_loc;
     double z_loc;
 };
-
+#endif
 Location *location_new(double x, double y, double z);
 
 void location_free(Location *loc);
@@ -23,4 +23,4 @@ void print_loc(Location *loc);
 
 int loc_comp(Location *loc1, Location *loc2);
 
-#endif
+

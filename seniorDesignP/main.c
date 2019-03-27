@@ -8,14 +8,12 @@
 
 int main(int argc, char *argv[])
 {
-    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
+    char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
 
-//        char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+//        char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
 
     createFile(tempName);
 
-
-//        char input[] = " A2, B2, A2;B3 _ _ ";
 //        char *input = " A2, B2, A2;B3 _ _ ";
 
     char *input = argv[1];
@@ -58,10 +56,6 @@ int main(int argc, char *argv[])
 
     strcpy(sInput, input);
     printf("String => %s\n", sInput);
-
-
-
-    printf("String without spaces => %s\n", sInput);
 
     char *sSeparator = "_";
     char *pToken = strtok(sInput, sSeparator);

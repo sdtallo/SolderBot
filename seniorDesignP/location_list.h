@@ -12,6 +12,7 @@ struct Location_List
     Location_List *next;
 };
 
+#endif
 Location_List * createLL(Location *new_data);
 
 Location_List * push(Location_List* head, Location *new_data);
@@ -35,4 +36,4 @@ void createFile(char *fileLoc);
 
 void deleteRepeats(Location_List * head);
 
-#endif
+

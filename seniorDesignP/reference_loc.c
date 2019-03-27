@@ -171,7 +171,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             break;
 //        printf("Token = %s\n", pToken);
 
-        int ifSemiColon = countChars(pToken, ';');
+        int ifSemiColon = countChars(pToken, ':');
 
         if(ifSemiColon > 0){
             //if there is a semicolon
