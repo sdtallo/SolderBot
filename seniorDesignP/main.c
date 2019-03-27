@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     char * board1Str = NULL;;
     char * board2Str = NULL;;;
     char * board3Str = NULL;;;
-
+    //https://stackoverflow.com/questions/30415663/c-using-strtok-to-parse-command-line-inputs
     while(1)
     {
 
