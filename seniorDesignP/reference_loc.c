@@ -191,7 +191,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             strcpy(beforesemiColon, t);
 //            printf("before semiColon = %s\n",beforesemiColon);
 
-            t = strtok(NULL, sSeparator);
+            t = strtok(NULL, s);
 
             iLen = strlen(t);
             char aftersemiColon[iLen];
