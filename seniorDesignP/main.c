@@ -8,15 +8,14 @@
 
 int main(int argc, char *argv[])
 {
-    char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
-
-//        char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
+    //    char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
+    char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
 
     createFile(tempName);
 
-//        char *input = " A2, B2, A2:B3 _ _ ";
+    char *input = " A2, B2, A2:B3 _ A2:f6 _ ";
 
-    char *input = argv[1];
+    //    char *input = argv[1];
 
     //    printf(input);
     //    printf("\n");
@@ -29,6 +28,7 @@ int main(int argc, char *argv[])
     remove_all_chars(sTest, ' ');
 
     int testS = checkFormat(sTest);
+    free(sTest);
 
     if(testS == 1){
         printf("This is a valid string\n");
@@ -40,12 +40,12 @@ int main(int argc, char *argv[])
             printf("Error opening file!\n");
             exit(1);
         }
-            fputs ("This is NOT a valid string!\n", file_ptr);
+        fputs ("This is NOT a valid string!\n", file_ptr);
 
-            fclose(file_ptr);
+        fclose(file_ptr);
 
 
-            return 0;
+        return 0;
     }
 
 
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 
 
     strcpy(sInput, input);
+
     printf("String => %s\n", sInput);
 
     char *sSeparator = "_";
@@ -87,10 +88,13 @@ int main(int argc, char *argv[])
         }
         boardNum += 1;
 
-//        printf("Token = %s\n", pToken);
+        //        printf("Token = %s\n", pToken);
 
         pToken = strtok(NULL, sSeparator);
     }
+    free(pToken);
+    free(sInput);
+
 
     Location_List* head = NULL;
     Location * loc0 = location_new(0,0,0);
@@ -129,99 +133,5 @@ int main(int argc, char *argv[])
     freeList(head);
 
 
-//    Py_Initialize();
-//    FILE* file = fopen("/gpasser.py", "r");
-//    PyRun_SimpleFile(file, "/gpasser.py");
-//    Py_Finalize();
-
-
     return 0;
-
-    /* used for testing purposes
-//    int i;
-//    for(i = 0;i<argc;++i){
-//        printf("%s\n",argv[i]);
-//    }
-//    return 0;
-
-    char *t = argv[1];
-//        char *t = "gsdfdfsfdsfdsfds";
-    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
-
-//        char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
-
-
-    FILE* file_ptr = fopen(tempName, "w");
-    if(file_ptr == NULL){
-        printf("Error opening file!\n");
-        exit(1);
-    }
-
-    fclose(file_ptr);
-
-
-    file_ptr = fopen(tempName, "a+");
-    if(file_ptr == NULL){
-        printf("Error opening file!\n");
-        exit(1);
-    }
-
-    int i;
-    for(i = 1;i<argc;++i){
-        fputs("\n",file_ptr);
-        fputs(argv[i],file_ptr);
-        fputs("\n",file_ptr);
-    }
-//    fputs(t,file_ptr);
-//    fputs ("\n", file_ptr);
-
-    fclose(file_ptr);
-
-
-    return 0;
-    /*
-    Location **locs = (Location**)malloc(sizeof(Location)*50);
-    int i;
-    for(i=0;i<12;i++){
-        locs[i] = location_new((rand()%100),rand()%100,rand()%10);
-        print_loc(locs[i]);
-    }
-
-
-    Location_List* head = NULL;
-// //    head = createLL(locs[0]);
-    head = createLLWiR(1,locs[0]->x_loc,locs[0]->y_loc);
-    for(i=1;i<11;i++){
-// //        head = push(head,locs[i]);
-        head = addLocRef(head, 1, locs[i]->x_loc,locs[i]->y_loc);
-    }
-
-//    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
-
-    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
-    createFile(tempName);
-
-// //    append(head,locs[11]);
-
-    printf("Created DLL is: ");
-    printList(head);
-
-    moveAllLoc(head,tempName);
-
-    for(i=0;i<12;i++){
-        location_free(locs[i]);
-    }
-
-
-//     printf("this is our test message");
-
-
-
-    freeList(head);
-    return 0;
-
-    printf("this is our test message ");
-//    printf("%lf", absArray[6][5].x_loc); */
-
-//    return 0;
 }

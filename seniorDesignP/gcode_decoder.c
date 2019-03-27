@@ -67,7 +67,7 @@ void move_loc2(Location *future_loc, char *gcodeloc)
     strcat(gcodeloc, tempgloc);
     sprintf(tempgloc, "%.3f\nG00 Z", future_loc->y_loc);
     strcat(gcodeloc, tempgloc);
-//    sprintf(tempgloc, "%.3f f400", future_loc->z_loc);
+    //    sprintf(tempgloc, "%.3f f400", future_loc->z_loc);
     sprintf(tempgloc, "%.3f", future_loc->z_loc);
     strcat(gcodeloc, tempgloc);
 }

@@ -132,9 +132,9 @@ Location * createLocWiRef(int board, char column, int row){
     locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
     locZ = (absArray[absYArray][absXArray].z_loc);
 
-//    locX = (absArray[absXArray][absYArray].x_loc)+(remainderX*.1);
-//    locY = (absArray[absXArray][absYArray].y_loc)+(remainderY*.1);
-//    locZ = (absArray[absXArray][absYArray].z_loc);
+    //    locX = (absArray[absXArray][absYArray].x_loc)+(remainderX*.1);
+    //    locY = (absArray[absXArray][absYArray].y_loc)+(remainderY*.1);
+    //    locZ = (absArray[absXArray][absYArray].z_loc);
 
 
     return location_new(locX, locY,locZ);
@@ -158,7 +158,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
     strcpy(sInput, str1);
-//    printf("String => %s\n", sInput);
+    //    printf("String => %s\n", sInput);
 
 
     char *sSeparator = ",";
@@ -169,7 +169,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
     {
         if(pToken == NULL)
             break;
-//        printf("Token = %s\n", pToken);
+        //        printf("Token = %s\n", pToken);
 
         int ifSemiColon = countChars(pToken, ':');
 
@@ -180,23 +180,23 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
             strcpy(semiColon, pToken);
 
-//            printf("semiColon = %s\n",semiColon);
+            //            printf("semiColon = %s\n",semiColon);
 
             char *s = ":";
             char *t = strtok(semiColon, s);
 
-
             iLen = strlen(t);
             char beforesemiColon[iLen];
             strcpy(beforesemiColon, t);
-//            printf("before semiColon = %s\n",beforesemiColon);
+            //            printf("before semiColon = %s\n",beforesemiColon);
 
             t = strtok(NULL, s);
 
             iLen = strlen(t);
             char aftersemiColon[iLen];
             strcpy(aftersemiColon, t);
-//            printf("after semiColon = %s\n",aftersemiColon);
+
+            //            printf("after semiColon = %s\n",aftersemiColon);
 
 
             char letter1[1];
@@ -205,6 +205,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             char * num1 = &beforesemiColon[1];
 
             int row1 = atoi(num1);
+
 
             char letter2[1];
             memcpy( letter2, &aftersemiColon[0], 1 );
@@ -216,10 +217,10 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             int lNum2 = converChartoNum(letter2[0]);
 
 
-//            printf("first column is %i.\n",lNum1);
-//            printf("last column is %i.\n",lNum2);
-//            printf("first row is %i.\n",row1);
-//            printf("last row is %i.\n",row2);
+            //            printf("first column is %i.\n",lNum1);
+            //            printf("last column is %i.\n",lNum2);
+            //            printf("first row is %i.\n",row1);
+            //            printf("last row is %i.\n",row2);
 
             appendGivenRange(head, board, lNum1,lNum2,row1,row2);
 
@@ -232,21 +233,21 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
             char letter[1];
             memcpy( letter, &temp1[0], 1 );
-//           strncpy(letter, temp1[0],1);
+            //           strncpy(letter, temp1[0],1);
 
 
             char * temp3 = &temp1[1];
-//            printf("letter is %c\n", letter[0]);
-//            printf("number is %s\n", temp3);
+            //            printf("letter is %c\n", letter[0]);
+            //            printf("number is %s\n", temp3);
 
             int row = atoi(temp3);
-//            printf("this is row int %i\n",row);
+            //            printf("this is row int %i\n",row);
             appendRef(head,board, letter[0], row);
 
         }
-
         pToken = strtok(NULL, sSeparator);
     }
+
 }
 
 
@@ -254,8 +255,8 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 int countChars( char* s, char c )
 {
     return *s == '\0'
-              ? 0
-              : countChars( s + 1, c ) + (*s == c);
+            ? 0
+            : countChars( s + 1, c ) + (*s == c);
 }
 
 int converChartoNum(char column){

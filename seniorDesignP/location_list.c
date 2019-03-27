@@ -61,17 +61,17 @@ void append(Location_List *head, Location *new_data)
     Location_List *last = head;
     /* 2. put in the data  */
     new_node->cur = new_data; //this needs to assign data to cur
-    /* 3. This new node is going to be the last node, so 
+    /* 3. This new node is going to be the last node, so
           make next of it as NULL*/
     new_node->next = NULL;
     new_node->prev = NULL;
-    /* 4. If the Linked List is empty, then make the new 
+    /* 4. If the Linked List is empty, then make the new
           node as head */
     if (head->next == NULL)
     {
         head->next = new_node;
-//        printf("last value is ");
-//        print_loc(head->next->cur);
+        //        printf("last value is ");
+        //        print_loc(head->next->cur);
         return;
     }
     /* 5. Else traverse till the last node */
@@ -93,12 +93,12 @@ void printList(Location_List* node){
         last = node;
         node = node->next;
     }
-    printf("#######################################################");
-    printf("\nTraversal in reverse direction \n");
-    while(last != NULL){
-        print_loc(last->cur);
-        last = last->prev;
-    }
+    //    printf("#######################################################");
+    //    printf("\nTraversal in reverse direction \n");
+    //    while(last != NULL){
+    //        print_loc(last->cur);
+    //        last = last->prev;
+    //    }
 }
 
 
@@ -107,11 +107,11 @@ void freeList(Location_List *head){
     Location_List *tempPointer2 = head;
     while(tempPointer1->next != NULL){
         tempPointer1 = tempPointer1->next;
-        if(tempPointer2->prev != NULL)
-        free(tempPointer2->prev);
+        //        if(tempPointer2->prev != NULL)
+        //        free(tempPointer2->prev);
         free(tempPointer2->cur);
-        if(tempPointer2->next != NULL)
-        free(tempPointer2->next);
+        //        if(tempPointer2->next != NULL)
+        free(tempPointer2);
         tempPointer2 = tempPointer1;
     }
     tempPointer1 = NULL;
@@ -123,8 +123,8 @@ void freeList(Location_List *head){
 void moveAllLoc(Location_List *head,char *fileLoc){
     Location_List *temp = head;
 
-    char firstLoc[15];
-    char tempgloc[15];
+    char firstLoc[75];
+    char tempgloc[75];
     strcpy(firstLoc, "G00 X");
     sprintf(tempgloc, "%.3f Y", temp->cur->x_loc);
     strcat(firstLoc, tempgloc);
@@ -132,8 +132,6 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     strcat(firstLoc, tempgloc);
     sprintf(tempgloc, "%.3f", temp->cur->z_loc);
     strcat(firstLoc, tempgloc);
-
-
 
 
     FILE* file_ptr = fopen(fileLoc, "a+");
@@ -152,11 +150,10 @@ void moveAllLoc(Location_List *head,char *fileLoc){
         Location *loc2 = location_new(temp->next->cur->x_loc,temp->next->cur->y_loc,temp->next->cur->z_loc);
 
 
-
         moveLocToLoc(loc1,loc2,fileLoc);
-//        solder();
-        location_free(loc1);
-        location_free(loc2);
+        //        solder();
+        //        location_free(loc1);
+        //        location_free(loc2);
         temp = temp->next;
 
     }
@@ -187,10 +184,10 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
         printf("Error opening file!\n");
         exit(1);
     }
-//    fputs (firstCommand, file_ptr);
-//    fputs ("\n", file_ptr);
-//    fputs (secondCommand, file_ptr);
-//    fputs ("\n", file_ptr);
+    //    fputs (firstCommand, file_ptr);
+    //    fputs ("\n", file_ptr);
+    //    fputs (secondCommand, file_ptr);
+    //    fputs ("\n", file_ptr);
     fputs (thirdCommand, file_ptr);
     fputs ("\n", file_ptr);
 
