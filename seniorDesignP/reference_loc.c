@@ -182,7 +182,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
 //            printf("semiColon = %s\n",semiColon);
 
-            char *s = ";";
+            char *s = ":";
             char *t = strtok(semiColon, s);
 
 
@@ -446,9 +446,9 @@ int checkFormat(char * c){
 
         }else if(isNum(current) == 1 && next == ','){
 
-        }else if(isNum(current) == 1 && next == ';'){
+        }else if(isNum(current) == 1 && next == ':'){
 
-        }else if(current == ';' && isLet(next) == 1){
+        }else if(current == ':' && isLet(next) == 1){
 
         }else if(current == ',' && isLet(next) == 1){
 

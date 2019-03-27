@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     createFile(tempName);
 
-//        char *input = " A2, B2, A2;B3 _ _ ";
+//        char *input = " A2, B2, A2:B3 _ _ ";
 
     char *input = argv[1];
 
