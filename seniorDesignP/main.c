@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     createFile(tempName);
 
 
-    char input[] = "A2, C2, E6, B20_A1, B1, C5;D6_A2, C2, E6, B8, F10";
+    char input[] = "A2, C2, E6, B20,F1_A1, B1, C5;D6_A2, C2, E6, B8, F10";
 
 //    printf(input);
 //    printf("\n");

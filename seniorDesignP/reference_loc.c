@@ -90,22 +90,22 @@ Location * createLocWiRef(int board, char column, int row){
         newColumn = 4;
 
     }else if(column == 'E' || column == 'e'){
-        newColumn = 6;
+        newColumn = 5;
 
     }else if(column == 'F' || column == 'f'){
-        newColumn = 7;
+        newColumn = 6;
 
     }else if(column == 'G' || column == 'g'){
-        newColumn = 8;
+        newColumn = 7;
 
     }else if(column == 'H' || column == 'h'){
-        newColumn = 9;
+        newColumn = 8;
 
     }else if(column == 'I' || column == 'i'){
-        newColumn = 10;
+        newColumn = 9;
 
     }else{//else J
-        newColumn = 11;
+        newColumn = 10;
 
     }
 
