@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     return 0;
 
 
-    /*
+    /* used for testing purposes
 //    int i;
 //    for(i = 0;i<argc;++i){
 //        printf("%s\n",argv[i]);

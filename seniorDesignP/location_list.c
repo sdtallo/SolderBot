@@ -128,7 +128,7 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     strcpy(firstLoc, "G00 X");
     sprintf(tempgloc, "%.3f Y", temp->cur->x_loc);
     strcat(firstLoc, tempgloc);
-    sprintf(tempgloc, "%.3f Z", temp->cur->y_loc);
+    sprintf(tempgloc, "%.3f\nG00 Z", temp->cur->y_loc);
     strcat(firstLoc, tempgloc);
     sprintf(tempgloc, "%.3f", temp->cur->z_loc);
     strcat(firstLoc, tempgloc);

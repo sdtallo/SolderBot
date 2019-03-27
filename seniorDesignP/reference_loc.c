@@ -4,8 +4,6 @@
 #include "arrayConst.h"
 #include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
-
 
 
 //refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY){
@@ -92,27 +90,27 @@ Location * createLocWiRef(int board, char column, int row){
         newColumn = 4;
 
     }else if(column == 'E' || column == 'e'){
-        newColumn = 5;
-
-    }else if(column == 'F' || column == 'f'){
         newColumn = 6;
 
-    }else if(column == 'G' || column == 'g'){
+    }else if(column == 'F' || column == 'f'){
         newColumn = 7;
 
-    }else if(column == 'H' || column == 'h'){
+    }else if(column == 'G' || column == 'g'){
         newColumn = 8;
 
-    }else if(column == 'I' || column == 'i'){
+    }else if(column == 'H' || column == 'h'){
         newColumn = 9;
 
-    }else{//else J
+    }else if(column == 'I' || column == 'i'){
         newColumn = 10;
+
+    }else{//else J
+        newColumn = 11;
 
     }
 
-    int xArray = newColumn;
-    int yArray = row;
+    int xArray = newColumn -1;
+    int yArray = row -1;
     xArray += (board-1)*10;
 
 
@@ -125,6 +123,10 @@ Location * createLocWiRef(int board, char column, int row){
     locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
     locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
     locZ = (absArray[absYArray][absXArray].z_loc);
+
+//    locX = (absArray[absXArray][absYArray].x_loc)+(remainderX*.1);
+//    locY = (absArray[absXArray][absYArray].y_loc)+(remainderY*.1);
+//    locZ = (absArray[absXArray][absYArray].z_loc);
 
 
     return location_new(locX, locY,locZ);
