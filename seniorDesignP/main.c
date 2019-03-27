@@ -10,19 +10,19 @@ int main(int argc, char *argv[])
 {
     char *t = argv[1];
     //        char *t = "gsdfdfsfdsfdsfds";
-    //    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
+    char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
 
-    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+    //    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
 
     createFile(tempName);
 
 
-    char input[] = " A2, B2, A2;B3 _ _ ";
+    //    char input[] = " A2, B2, A2;B3 _ _ ";
 
-//    char * input = argv[1];
+    char * input = argv[1];
 
-//    printf(input);
-//    printf("\n");
+    //    printf(input);
+    //    printf("\n");
 
 
     int itest = strlen(input);
@@ -35,13 +35,13 @@ int main(int argc, char *argv[])
     if(testS == 1){
         printf("This is a valid string\n");
     }else{
-            printf("This is NOT a valid string!\n");
+        printf("This is NOT a valid string!\n");
 
-            FILE* file_ptr = fopen(tempName, "a+");
-            if(file_ptr == NULL){
-                printf("Error opening file!\n");
-                exit(1);
-            }
+        FILE* file_ptr = fopen(tempName, "a+");
+        if(file_ptr == NULL){
+            printf("Error opening file!\n");
+            exit(1);
+        }
             fputs ("This is NOT a valid string!\n", file_ptr);
 
             fclose(file_ptr);
