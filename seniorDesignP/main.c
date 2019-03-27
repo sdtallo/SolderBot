@@ -10,21 +10,23 @@ int main(int argc, char *argv[])
 {
     char tempName[] = "/home/pi/solderbot/gCodeLoc.txt";
 
-    //    char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
+//        char tempName[] = "C:\\Users\\andre\\desktop\\testFile.txt";
 
     createFile(tempName);
 
 
-    //    char input[] = " A2, B2, A2;B3 _ _ ";
+//        char input[] = " A2, B2, A2;B3 _ _ ";
+//        char *input = " A2, B2, A2;B3 _ _ ";
 
-    char * input = argv[1];
+    char *input = argv[1];
 
     //    printf(input);
     //    printf("\n");
 
 
-    int itest = strlen(input);
+    size_t itest = strlen(input);
     char *sTest = (char *)malloc((itest+1) * sizeof(char));
+
     strcpy(sTest, input);
     remove_all_chars(sTest, ' ');
 
@@ -49,7 +51,7 @@ int main(int argc, char *argv[])
     }
 
 
-    int iLen = strlen(input);
+    size_t iLen = strlen(input);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
 
@@ -65,9 +67,9 @@ int main(int argc, char *argv[])
     char *pToken = strtok(sInput, sSeparator);
 
     int boardNum = 1;
-    char * board1Str = NULL;;
-    char * board2Str = NULL;;;
-    char * board3Str = NULL;;;
+    char * board1Str = NULL;
+    char * board2Str = NULL;
+    char * board3Str = NULL;
     //https://stackoverflow.com/questions/30415663/c-using-strtok-to-parse-command-line-inputs
     while(1)
     {
@@ -131,11 +133,15 @@ int main(int argc, char *argv[])
 
 
     freeList(head);
-    return 0;
+
+
+//    Py_Initialize();
+//    FILE* file = fopen("/gpasser.py", "r");
+//    PyRun_SimpleFile(file, "/gpasser.py");
+//    Py_Finalize();
 
 
     return 0;
-
 
     /* used for testing purposes
 //    int i;

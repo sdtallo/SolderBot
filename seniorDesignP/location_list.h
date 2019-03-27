@@ -31,8 +31,6 @@ void moveAllLoc(Location_List *head,char *fileLoc);
 
 void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc);
 
-void solder(void);//stub function for yet to be written code, just waits 1 second
-
 void createFile(char *fileLoc);
 
 void deleteRepeats(Location_List * head);

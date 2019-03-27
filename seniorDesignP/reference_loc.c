@@ -48,8 +48,7 @@ Location_List * createLLWiR(int board, char column, int row){
 Location_List * addLocRef(Location_List* head, int board, char column, int row){
     Location * loc = createLocWiRef(board,  column, row);
     head = push(head,loc);
-
-
+    return head;
 }
 
 void insertAfterRef(Location_List* prev_node, int board, char column, int row){
@@ -155,7 +154,7 @@ void remove_all_chars(char* str, char c) {
 
 
 void pushGivenBoardStr(Location_List * head,int board, char * str1){
-    int iLen = strlen(str1);
+    size_t iLen = strlen(str1);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
     strcpy(sInput, str1);
@@ -176,7 +175,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
         if(ifSemiColon > 0){
             //if there is a semicolon
-            int iLen = strlen(pToken);
+            size_t iLen = strlen(pToken);
             char *semiColon = (char *)malloc((iLen+1) * sizeof(char));
 
             strcpy(semiColon, pToken);
@@ -227,7 +226,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
         }else{
             //if not get parts and split them
-            int numLen = strlen(pToken);
+            size_t numLen = strlen(pToken);
             char temp1[numLen];
             strcpy(temp1, pToken);
 
@@ -248,10 +247,7 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
         pToken = strtok(NULL, sSeparator);
     }
-
-
 }
-
 
 
 //https://stackoverflow.com/questions/4235519/counting-number-of-occurrences-of-a-char-in-a-string-in-c
@@ -421,7 +417,7 @@ int isLet(char c){
 
 
 int checkFormat(char * c){
-    int itest = strlen(c);
+    size_t itest = strlen(c);
     char sTest[itest];
     strcpy(sTest, c);
     char first = sTest[0];
@@ -435,7 +431,7 @@ int checkFormat(char * c){
     char current;
     char next;
     int t = 1;
-    for(int i =0; i<(itest-1);++i){
+    for(size_t i =0; i<(itest-1);++i){
         current = sTest[i];
         next = sTest[i+1];
         if(current == '_' && isLet(next) == 1){

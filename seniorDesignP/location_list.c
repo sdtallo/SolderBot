@@ -162,11 +162,6 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     }
 }
 
-void solder(void){
-    sleep(1);
-
-}
-
 
 void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
     char firstCommand[75];
