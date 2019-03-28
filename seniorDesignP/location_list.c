@@ -212,18 +212,26 @@ void deleteRepeats(Location_List * head){
         Location_List * comp = current->next;
         while(comp != NULL){
             int compare = 0;
-            compare = loc_comp(current->cur,comp->cur);
+            if(comp != NULL){
+                compare = loc_comp(current->cur,comp->cur);
+            }else{
+                compare = 0;
+            }
+
             if(compare == 1){
                 Location_List * temp = comp->next;
                 comp->prev->next = comp->next;
                 if(comp->next != NULL)
                     comp->next->prev = comp->prev;
                 comp = temp;
+//                printf("deleted repeats\n");
             }else{
                 comp = comp->next;
+
             }
 
         }
+        if(current->next != NULL)
         current = current->next;
     }
 }

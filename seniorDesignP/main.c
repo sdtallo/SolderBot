@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     createFile(tempName);
 
-//    char *input = " A2, B2, A2:B3 _ A2:f6 _ ";
+//    char *input = " A2, B2 _ c3, d5:j60 _ A1:j40 ";
 
         char *input = argv[1];
 
@@ -35,17 +35,17 @@ int main(int argc, char *argv[])
     }else{
         printf("This is NOT a valid string!\n");
 
-        FILE* file_ptr = fopen(tempName, "a+");
-        if(file_ptr == NULL){
-            printf("Error opening file!\n");
-            exit(1);
-        }
-        fputs ("This is NOT a valid string!\n", file_ptr);
+//        FILE* file_ptr = fopen(tempName, "a+");
+//        if(file_ptr == NULL){
+//            printf("Error opening file!\n");
+//            exit(1);
+//        }
+//        fputs ("This is NOT a valid string!\n", file_ptr);
 
-        fclose(file_ptr);
+//        fclose(file_ptr);
 
 
-        return 0;
+        return 1;
     }
 
 
