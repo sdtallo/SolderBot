@@ -123,8 +123,8 @@ void freeList(Location_List *head){
 void moveAllLoc(Location_List *head,char *fileLoc){
     Location_List *temp = head;
 
-    char firstLoc[75];
-    char tempgloc[75];
+    char firstLoc[40];
+    char tempgloc[40];
     strcpy(firstLoc, "G00 X");
     sprintf(tempgloc, "%.3f Y", temp->cur->x_loc);
     strcat(firstLoc, tempgloc);
