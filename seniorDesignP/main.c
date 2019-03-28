@@ -8,14 +8,14 @@
 
 int main(int argc, char *argv[])
 {
-    //    char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
-    char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
+        char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
+//    char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
 
     createFile(tempName);
 
-    char *input = " A2, B2, A2:B3 _ A2:f6 _ ";
+//    char *input = " A2, B2, A2:B3 _ A2:f6 _ ";
 
-    //    char *input = argv[1];
+        char *input = argv[1];
 
     //    printf(input);
     //    printf("\n");
