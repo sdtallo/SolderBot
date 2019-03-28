@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace GUI_Home
 {
@@ -16,6 +17,8 @@ namespace GUI_Home
         {
             InitializeComponent();
             // Call robot
+            Process runRobot = Process.Start("/usr/bin/env","/home/pi/solderbot/caller.py");
+
             // When robot responds back with "done", move to next screen
         }
 
