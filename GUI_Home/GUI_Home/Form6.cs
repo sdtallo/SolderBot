@@ -16,8 +16,8 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-            // Call robot
-            Process runRobot = Process.Start("/usr/bin/env","/home/pi/solderbot/caller.py");
+            // Call robot - run from /home/pi
+            Process runRobot = Process.Start("../../usr/bin/env","solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
         }

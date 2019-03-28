@@ -20,12 +20,11 @@ namespace GUI_Home
             label7.Text = middlePins;
             label8.Text = rightPins;
 
-            // Call Gcode program here
             // This variable builds the singular string to send to the Gcode-generating program (under seniorDesignP folder)
             // Delimiter between each board is " _ "
             string argStr = " \" " + leftPins + " _ " + middlePins + " _ " + rightPins + " \" ";
-            // Mono command run from pi, two folders above seniorDesignP.exe
-            Process getGcode = Process.Start("/home/pi/solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
+            // Mono command run from /home/pi
+            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
 
             // Check (every 500 milliseconds) for Gcode to be done generating before starting robot
             while (!getGcode.WaitForExit(500));
