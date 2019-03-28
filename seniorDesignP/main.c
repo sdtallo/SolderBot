@@ -92,8 +92,8 @@ int main(int argc, char *argv[])
 
         pToken = strtok(NULL, sSeparator);
     }
-    free(pToken);
-    free(sInput);
+//    free(pToken);
+//    free(sInput);
 
 
     Location_List* head = NULL;
