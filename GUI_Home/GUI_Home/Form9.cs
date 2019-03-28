@@ -25,7 +25,10 @@ namespace GUI_Home
             // This variable builds the singular string to send to the Gcode-generating program (under seniorDesignP folder)
             // Delimiter between each board is " _ "
             string argStr = " \" " + leftPins + " _ " + middlePins + " _ " + rightPins + " \" ";
-            System.Diagnostics.Process.Start("seniorDesignP.exe", argStr);
+
+            Process getGcode = Process.Start("seniorDesignP/seniorDesignP.exe", argStr);
+            getGcode.WaitForExit();
+            int result = getGcode.ExitCode;
         }
         
         // Pins match what was entered into textboxes
