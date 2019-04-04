@@ -2,6 +2,7 @@
 #define REFERENCE_LOC_H
 #include "location_list.h"
 #include "gcode_decoder.h"
+#include "arrayConst.h"
 
 typedef struct refLoc refLoc;
 
@@ -21,32 +22,46 @@ struct refLoc{
 
 //void changeRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);
 
-Location_List * createLLWiR(int board, char column, int row);
+//creates a LL with a given board location
+Location_List * createLLWiR(int board, char column, int row, arrayConst ** arrayPointer);
 
-Location_List * addLocRef(Location_List* head,int board, char column, int row);
+//Adds a location to the LL
+Location_List * addLocRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer);
 
-void insertAfterRef(Location_List* prev_node, int board, char column, int row);
+//Inserts after a specific node
+void insertAfterRef(Location_List* prev_node, int board, char column, int row, arrayConst ** arrayPointer);
 
-void appendRef(Location_List* head, int board, char column, int row);
+//addds to end of LL
+void appendRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer);
 
-Location * createLocWiRef(int board, char column, int row);//allows converting from user input to actual locations
+//allows converting from user input to actual locations
+Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPointer);
 
-void pushGivenBoardStr(Location_List * head,int board, char * str1);
+//Converts a given board string into locations and puts them in a LL
+void pushGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer);
 
+//removes all characters of certain type in a string
 void remove_all_chars(char* str, char c);
 
+//count number of characters of certain type in a string
 int countChars( char* s, char c );
 
+//converts characters A-J to numbers since given string contains them
 int converChartoNum(char c);
 
+//converts the num back to what the character was
 char convertNumtoChar(int n);
 
-void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow);
+//adds all the locations to the LL given a col and row range
+void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow, arrayConst ** arrayPointer);
 
+//checks to see if the char is a num ie 0-9
 int isNum(char c);
 
+//check to see if letter char but only from a-j
 int isLet(char c);
 
+//check the format of the first given argument string to see if it complies with what we want
 int checkFormat(char * c);
 
 

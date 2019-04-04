@@ -16,5 +16,4 @@ HEADERS += \
     reference_loc.h \
     arrayConst.h
 
-DISTFILES += \
-    gpasser.py
+DISTFILES +=

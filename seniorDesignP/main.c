@@ -8,18 +8,37 @@
 
 int main(int argc, char *argv[])
 {
-        char *tempName = "/home/pi/solderbot/gCodeLoc.txt";
-//    char *tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
+
+    char *tempName;
+    char *input;
+    char *calRead;
+    if(argc > 1){//for integrated program since will be given arguments
+        tempName = "/home/pi/solderbot/gCodeLoc.txt";
+        input = argv[1];
+        calRead = "/home/pi/solderbot/cal.txt";
+
+    }else{//if testing on personal computer
+        tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
+        input = "  _ c3,b8 _ A1:B10 ";
+        calRead = "C:\\Users\\andre\\desktop\\cal.txt";
+    }
 
     createFile(tempName);
 
-//    char *input = " A2, B2 _ c3, d5:j60 _ A1:j40 ";
+    arrayConst ** arrayPointer;
 
-        char *input = argv[1];
+    arrayPointer = (arrayConst **) malloc(10*sizeof(arrayConst *));
 
-    //    printf(input);
-    //    printf("\n");
+    for(int i=0;i<10;i++)
+        arrayPointer[i] = (arrayConst *) malloc(6*sizeof(arrayConst));
 
+    int arrayReport = createArray(arrayPointer, calRead);
+
+    if(arrayReport == 0){
+
+    }else{
+        return 2;//return 2 if something is wrong in file
+    }
 
     size_t itest = strlen(input);
     char *sTest = (char *)malloc((itest+1) * sizeof(char));
@@ -33,26 +52,12 @@ int main(int argc, char *argv[])
     if(testS == 1){
         printf("This is a valid string\n");
     }else{
-        printf("This is NOT a valid string!\n");
-
-//        FILE* file_ptr = fopen(tempName, "a+");
-//        if(file_ptr == NULL){
-//            printf("Error opening file!\n");
-//            exit(1);
-//        }
-//        fputs ("This is NOT a valid string!\n", file_ptr);
-
-//        fclose(file_ptr);
-
-
+        //returns 1 if character pointer not in corret format
         return 1;
     }
 
-
     size_t iLen = strlen(input);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
-
-
 
     strcpy(sInput, input);
 
@@ -92,8 +97,6 @@ int main(int argc, char *argv[])
 
         pToken = strtok(NULL, sSeparator);
     }
-//    free(pToken);
-//    free(sInput);
 
 
     Location_List* head = NULL;
@@ -109,15 +112,14 @@ int main(int argc, char *argv[])
     printf("Board 3 = .%s.\n", board3Str);
 
     if(board1Str[0] != '\0'){
-        pushGivenBoardStr(head, 1,board1Str);
+        pushGivenBoardStr(head, 1,board1Str, arrayPointer);
     }
     if(board2Str[0] != '\0'){
-        pushGivenBoardStr(head, 2,board2Str);
+        pushGivenBoardStr(head, 2,board2Str, arrayPointer);
     }
     if(board3Str[0] != '\0'){
-        pushGivenBoardStr(head, 3,board3Str);
+        pushGivenBoardStr(head, 3,board3Str, arrayPointer);
     }
-
 
 
     printf("Created DLL is: ");
@@ -128,10 +130,31 @@ int main(int argc, char *argv[])
         printList(head->next);
         moveAllLoc(head->next,tempName);
     }
-
+    //freeing pointers
 
     freeList(head);
 
+    if(arrayPointer){
+        for(int i=0;i<10;i++)
+            free(arrayPointer[i]);
+        free(arrayPointer);
+    }
+    if(board1Str){
+        free(board1Str);
+    }
+    if(board2Str){
+        free(board2Str);
+    }
+    if(board3Str){
+        free(board3Str);
+    }
 
+    //returns 0 if completed successfully
     return 0;
+
+
 }
+
+//return 0 = completed successfully
+//return 1 = something is wrong in given string argument, likely format
+//return 2 = something wrong in cal.txt likely not valid format

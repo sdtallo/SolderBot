@@ -86,11 +86,11 @@ void append(Location_List *head, Location *new_data)
 }
 
 void printList(Location_List* node){
-    Location_List* last = NULL;
+//    Location_List* last = NULL;
     printf("\nTraversal in forward direction \n");
     while(node != NULL){
         print_loc(node->cur);
-        last = node;
+//        last = node;
         node = node->next;
     }
     //    printf("#######################################################");
@@ -110,9 +110,11 @@ void freeList(Location_List *head){
         //        if(tempPointer2->prev != NULL)
         //        free(tempPointer2->prev);
         free(tempPointer2->cur);
+        tempPointer2->cur = NULL;
         //        if(tempPointer2->next != NULL)
         free(tempPointer2);
-        tempPointer2 = tempPointer1;
+        tempPointer2 = NULL;
+        tempPointer2 = tempPointer1;      
     }
     tempPointer1 = NULL;
     tempPointer2 = NULL;

@@ -21,9 +21,6 @@ void insertAfter(Location_List* prev_node,Location *new_data);
 
 void append(Location_List* head, Location *new_data);
 
-//Need to create destructor for the DLL
-//del specific node and also destroy entire DLL
-
 void printList(Location_List* loc);
 
 void freeList(Location_List *head);
@@ -34,6 +31,6 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc);
 
 void createFile(char *fileLoc);
 
-void deleteRepeats(Location_List * head);
+void deleteRepeats(Location_List * head);//destructor
 
 

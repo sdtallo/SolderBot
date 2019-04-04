@@ -33,10 +33,10 @@
 
 //}
 
-Location_List * createLLWiR(int board, char column, int row){
+Location_List * createLLWiR(int board, char column, int row, arrayConst ** arrayPointer){
     Location_List *locL = NULL;
     locL = (Location_List*)malloc(sizeof(Location_List));
-    Location * loc = createLocWiRef(board,  column, row);
+    Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     locL->cur = loc;
     locL->next = NULL;
     locL->prev = NULL;
@@ -45,21 +45,21 @@ Location_List * createLLWiR(int board, char column, int row){
 
 }
 
-Location_List * addLocRef(Location_List* head, int board, char column, int row){
-    Location * loc = createLocWiRef(board,  column, row);
+Location_List * addLocRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer){
+    Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     head = push(head,loc);
     return head;
 }
 
-void insertAfterRef(Location_List* prev_node, int board, char column, int row){
-    Location * loc = createLocWiRef(board,  column, row);
+void insertAfterRef(Location_List* prev_node, int board, char column, int row, arrayConst ** arrayPointer){
+    Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     insertAfter(prev_node,loc);
 
 
 }
 
-void appendRef(Location_List* head, int board, char column, int row){
-    Location * loc = createLocWiRef(board,  column, row);
+void appendRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer){
+    Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     append(head,loc);
 
 
@@ -67,7 +67,7 @@ void appendRef(Location_List* head, int board, char column, int row){
 
 
 
-Location * createLocWiRef(int board, char column, int row){
+Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPointer){
 
     double locX;
     double locY;
@@ -128,9 +128,13 @@ Location * createLocWiRef(int board, char column, int row){
     int remainderX = xArray%5;
     int remainderY = yArray%5;
 
-    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
-    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
-    locZ = (absArray[absYArray][absXArray].z_loc);
+//    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
+//    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
+//    locZ = (absArray[absYArray][absXArray].z_loc);
+
+    locX = (arrayPointer[absYArray][absXArray].x_loc)+(remainderX*.1);
+    locY = (arrayPointer[absYArray][absXArray].y_loc)+(remainderY*.1);
+    locZ = (arrayPointer[absYArray][absXArray].z_loc);
 
     //    locX = (absArray[absXArray][absYArray].x_loc)+(remainderX*.1);
     //    locY = (absArray[absXArray][absYArray].y_loc)+(remainderY*.1);
@@ -153,7 +157,7 @@ void remove_all_chars(char* str, char c) {
 }
 
 
-void pushGivenBoardStr(Location_List * head,int board, char * str1){
+void pushGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer){
     size_t iLen = strlen(str1);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
@@ -186,31 +190,31 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             char *t = strtok(semiColon, s);
 
             iLen = strlen(t);
-            char beforesemiColon[iLen];
-            strcpy(beforesemiColon, t);
+            char * beforeColon = (char *)malloc((iLen+1) * sizeof(char));
+            strcpy(beforeColon, t);
             //            printf("before semiColon = %s\n",beforesemiColon);
 
             t = strtok(NULL, s);
 
             iLen = strlen(t);
-            char aftersemiColon[iLen];
-            strcpy(aftersemiColon, t);
+            char * afterColon = (char *)malloc((iLen+1) * sizeof(char));
+            strcpy(afterColon, t);
 
             //            printf("after semiColon = %s\n",aftersemiColon);
 
 
             char letter1[1];
-            memcpy( letter1, &beforesemiColon[0], 1 );
+            memcpy( letter1, &beforeColon[0], 1 );
 
-            char * num1 = &beforesemiColon[1];
+            char * num1 = &beforeColon[1];
 
             int row1 = atoi(num1);
 
 
             char letter2[1];
-            memcpy( letter2, &aftersemiColon[0], 1 );
+            memcpy( letter2, &afterColon[0], 1 );
 
-            char * num2 = &aftersemiColon[1];
+            char * num2 = &afterColon[1];
 
             int row2 = atoi(num2);
             int lNum1 = converChartoNum(letter1[0]);
@@ -222,13 +226,20 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
             //            printf("first row is %i.\n",row1);
             //            printf("last row is %i.\n",row2);
 
-            appendGivenRange(head, board, lNum1,lNum2,row1,row2);
+            appendGivenRange(head, board, lNum1,lNum2,row1,row2, arrayPointer);
+
+            if(beforeColon){
+                free(beforeColon);
+            }
+            if(afterColon){
+                free(afterColon);
+            }
 
 
         }else{
             //if not get parts and split them
             size_t numLen = strlen(pToken);
-            char temp1[numLen];
+            char * temp1 = (char *)malloc((numLen+1) * sizeof(char));
             strcpy(temp1, pToken);
 
             char letter[1];
@@ -242,11 +253,15 @@ void pushGivenBoardStr(Location_List * head,int board, char * str1){
 
             int row = atoi(temp3);
             //            printf("this is row int %i\n",row);
-            appendRef(head,board, letter[0], row);
+            appendRef(head,board, letter[0], row, arrayPointer);
 
+            if(temp1){
+                free(temp1);
+            }
         }
         pToken = strtok(NULL, sSeparator);
     }
+
 
 }
 
@@ -326,13 +341,13 @@ char convertNumtoChar(int n){
 
 
 
-void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow){
+void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow, arrayConst ** arrayPointer){
 
     for(int j = firstRow;j<=lastRow;++j){
         for(int i = firstColumn; i <= lastColumn;++i){
 
             char col = convertNumtoChar(i);
-            appendRef(head,board,col,j);
+            appendRef(head,board,col,j, arrayPointer);
         }
     }
 
@@ -419,7 +434,7 @@ int isLet(char c){
 
 int checkFormat(char * c){
     size_t itest = strlen(c);
-    char sTest[itest];
+    char * sTest = (char *)malloc((itest+1) * sizeof(char));
     strcpy(sTest, c);
     char first = sTest[0];
     char last = sTest[itest-1];
@@ -456,6 +471,9 @@ int checkFormat(char * c){
         }else{
             t = 0;
         }
+    }
+    if(sTest){
+        free(sTest);
     }
 
 
