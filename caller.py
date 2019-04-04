@@ -41,15 +41,13 @@ print("Move Z axis up: " + grbl_out.strip())
 time.sleep(1)
 
 # Declare variable for checking command type
-move = 0
+solder = 0
 
 # Read inputs from the file
 with open("gCodeLoc.txt", "r") as f:
     line = f.readline()
     if "Z" in line:
         solder = 1
-    else:
-        solder = 0
     while line:
         ser.write(line)
         grbl_out = ser.readline()
