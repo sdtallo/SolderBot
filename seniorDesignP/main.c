@@ -1,10 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "gcode_decoder.h"
+//#include "arrayConst.h"
+//#include "gcode_decoder.h"
 #include "location_list.h"
 #include "reference_loc.h"
-#include "arrayConst.h"
+#include <stdio.h>
+//#include <stdlib.h>
+#include <string.h>
+
 
 int main(int argc, char *argv[])
 {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "location_list.h"
-#include "gcode_decoder.h"
+//#include "gcode_decoder.h"
 
 Location_List * createLL(Location *new_data){
     Location_List *locL = NULL;

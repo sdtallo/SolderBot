@@ -11,9 +11,9 @@ SOURCES += \
     arrayConst.c
 
 HEADERS += \
-    gcode_decoder.h \
     location_list.h \
     reference_loc.h \
-    arrayConst.h
+    arrayConst.h \
+    gcode_decoder.h
 
 DISTFILES +=

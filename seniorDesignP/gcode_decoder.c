@@ -3,6 +3,7 @@
 #include <string.h>
 #include "gcode_decoder.h"
 
+
 int loc_comp(Location *loc1, Location *loc2){
     if ((Equality(loc1->x_loc,loc2->x_loc,.001) == 0) && (Equality(loc1->y_loc,loc2->y_loc,.001) == 0) && (Equality(loc1->z_loc,loc2->z_loc,.001) == 0)){
         return 1;

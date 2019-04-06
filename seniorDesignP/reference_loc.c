@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "reference_loc.h"
-#include "location_list.h"
-#include "arrayConst.h"
+//#include "location_list.h"
+//#include "arrayConst.h"
 #include <string.h>
 #include <stdio.h>
 

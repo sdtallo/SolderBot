@@ -1,7 +1,7 @@
 #ifndef REFERENCE_LOC_H
 #define REFERENCE_LOC_H
 #include "location_list.h"
-#include "gcode_decoder.h"
+//#include "gcode_decoder.h"
 #include "arrayConst.h"
 
 typedef struct refLoc refLoc;
@@ -16,8 +16,6 @@ struct refLoc{
     double rightY;
 };
 
-
-#endif
 //refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);//used to keep track where the board is in reference to solder
 
 //void changeRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);
@@ -64,5 +62,7 @@ int isLet(char c);
 //check the format of the first given argument string to see if it complies with what we want
 int checkFormat(char * c);
 
+
+#endif
 
 

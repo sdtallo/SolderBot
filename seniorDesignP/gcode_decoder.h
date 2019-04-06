@@ -1,5 +1,6 @@
 #ifndef GCODE_DECODER_H
 #define GCODE_DECODER_H
+#include <stdlib.h>
 
 typedef struct Location Location;
 
@@ -9,7 +10,6 @@ struct Location{
     double z_loc;
 };
 
-#endif
 Location *location_new(double x, double y, double z);
 
 void location_free(Location *loc);
@@ -26,4 +26,5 @@ int loc_comp(Location *loc1, Location *loc2);
 
 int Equality(double a, double b, double epsilon);
 
+#endif
 
