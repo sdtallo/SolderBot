@@ -22,6 +22,7 @@ namespace GUI_Home
 
             // When robot responds back with "done", move to next screen
             // make new event handler
+            runRobot.EnableRaisingEvents = true;
             runRobot.Exited += new EventHandler(soldering_Complete);
         }
 
