@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 
@@ -20,6 +21,8 @@ namespace GUI_Home
             Process runRobot = Process.Start("../../usr/bin/env","solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
+            // make new event handler
+            runRobot.Exited += new EventHandler(soldering_Complete);
         }
 
         // Emergency stop
@@ -34,5 +37,11 @@ namespace GUI_Home
         }
 
         // Need event - move to finish screen when robot finishes soldering
+        private void soldering_Complete(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form7 f7 = new Form7();
+            f7.ShowDialog();
+        }
     }
 }

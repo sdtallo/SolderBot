@@ -4,7 +4,6 @@ C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\bin\Debug\GUI_Home.pdb
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.csprojAssemblyReference.cache
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form2.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form3.resources
-C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form4.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form5.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form6.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form7.resources
