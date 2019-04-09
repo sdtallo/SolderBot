@@ -1,14 +1,14 @@
 Board 1
-x=6.26
-y=4.69
-z=0.63
+x=6.31
+y=4.94
+z=0.74
 Board 2
-x=7.63
-y=4.69
-z=0.62
+x=7.69
+y=4.95
+z=0.74
 Board 3
-x=9.02
-y=4.69
-z=0.61
+x=9.07
+y=4.95
+z=0.73
 
 WARNING DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING!!!!!!
