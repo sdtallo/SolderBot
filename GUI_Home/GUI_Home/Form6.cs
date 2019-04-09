@@ -40,7 +40,7 @@ namespace GUI_Home
         // Need event - move to finish screen when robot finishes soldering
         private void soldering_Complete(object sender, EventArgs e)
         {
-            this.Hide();
+//            this.Hide();
             Form7 f7 = new Form7();
             f7.ShowDialog();
         }
