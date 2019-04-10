@@ -18,19 +18,13 @@ namespace GUI_Home
         }
 
         // Next Step button
+        // https://stackoverflow.com/questions/26444194/methods-this-hide-vs-this-close
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form2 f2 = new Form2();
             f2.ShowDialog();
-        }
-
-        // Recalibrate
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form10 f10 = new Form10();
-            f10.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -35,14 +35,18 @@ namespace GUI_Home
             this.Hide();
             Form8 f8 = new Form8();
             f8.ShowDialog();
+            this.Close();
         }
 
         // Need event - move to finish screen when robot finishes soldering
+        // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
+        // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
         private void soldering_Complete(object sender, EventArgs e)
         {
-//            this.Hide();
+            this.Hide();
             Form7 f7 = new Form7();
             f7.ShowDialog();
+            this.Close();
         }
     }
 }

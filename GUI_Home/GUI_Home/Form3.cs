@@ -23,14 +23,7 @@ namespace GUI_Home
             this.Hide();
             Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
             f9.ShowDialog();
-        }
-
-        // Recalibrate
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form10 f10 = new Form10();
-            f10.ShowDialog();
+            this.Close();
         }
     }
 }

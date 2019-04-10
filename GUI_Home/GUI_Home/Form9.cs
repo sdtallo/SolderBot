@@ -36,6 +36,7 @@ namespace GUI_Home
             this.Hide();
             Form5 f5 = new Form5();
             f5.ShowDialog();
+            this.Close();
 
             // Call Gcode program here...but how???
         }
@@ -46,14 +47,7 @@ namespace GUI_Home
             this.Hide();
             Form3 f3 = new Form3();
             f3.ShowDialog();
-        }
-
-        // Recalibrate button
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form10 f10 = new Form10();
-            f10.ShowDialog();
+            this.Close();
         }
     }
 }

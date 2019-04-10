@@ -25,6 +25,7 @@ namespace GUI_Home
             this.Hide();
             Form6 f6 = new Form6();
             f6.ShowDialog();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -32,6 +33,16 @@ namespace GUI_Home
             this.Hide();
             Form1 f1 = new Form1();
             f1.ShowDialog();
+            this.Close();
+        }
+
+        // Recalibrate button
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form10 f10 = new Form10();
+            f10.ShowDialog();
+            this.Close();
         }
     }
 }

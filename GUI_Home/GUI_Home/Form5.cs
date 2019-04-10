@@ -35,6 +35,7 @@ namespace GUI_Home
 //            f9.ShowDialog();
             Form3 f3= new Form3();
             f3.ShowDialog();
+            this.Close();
         }
 
         // Recalibrate
@@ -43,6 +44,7 @@ namespace GUI_Home
             this.Hide();
             Form10 f10 = new Form10();
             f10.ShowDialog();
+            this.Close();
         }
     }
 }
