@@ -86,11 +86,11 @@ void append(Location_List *head, Location *new_data)
 }
 
 void printList(Location_List* node){
-//    Location_List* last = NULL;
+    //    Location_List* last = NULL;
     printf("\nTraversal in forward direction \n");
     while(node != NULL){
         print_loc(node->cur);
-//        last = node;
+        //        last = node;
         node = node->next;
     }
     //    printf("#######################################################");
@@ -114,7 +114,7 @@ void freeList(Location_List *head){
         //        if(tempPointer2->next != NULL)
         free(tempPointer2);
         tempPointer2 = NULL;
-        tempPointer2 = tempPointer1;      
+        tempPointer2 = tempPointer1;
     }
     tempPointer1 = NULL;
     tempPointer2 = NULL;
@@ -226,7 +226,7 @@ void deleteRepeats(Location_List * head){
                 if(comp->next != NULL)
                     comp->next->prev = comp->prev;
                 comp = temp;
-//                printf("deleted repeats\n");
+                //                printf("deleted repeats\n");
             }else{
                 comp = comp->next;
 
@@ -234,8 +234,55 @@ void deleteRepeats(Location_List * head){
 
         }
         if(current->next != NULL)
-        current = current->next;
+            current = current->next;
     }
 }
 
+
+void sortDLL(Location_List ** head){
+    double largestValue = 0;
+    Location_List * largeValuePointer = *head;
+    Location_List * currentPointer;
+    Location_List * sortValuePointer = NULL;
+
+    currentPointer = largeValuePointer;
+
+    while(largeValuePointer->next != NULL){
+        largestValue = 0;
+        sortValuePointer = NULL;
+        currentPointer = largeValuePointer;
+        while(currentPointer->next != NULL){
+            currentPointer = currentPointer->next;
+            if(currentPointer->cur->y_loc >= largestValue){
+                largestValue = currentPointer->cur->y_loc;
+                sortValuePointer = currentPointer;
+            }
+        }
+        if(sortValuePointer != NULL){
+            currentPointer = sortValuePointer;
+            if(currentPointer != largeValuePointer){
+                currentPointer->prev->next = currentPointer->next;
+                if(currentPointer->next != NULL)
+                    currentPointer->next->prev = currentPointer->prev;
+                currentPointer->prev = largeValuePointer;
+
+                if(largeValuePointer->next != NULL){
+                    largeValuePointer->next->prev = currentPointer;
+
+                }
+                currentPointer->next = largeValuePointer->next;
+                largeValuePointer->next = currentPointer;
+                largeValuePointer = currentPointer;
+            }
+        }else{
+            if(largeValuePointer->next != NULL)
+                largeValuePointer = largeValuePointer->next;
+        }
+
+        if(largeValuePointer->next == NULL)
+            break;
+
+    }
+
+}
 

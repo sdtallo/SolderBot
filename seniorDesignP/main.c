@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = "  _ c3,b8 _ A1:B10 ";
+        input = " a1, a2, a3 _ b5, b7, e8, e7, a4, a2  _  ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
 
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
 
     Location_List* head = NULL;
-    Location * loc0 = location_new(0,0,0);
+    Location * loc0 = location_new(0,999,0);
     head = createLL(loc0);
     //Make sure Sam send " _ " otherwise this method is useless
     remove_all_chars(board1Str, ' ');
@@ -113,20 +113,21 @@ int main(int argc, char *argv[])
     printf("Board 3 = .%s.\n", board3Str);
 
     if(board1Str[0] != '\0'){
-        pushGivenBoardStr(head, 1,board1Str, arrayPointer);
+        appendGivenBoardStr(head, 1,board1Str, arrayPointer);
     }
     if(board2Str[0] != '\0'){
-        pushGivenBoardStr(head, 2,board2Str, arrayPointer);
+        appendGivenBoardStr(head, 2,board2Str, arrayPointer);
     }
     if(board3Str[0] != '\0'){
-        pushGivenBoardStr(head, 3,board3Str, arrayPointer);
+        appendGivenBoardStr(head, 3,board3Str, arrayPointer);
     }
 
 
     printf("Created DLL is: ");
 
     deleteRepeats(head);
-
+    Location_List ** headPointer = &head;
+    sortDLL(headPointer);
     if(head->next != NULL){
         printList(head->next);
         moveAllLoc(head->next,tempName);

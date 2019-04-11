@@ -36,7 +36,7 @@ void appendRef(Location_List* head, int board, char column, int row, arrayConst 
 Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPointer);
 
 //Converts a given board string into locations and puts them in a LL
-void pushGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer);
+void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer);
 
 //removes all characters of certain type in a string
 void remove_all_chars(char* str, char c);

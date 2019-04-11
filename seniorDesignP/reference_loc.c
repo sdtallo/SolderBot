@@ -157,7 +157,7 @@ void remove_all_chars(char* str, char c) {
 }
 
 
-void pushGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer){
+void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer){
     size_t iLen = strlen(str1);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
