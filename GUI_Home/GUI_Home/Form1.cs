@@ -23,6 +23,7 @@ namespace GUI_Home
         {
             this.Hide();
             Form2 f2 = new Form2();
+//            f2.Size = new System.Drawing.Size(800, 600);
             f2.ShowDialog();
             this.Close();
         }
