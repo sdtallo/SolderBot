@@ -113,7 +113,6 @@ void freeList(Location_List *head){
         tempPointer2->cur = NULL;
         //        if(tempPointer2->next != NULL)
         free(tempPointer2);
-        tempPointer2 = NULL;
         tempPointer2 = tempPointer1;
     }
     tempPointer1 = NULL;
@@ -225,7 +224,9 @@ void deleteRepeats(Location_List * head){
                 comp->prev->next = comp->next;
                 if(comp->next != NULL)
                     comp->next->prev = comp->prev;
-                free(comp);//free repeats
+                //free repeats
+                free(comp->cur);
+                free(comp);
                 comp = temp;
                 //                printf("deleted repeats\n");
             }else{
