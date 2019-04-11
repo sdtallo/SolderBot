@@ -225,6 +225,7 @@ void deleteRepeats(Location_List * head){
                 comp->prev->next = comp->next;
                 if(comp->next != NULL)
                     comp->next->prev = comp->prev;
+                free(comp);//free repeats
                 comp = temp;
                 //                printf("deleted repeats\n");
             }else{
