@@ -27,26 +27,15 @@ namespace GUI_Home
             Lpins = leftPins;
             Mpins = middlePins;
             Rpins = rightPins;
-
-            // This variable builds the singular string to send to the Gcode-generating program (under seniorDesignP folder)
-            // Delimiter between each board is " _ "
-            string argStr = " \" " + leftPins + " _ " + middlePins + " _ " + rightPins + " \" ";
-            // Mono command run from /home/pi
-            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
-
-            // Check (every 500 milliseconds) for Gcode to be done generating before starting robot
-            while (!getGcode.WaitForExit(500)) ;
         }
         
         // Pins match what was entered into textboxes
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form5 f5 = new Form5();
+            Form5 f5 = new Form5(Lpins, Mpins, Rpins);
             f5.ShowDialog();
             this.Close();
-
-            // Call Gcode program here...but how???
         }
 
         // Pins don't match what was entered into textboxes
