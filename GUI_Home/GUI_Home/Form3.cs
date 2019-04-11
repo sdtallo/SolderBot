@@ -12,9 +12,12 @@ namespace GUI_Home
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        public Form3(string leftPins, string middlePins, string rightPins)
         {
             InitializeComponent();
+            textBox1.Text = leftPins;
+            textBox2.Text = middlePins;
+            textBox3.Text = rightPins;
         }
 
         // Verify pin locations - next step

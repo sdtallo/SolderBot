@@ -21,7 +21,7 @@ namespace GUI_Home
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form3 f3 = new Form3();
+            Form3 f3 = new Form3(null, null, null);
             f3.ShowDialog();
             this.Close();
         }

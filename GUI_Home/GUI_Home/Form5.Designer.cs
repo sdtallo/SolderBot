@@ -32,8 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +47,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(704, 472);
+            this.button1.Location = new System.Drawing.Point(682, 371);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(300, 140);
             this.button1.TabIndex = 6;
@@ -60,7 +58,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(162, 472);
+            this.button2.Location = new System.Drawing.Point(179, 371);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(300, 140);
             this.button2.TabIndex = 7;
@@ -71,40 +69,17 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(62, 372);
+            this.label2.Location = new System.Drawing.Point(170, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(865, 78);
             this.label2.TabIndex = 8;
             this.label2.Text = "Are you ready for the machine to begin soldering?";
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(116, 258);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(766, 60);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Recalibrate";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(109, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(818, 89);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Click the recalibrate button to manually recalibrate the machine before beginning" +
-    " soldering.";
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1240, 702);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -124,7 +99,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label3;
     }
 }

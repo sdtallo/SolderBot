@@ -46,9 +46,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 177);
+            this.label2.Location = new System.Drawing.Point(53, 158);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1171, 129);
+            this.label2.Size = new System.Drawing.Size(1061, 129);
             this.label2.TabIndex = 5;
             this.label2.Text = "It is now safe to remove your chip(s) from the breadboard. Please DO NOT touch th" +
     "e soldering iron, as it is still hot.";
@@ -56,7 +56,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(420, 418);
+            this.button1.Location = new System.Drawing.Point(387, 416);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(429, 140);
             this.button1.TabIndex = 6;

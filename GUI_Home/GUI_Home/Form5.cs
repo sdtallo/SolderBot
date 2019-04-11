@@ -33,7 +33,7 @@ namespace GUI_Home
             
 //            Form9 f9 = new Form9(Lpins, Mpins, Rpins);
 //            f9.ShowDialog();
-            Form3 f3= new Form3();
+            Form3 f3= new Form3(null, null, null);
             f3.ShowDialog();
             this.Close();
         }
