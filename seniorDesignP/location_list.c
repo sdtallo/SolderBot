@@ -246,8 +246,13 @@ void sortDLL(Location_List ** head){
     Location_List * largeValuePointer = *head;
     Location_List * currentPointer;
     Location_List * sortValuePointer = NULL;
-
     currentPointer = largeValuePointer;
+
+    if(largeValuePointer->next == NULL){
+        return;
+    }else if(largeValuePointer->next->next == NULL){
+        return;
+    }
 
     while(largeValuePointer->next != NULL){
         largestValue = 0;

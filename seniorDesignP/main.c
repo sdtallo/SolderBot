@@ -20,13 +20,19 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " a1, a2, a3 _ j40, b7, e8, e7, a4, a2  _  ";
+        input = " _  a1, i3:j46 _  ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
+    //error messages
+    char * error1 = "Format is invalid\n";
+    char * error2 = "Invalid Range\n";
+    char * error3 = "not valid format for calibration\n";
+    char * error4 =  "String is empty\n";
+
+
+
 
     createFile(tempName);
-
-
 
     size_t itest = strlen(input);
     char *sTest = (char *)malloc((itest+1) * sizeof(char));
@@ -38,11 +44,13 @@ int main(int argc, char *argv[])
     free(sTest);
 
     if(testS == 1){
-        printf("This is a valid string\n");
+
     }else if(testS == 2){
+        printf("%s", error2);
         return 2;
     }else{
         //returns 1 if character pointer not in corret format
+        printf("%s", error1);
         return 1;
     }
 
@@ -63,6 +71,7 @@ int main(int argc, char *argv[])
                 free(arrayPointer[i]);
             free(arrayPointer);
         }
+        printf("%s", error3);
         return 3;//return 3 if something is wrong in file
     }
 
@@ -71,7 +80,7 @@ int main(int argc, char *argv[])
 
     strcpy(sInput, input);
 
-    printf("String => %s\n", sInput);
+
 
     char *sSeparator = "_";
     char *pToken = strtok(sInput, sSeparator);
@@ -117,9 +126,7 @@ int main(int argc, char *argv[])
     remove_all_chars(board2Str, ' ');
     remove_all_chars(board3Str, ' ');
 
-    printf("Board 1 = .%s.\n", board1Str);
-    printf("Board 2 = .%s.\n", board2Str);
-    printf("Board 3 = .%s.\n", board3Str);
+
 
     if(board1Str[0] != '\0'){
         appendGivenBoardStr(head, 1,board1Str, arrayPointer);
@@ -131,8 +138,12 @@ int main(int argc, char *argv[])
         appendGivenBoardStr(head, 3,board3Str, arrayPointer);
     }
 
+    if(head->next == NULL){
+        printf("%s", error4);
+        return 4;
+    }
 
-    printf("Created DLL is: ");
+
 
     deleteRepeats(head);
 
@@ -154,16 +165,28 @@ int main(int argc, char *argv[])
 
     int ret = 0;
     double checkY = arrayPointer[9][5].y_loc;
+    double checkX = arrayPointer[9][5].x_loc;
     if(checkMaxY > checkY){
         ret = 2;
-    }
-    double checkX = arrayPointer[9][5].x_loc;
-    if(checkMaxX > checkX){
+        printf("%s", error2);
+    }else if(checkMaxX > checkX){
         ret = 2;
+        printf("%s", error2);
     }
+
+
 
 
     if(ret == 0){
+        printf("This is a valid string\n");
+        printf("String => %s\n", sInput);
+
+        printf("Board 1 = .%s.\n", board1Str);
+        printf("Board 2 = .%s.\n", board2Str);
+        printf("Board 3 = .%s.\n", board3Str);
+
+
+        printf("Created DLL is: ");
 
 
         Location_List ** headPointer = &head;
@@ -199,7 +222,8 @@ int main(int argc, char *argv[])
 }
 
 //return 0 = completed successfully
-//return 1 = something is wrong in given string argument, likely format
-//return 2 = entered values are out of range
+//return 1 = something is wrong in given string argument, likely format, printf("Format is invalid\n");
+//return 2 = entered values are out of range, printf("Invalid Range\n");
 //return 3 = something wrong in cal.txt likely not valid format
+//return 4 = "String is empty\n"
 
