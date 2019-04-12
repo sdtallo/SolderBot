@@ -43,12 +43,13 @@ namespace GUI_Home
             // https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output/4291965
             // Read error message that gcode generator function outputs (using printf() function)
             string errorMsg = getGcode.StandardOutput.ReadLine();
+            Console.WriteLine("errorMsg: |" + errorMsg + "|");
 
             // First line printed to console from Gcode generator is error message
             while (!getGcode.StandardOutput.EndOfStream)
             {
                 string mymsg = getGcode.StandardOutput.ReadLine();
-                Console.WriteLine("Mymsg: |"+mymsg+"|");
+                Console.WriteLine("Mymsg: |" + mymsg + "|");
             }
 
             // If pins are valid, go to next page
