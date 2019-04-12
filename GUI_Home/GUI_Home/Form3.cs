@@ -32,6 +32,7 @@ namespace GUI_Home
             Process getGcode = new Process();
             getGcode.StartInfo.FileName = "solderbot-test/seniorDesignP/seniorDesignP.exe";
             getGcode.StartInfo.Arguments = argStr;
+            getGcode.StartInfo.UseShellExecute = false;
             getGcode.StartInfo.RedirectStandardOutput = true;
             getGcode.Start();
 
