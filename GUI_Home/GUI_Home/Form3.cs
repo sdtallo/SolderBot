@@ -29,12 +29,23 @@ namespace GUI_Home
             // Delimiter between each board is " _ "
             string argStr = " \" " + textBox1.Text + " _ " + textBox2.Text + " _ " + textBox3.Text + " \" ";
             // Mono command run from /home/pi
-            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
+            Process getGcode = new Process();
+            getGcode.StartInfo.FileName = "solderbot-test/seniorDesignP/seniorDesignP.exe";
+            getGcode.StartInfo.Arguments = argStr;
+            getGcode.StartInfo.RedirectStandardOutput = true;
+            getGcode.Start();
+
+
+
+//            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
 
             // From https://stackoverflow.com/questions/1585354/get-return-value-from-process
             // Wait for exit code - tell if there's an error in strings or not
+            string output = getGcode.StandardOutput.ReadToEnd();
             getGcode.WaitForExit();
             int result = getGcode.ExitCode;
+
+            // Must have the readToEnd BEFORE the WaitForExit(), to avoid a deadlock condition
 
             // If pins are valid, go to next page
             if (result == 0)
@@ -47,12 +58,14 @@ namespace GUI_Home
             else
             {
                 // Redirect to error page
-                this.Hide();
-//                Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
-//                f9.ShowDialog();
-                Form1 f1 = new Form1();
-                f1.ShowDialog();
-                this.Close();
+                //                this.Hide();
+                //                Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
+                //                f9.ShowDialog();
+                //                Form1 f1 = new Form1();
+                //                f1.ShowDialog();
+                //                this.Close();
+
+                Console.WriteLine("Result: " + result + "\n");
             }
         }
     }
