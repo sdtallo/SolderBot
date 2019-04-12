@@ -3,6 +3,7 @@
 #include "location_list.h"
 //#include "gcode_decoder.h"
 #include "arrayConst.h"
+#include <ctype.h>
 
 typedef struct refLoc refLoc;
 
@@ -15,10 +16,6 @@ struct refLoc{
     double rightX;
     double rightY;
 };
-
-//refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);//used to keep track where the board is in reference to solder
-
-//void changeRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY);
 
 //creates a LL with a given board location
 Location_List * createLLWiR(int board, char column, int row, arrayConst ** arrayPointer);

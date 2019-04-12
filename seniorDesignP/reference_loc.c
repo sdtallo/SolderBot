@@ -6,32 +6,6 @@
 #include <stdio.h>
 
 
-//refLoc * newRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY){
-//    refLoc *ref = NULL;
-//    ref = (refLoc *)malloc(sizeof(refLoc));
-//    ref->zHeight = zHeight;
-//    ref->leftX = leftX;
-//    ref->leftY = leftY;
-//    ref->middleX = middleX;
-//    ref->middleY = middleY;
-//    ref->rightX = rightX;
-//    ref->rightY = rightY;
-
-//    return ref;
-
-
-//}
-
-//void changeRefLoc(double zHeight, double leftX, double leftY, double middleX, double middleY, double rightX, double rightY){
-//    ref->zHeight = zHeight;
-//    ref->leftX = leftX;
-//    ref->leftY = leftY;
-//    ref->middleX = middleX;
-//    ref->middleY = middleY;
-//    ref->rightX = rightX;
-//    ref->rightY = rightY;
-
-//}
 
 Location_List * createLLWiR(int board, char column, int row, arrayConst ** arrayPointer){
     Location_List *locL = NULL;
@@ -55,7 +29,6 @@ void insertAfterRef(Location_List* prev_node, int board, char column, int row, a
     Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     insertAfter(prev_node,loc);
 
-
 }
 
 void appendRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer){
@@ -64,7 +37,6 @@ void appendRef(Location_List* head, int board, char column, int row, arrayConst 
 
 
 }
-
 
 
 Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPointer){
@@ -116,17 +88,27 @@ Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPo
         yArray = 0;
     }
 
-    if(yArray > 45){
-        yArray = 45;
-    }
+
+    int absXArray;
+    int absYArray;
+
+    int remainderX;
+    int remainderY;
     xArray += (board-1)*10;
 
 
-    int absXArray = xArray/5;
-    int absYArray = yArray/5;
+    if(yArray > 45){
+        absXArray = 5;
+        absYArray = 9;
+        remainderY = (yArray - 45);
+    }else{
+        absXArray = xArray/5;
+        absYArray = yArray/5;
 
-    int remainderX = xArray%5;
-    int remainderY = yArray%5;
+        remainderY = yArray%5;
+    }
+    remainderX = xArray%5;
+
 
 //    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
 //    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
@@ -470,6 +452,13 @@ int checkFormat(char * c){
 
         }else{
             t = 0;
+        }
+        if(isalpha(current)){
+            if(isLet(current) == 1){
+
+            }else{
+                return 2;//return 2 if letter isn't correct;
+            }
         }
     }
     if(sTest){

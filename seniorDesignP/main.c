@@ -20,11 +20,31 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " a1, a2, a3 _ b5, b7, e8, e7, a4, a2  _  ";
+        input = " a1, a2, a3 _ j40, b7, e8, e7, a4, a2  _  ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
 
     createFile(tempName);
+
+
+
+    size_t itest = strlen(input);
+    char *sTest = (char *)malloc((itest+1) * sizeof(char));
+
+    strcpy(sTest, input);
+    remove_all_chars(sTest, ' ');
+
+    int testS = checkFormat(sTest);
+    free(sTest);
+
+    if(testS == 1){
+        printf("This is a valid string\n");
+    }else if(testS == 2){
+        return 2;
+    }else{
+        //returns 1 if character pointer not in corret format
+        return 1;
+    }
 
     arrayConst ** arrayPointer;
 
@@ -38,23 +58,12 @@ int main(int argc, char *argv[])
     if(arrayReport == 0){
 
     }else{
-        return 2;//return 2 if something is wrong in file
-    }
-
-    size_t itest = strlen(input);
-    char *sTest = (char *)malloc((itest+1) * sizeof(char));
-
-    strcpy(sTest, input);
-    remove_all_chars(sTest, ' ');
-
-    int testS = checkFormat(sTest);
-    free(sTest);
-
-    if(testS == 1){
-        printf("This is a valid string\n");
-    }else{
-        //returns 1 if character pointer not in corret format
-        return 1;
+        if(arrayPointer){//frees before leaving
+            for(int i=0;i<10;i++)
+                free(arrayPointer[i]);
+            free(arrayPointer);
+        }
+        return 3;//return 3 if something is wrong in file
     }
 
     size_t iLen = strlen(input);
@@ -126,11 +135,44 @@ int main(int argc, char *argv[])
     printf("Created DLL is: ");
 
     deleteRepeats(head);
-    Location_List ** headPointer = &head;
-    sortDLL(headPointer);
-    if(head->next != NULL){
-        printList(head->next);
-        moveAllLoc(head->next,tempName);
+
+    double checkMaxX = 0;//check if out of range
+    double checkMaxY =0;
+    Location_List * pointerCheck = head->next;
+
+    while(pointerCheck->next != NULL){
+        pointerCheck = pointerCheck->next;
+        if(pointerCheck->cur->y_loc > checkMaxY){
+            checkMaxY = pointerCheck->cur->y_loc;
+        }
+
+        if(pointerCheck->cur->x_loc > checkMaxX){
+            checkMaxX = pointerCheck->cur->x_loc;
+        }
+    }
+
+
+    int ret = 0;
+    double checkY = arrayPointer[9][5].y_loc;
+    if(checkMaxY > checkY){
+        ret = 2;
+    }
+    double checkX = arrayPointer[9][5].x_loc;
+    if(checkMaxX > checkX){
+        ret = 2;
+    }
+
+
+    if(ret == 0){
+
+
+        Location_List ** headPointer = &head;
+        sortDLL(headPointer);
+        if(head->next != NULL){
+            printList(head->next);
+            moveAllLoc(head->next,tempName);
+        }
+
     }
     //freeing pointers
 
@@ -152,11 +194,12 @@ int main(int argc, char *argv[])
     }
 
     //returns 0 if completed successfully
-    return 0;
-
+    return ret;
 
 }
 
 //return 0 = completed successfully
 //return 1 = something is wrong in given string argument, likely format
-//return 2 = something wrong in cal.txt likely not valid format
+//return 2 = entered values are out of range
+//return 3 = something wrong in cal.txt likely not valid format
+
