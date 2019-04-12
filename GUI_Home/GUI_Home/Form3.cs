@@ -62,14 +62,14 @@ namespace GUI_Home
             else
             {
                 // Redirect to error page
-                this.Hide();
-                Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
-                f9.ShowDialog();
+                //this.Hide();
+                //Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
+                //f9.ShowDialog();
                 //                Form1 f1 = new Form1();
                 //                f1.ShowDialog();
-                this.Close();
+                //this.Close();
 
-//                Console.WriteLine("INVALID STRING");
+                Console.WriteLine("INVALID STRING");
             }
         }
     }
