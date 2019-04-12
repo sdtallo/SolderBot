@@ -42,14 +42,13 @@ namespace GUI_Home
 
             // https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output/4291965
             // Read error message that gcode generator function outputs (using printf() function)
-            string errorMsg = "";
-            errorMsg = getGcode.StandardOutput.ReadLine();
+            string errorMsg = getGcode.StandardOutput.ReadLine();
 
             // First line printed to console from Gcode generator is error message
             while (!getGcode.StandardOutput.EndOfStream)
             {
                 string mymsg = getGcode.StandardOutput.ReadLine();
-                Console.WriteLine("Gcode function message is: " + mymsg);
+                Console.WriteLine("Mymsg: |"+mymsg+"|");
             }
 
             // If pins are valid, go to next page
@@ -63,14 +62,14 @@ namespace GUI_Home
             else
             {
                 // Redirect to error page
-                //                this.Hide();
-                //                Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
-                //                f9.ShowDialog();
+                this.Hide();
+                Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
+                f9.ShowDialog();
                 //                Form1 f1 = new Form1();
                 //                f1.ShowDialog();
-                //                this.Close();
+                this.Close();
 
-                Console.WriteLine("INVALID STRING");
+//                Console.WriteLine("INVALID STRING");
             }
         }
     }
