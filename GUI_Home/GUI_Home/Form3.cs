@@ -37,12 +37,16 @@ namespace GUI_Home
             getGcode.Start();
 
 
-
-//            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
+            //            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
 
             // From https://stackoverflow.com/questions/1585354/get-return-value-from-process
             // Wait for exit code - tell if there's an error in strings or not
-            string output = getGcode.StandardOutput.ReadToEnd();
+            while (!getGcode.StandardOutput.EndOfStream)
+            {
+                string output = getGcode.StandardOutput.ReadToEnd();
+                Console.WriteLine("Output: " + output + "\n");
+            }
+            
             getGcode.WaitForExit();
             int result = getGcode.ExitCode;
 
