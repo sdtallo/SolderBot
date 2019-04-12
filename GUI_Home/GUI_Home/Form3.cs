@@ -37,6 +37,9 @@ namespace GUI_Home
             getGcode.StartInfo.CreateNoWindow = true;
             getGcode.Start();
 
+            // Check (every 500 milliseconds) for Gcode to be done generating before starting robot
+            while (!getGcode.WaitForExit(500)) ;
+
             // https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output/4291965
             // Read error message that gcode generator function outputs (using printf() function)
             string errorMsg = "";
