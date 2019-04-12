@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " _  a1, i3:j46 _  ";
+        input = " _ j40 _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
@@ -79,8 +79,6 @@ int main(int argc, char *argv[])
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
     strcpy(sInput, input);
-
-
 
     char *sSeparator = "_";
     char *pToken = strtok(sInput, sSeparator);
@@ -143,13 +141,14 @@ int main(int argc, char *argv[])
         return 4;
     }
 
-
-
     deleteRepeats(head);
 
     double checkMaxX = 0;//check if out of range
     double checkMaxY =0;
     Location_List * pointerCheck = head->next;
+
+    checkMaxX = pointerCheck->cur->x_loc;
+    checkMaxY = pointerCheck->cur->y_loc;
 
     while(pointerCheck->next != NULL){
         pointerCheck = pointerCheck->next;

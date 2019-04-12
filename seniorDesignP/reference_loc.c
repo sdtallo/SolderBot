@@ -429,14 +429,14 @@ int checkFormat(char * c){
     char current;
     char next;
     int t = 1;
-    for(size_t i =0; i<(itest-1);++i){
+    for(size_t i =0; i<(itest-1);++i){//checks if invalid format
         current = sTest[i];
         next = sTest[i+1];
-        if(current == '_' && isLet(next) == 1){
+        if(current == '_' && isalpha(next)){
 
         }else if(current == '_' && next == '_'){
 
-        }else if(isLet(current) == 1 && isNum(next) == 1){
+        }else if(isalpha(current) && isNum(next) == 1){
 
         }else if(isNum(current) == 1 && isNum(next) == 1){
 
@@ -446,26 +446,33 @@ int checkFormat(char * c){
 
         }else if(isNum(current) == 1 && next == ':'){
 
-        }else if(current == ':' && isLet(next) == 1){
+        }else if(current == ':' && isalpha(next)){
 
-        }else if(current == ',' && isLet(next) == 1){
+        }else if(current == ',' && isalpha(next)){
 
         }else{
-            t = 0;
+            if(t == 1){
+                t = 0;
+            }
+
         }
+
+    }for(size_t i =0; i<(itest-1);++i){//checks if invalid range
+        current = sTest[i];
         if(isalpha(current)){
             if(isLet(current) == 1){
 
             }else{
-                return 2;//return 2 if letter isn't correct;
+                if(t == 1){
+                    t = 2;//return 2 if letter isn't correct;
+                }
             }
         }
+
     }
     if(sTest){
         free(sTest);
     }
-
-
 
     return t;
 }
