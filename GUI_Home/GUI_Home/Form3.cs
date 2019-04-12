@@ -41,14 +41,15 @@ namespace GUI_Home
             // Read error message that gcode generator function outputs (using printf() function)
             string errorMsg = "";
 
-            while (!getGcode.StandardOutput.EndOfStream)
-            {
+            // First line printed to console from Gcode generator is error message
+//            while (!getGcode.StandardOutput.EndOfStream)
+//            {
                 errorMsg = getGcode.StandardOutput.ReadLine();
                 Console.WriteLine("Gcode function message is: " + errorMsg);
-            }
+//            }
 
             // If pins are valid, go to next page
-            if (errorMsg == "This is a valid string")
+            if (errorMsg == "This is a valid string \n")
             {
                 this.Hide();
                 Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
