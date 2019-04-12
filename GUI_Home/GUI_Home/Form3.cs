@@ -41,7 +41,7 @@ namespace GUI_Home
 
             // From https://stackoverflow.com/questions/1585354/get-return-value-from-process
             // Wait for exit code - tell if there's an error in strings or not
-            while (!getGcode.StandardOutput.EndOfStream)
+/*            while (!getGcode.StandardOutput.EndOfStream)
             {
                 string output = getGcode.StandardOutput.ReadToEnd();
                 Console.WriteLine("Output: " + output + "\n");
@@ -49,17 +49,17 @@ namespace GUI_Home
             
             getGcode.WaitForExit();
             int result = getGcode.ExitCode;
-
+*/
             // Must have the readToEnd BEFORE the WaitForExit(), to avoid a deadlock condition
 
             // If pins are valid, go to next page
-            if (result == 0)
-            {
+//            if (result == 0)
+//            {
                 this.Hide();
                 Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
                 f9.ShowDialog();
                 this.Close();
-            }
+ /*           }
             else
             {
                 // Redirect to error page
@@ -72,6 +72,6 @@ namespace GUI_Home
 
                 Console.WriteLine("Result: " + result + "\n");
             }
-        }
+ */       }
     }
 }
