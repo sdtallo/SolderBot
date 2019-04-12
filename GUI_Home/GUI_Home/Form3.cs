@@ -34,28 +34,36 @@ namespace GUI_Home
             getGcode.StartInfo.Arguments = argStr;
             getGcode.StartInfo.UseShellExecute = false;
             getGcode.StartInfo.RedirectStandardOutput = true;
+            getGcode.StartInfo.CreateNoWindow = true;
             getGcode.Start();
 
+            // https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output/4291965
+            // Trying to read whatever output is
+            while (!getGcode.StandardOutput.EndOfStream)
+            {
+                string output = getGcode.StandardOutput.ReadLine();
+                Console.WriteLine("Output is " + output + "\n");
+            }
 
             //            Process getGcode = Process.Start("solderbot-test/seniorDesignP/seniorDesignP.exe", argStr);
 
             // From https://stackoverflow.com/questions/1585354/get-return-value-from-process
             // Wait for exit code - tell if there's an error in strings or not
-/*            while (!getGcode.StandardOutput.EndOfStream)
-            {
-                string output = getGcode.StandardOutput.ReadToEnd();
-                Console.WriteLine("Output: " + output + "\n");
-            }
-            
-            getGcode.WaitForExit();
-            int result = getGcode.ExitCode;
-*/
+            /*            while (!getGcode.StandardOutput.EndOfStream)
+                        {
+                            string output = getGcode.StandardOutput.ReadToEnd();
+                            Console.WriteLine("Output: " + output + "\n");
+                        }
+
+                        getGcode.WaitForExit();
+                        int result = getGcode.ExitCode;
+            */
             // Must have the readToEnd BEFORE the WaitForExit(), to avoid a deadlock condition
 
             // If pins are valid, go to next page
-//            if (result == 0)
-//            {
-                this.Hide();
+            //            if (result == 0)
+            //            {
+            this.Hide();
                 Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
                 f9.ShowDialog();
                 this.Close();
