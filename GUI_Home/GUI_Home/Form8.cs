@@ -17,31 +17,12 @@ namespace GUI_Home
             InitializeComponent();
         }
 
-        // Resume soldering
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Pass last location to next page as argument to resume soldering
-
-            this.Hide();
-            Form6 f6 = new Form6();
-            f6.ShowDialog();
-            this.Close();
-        }
-
+        // Return to home page
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form1 f1 = new Form1();
             f1.ShowDialog();
-            this.Close();
-        }
-
-        // Recalibrate button
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form10 f10 = new Form10();
-            f10.ShowDialog();
             this.Close();
         }
     }

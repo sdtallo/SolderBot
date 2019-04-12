@@ -15,4 +15,3 @@ C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.pdb
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form8.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form9.resources
 C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form1.resources
-C:\Users\Samantha\source\repos\GUI_Home\GUI_Home\obj\Debug\GUI_Home.Form10.resources

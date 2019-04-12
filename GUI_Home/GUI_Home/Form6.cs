@@ -17,7 +17,7 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-            // Call robot - run from /home/pi
+            // Call robot - run from /home/pi or Desktop icon
             Process runRobot = Process.Start("../../usr/bin/env","solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
@@ -41,6 +41,7 @@ namespace GUI_Home
         // Need event - move to finish screen when robot finishes soldering
         // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
         // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
+
         private void soldering_Complete(object sender, EventArgs e)
         {
             this.Hide();
