@@ -49,7 +49,7 @@ namespace GUI_Home
 //            }
 
             // If pins are valid, go to next page
-            if (errorMsg == "This is a valid string \n")
+            if (errorMsg == "This is a valid string")       // Doesn't work with the \n at end of string
             {
                 this.Hide();
                 Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
