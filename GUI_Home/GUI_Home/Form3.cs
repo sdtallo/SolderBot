@@ -48,8 +48,8 @@ namespace GUI_Home
             // First line printed to console from Gcode generator is error message
             while (!getGcode.StandardOutput.EndOfStream)
             {
-//                errorMsg = getGcode.StandardOutput.ReadLine();
-                Console.WriteLine("Gcode function message is: " + errorMsg);
+                string mymsg = getGcode.StandardOutput.ReadLine();
+                Console.WriteLine("Gcode function message is: " + mymsg);
             }
 
             // If pins are valid, go to next page
