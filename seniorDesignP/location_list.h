@@ -3,7 +3,7 @@
 #include "gcode_decoder.h"
 
 typedef struct Location_List Location_List;
-
+//https://www.geeksforgeeks.org/doubly-linked-list/
 struct Location_List{
     Location *cur;
     Location_List *prev;

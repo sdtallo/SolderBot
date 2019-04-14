@@ -20,13 +20,13 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " _  _ ";
+        input = " _ A40 _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
     char * error1 = "Format is invalid\n";
     char * error2 = "Invalid Range\n";
-    char * error3 = "not valid format for calibration\n";
+    char * error3 = "not valid format for calibration\n";//shouldn't print unless cal.txt file is deleted
     char * error4 =  "String is empty\n";
 
 
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     }
 
     arrayConst ** arrayPointer;
-
+    //https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
     arrayPointer = (arrayConst **) malloc(10*sizeof(arrayConst *));
 
     for(int i=0;i<10;i++)
@@ -140,24 +140,6 @@ int main(int argc, char *argv[])
 
     deleteRepeats(head);
 
-    double checkMaxX = 0;//check if out of range
-    double checkMaxY =0;
-    Location_List * pointerCheck = head->next;
-
-    checkMaxX = pointerCheck->cur->x_loc;
-    checkMaxY = pointerCheck->cur->y_loc;
-
-    while(pointerCheck->next != NULL){
-        pointerCheck = pointerCheck->next;
-        if(pointerCheck->cur->y_loc > checkMaxY){
-            checkMaxY = pointerCheck->cur->y_loc;
-        }
-
-        if(pointerCheck->cur->x_loc > checkMaxX){
-            checkMaxX = pointerCheck->cur->x_loc;
-        }
-    }
-
     printf("This is a valid string\n");
     printf("String => %s\n", sInput);
 
@@ -170,7 +152,9 @@ int main(int argc, char *argv[])
 
 
     Location_List ** headPointer = &head;
-    sortDLL(headPointer);
+
+    sortDLL(headPointer);//sorts the LL with largest Y's going first
+
     if(head->next != NULL){
         printList(head->next);
         moveAllLoc(head->next,tempName);
@@ -205,3 +189,13 @@ int main(int argc, char *argv[])
     //return 3 = something wrong in cal.txt likely not valid format
     //return 4 = "String is empty\n"
 
+
+//links
+
+//https://www.geeksforgeeks.org/doubly-linked-list/
+//https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+
+//https://stackoverflow.com/questions/30415663/c-using-strtok-to-parse-command-line-inputs
+
+//https://stackoverflow.com/questions/9895216/how-to-remove-all-occurrences-of-a-given-character-from-string-in-c
+//https://stackoverflow.com/questions/4235519/counting-number-of-occurrences-of-a-char-in-a-string-in-c
