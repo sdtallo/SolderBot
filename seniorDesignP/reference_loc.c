@@ -110,9 +110,9 @@ Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPo
     remainderX = xArray%5;
 
 
-//    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
-//    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
-//    locZ = (absArray[absYArray][absXArray].z_loc);
+    //    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
+    //    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
+    //    locZ = (absArray[absYArray][absXArray].z_loc);
 
     locX = (arrayPointer[absYArray][absXArray].x_loc)+(remainderX*.1);
     locY = (arrayPointer[absYArray][absXArray].y_loc)+(remainderY*.1);
@@ -457,8 +457,9 @@ int checkFormat(char * c){
 
         }
 
-    }for(size_t i =0; i<(itest-1);++i){//checks if invalid range
+    }for(size_t i =0; i<(itest-1);++i){//checks if invalid range in x
         current = sTest[i];
+
         if(isalpha(current)){
             if(isLet(current) == 1){
 
@@ -469,6 +470,35 @@ int checkFormat(char * c){
             }
         }
 
+    }
+    size_t begining = 0;
+    size_t end = 0;
+    for(size_t i =0; i<(itest-1);++i){//checks if invalid range for y
+        current = sTest[i];
+        next = sTest[i+1];
+        if(isNum(current) == 1&& begining ==0){
+            begining = i;
+
+        }if(isNum(current) == 1 && isNum(next) != 1){
+            end = i;
+        }else if(i == itest - 2 && isNum(next) == 1){//if there is a number at the very end of the string
+            end = i + 1;
+        }
+        if(begining != 0 && end != 0){
+            size_t length = end - begining;
+            char * c = (char *)malloc((length+1) * sizeof(char));
+            strncpy(c,&sTest[begining],length+1);
+            int test = atoi(c);
+            free(c);
+            begining = 0;
+            end = 0;
+            if(test > 46){
+                if(t==1){
+                    t = 2;
+                }
+            }
+
+        }
     }
     if(sTest){
         free(sTest);

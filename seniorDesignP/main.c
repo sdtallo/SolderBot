@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     }else{//if testing on personal computer
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " _ j40 _ ";
+        input = " _  _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
@@ -28,8 +28,6 @@ int main(int argc, char *argv[])
     char * error2 = "Invalid Range\n";
     char * error3 = "not valid format for calibration\n";
     char * error4 =  "String is empty\n";
-
-
 
 
     createFile(tempName);
@@ -125,7 +123,6 @@ int main(int argc, char *argv[])
     remove_all_chars(board3Str, ' ');
 
 
-
     if(board1Str[0] != '\0'){
         appendGivenBoardStr(head, 1,board1Str, arrayPointer);
     }
@@ -161,68 +158,50 @@ int main(int argc, char *argv[])
         }
     }
 
+    printf("This is a valid string\n");
+    printf("String => %s\n", sInput);
 
-    int ret = 0;
-    double checkY = arrayPointer[9][5].y_loc;
-    double checkX = arrayPointer[9][5].x_loc;
-    if(checkMaxY > checkY){
-        ret = 2;
-        printf("%s", error2);
-    }else if(checkMaxX > checkX){
-        ret = 2;
-        printf("%s", error2);
-    }
+    printf("Board 1 = .%s.\n", board1Str);
+    printf("Board 2 = .%s.\n", board2Str);
+    printf("Board 3 = .%s.\n", board3Str);
 
 
+    printf("Created DLL is: ");
 
 
-    if(ret == 0){
-        printf("This is a valid string\n");
-        printf("String => %s\n", sInput);
+    Location_List ** headPointer = &head;
+    sortDLL(headPointer);
+    if(head->next != NULL){
+        printList(head->next);
+        moveAllLoc(head->next,tempName);
 
-        printf("Board 1 = .%s.\n", board1Str);
-        printf("Board 2 = .%s.\n", board2Str);
-        printf("Board 3 = .%s.\n", board3Str);
+        //freeing pointers
 
+        freeList(head);
 
-        printf("Created DLL is: ");
-
-
-        Location_List ** headPointer = &head;
-        sortDLL(headPointer);
-        if(head->next != NULL){
-            printList(head->next);
-            moveAllLoc(head->next,tempName);
+        if(arrayPointer){
+            for(int i=0;i<10;i++)
+                free(arrayPointer[i]);
+            free(arrayPointer);
+        }
+        if(board1Str){
+            free(board1Str);
+        }
+        if(board2Str){
+            free(board2Str);
+        }
+        if(board3Str){
+            free(board3Str);
         }
 
     }
-    //freeing pointers
-
-    freeList(head);
-
-    if(arrayPointer){
-        for(int i=0;i<10;i++)
-            free(arrayPointer[i]);
-        free(arrayPointer);
-    }
-    if(board1Str){
-        free(board1Str);
-    }
-    if(board2Str){
-        free(board2Str);
-    }
-    if(board3Str){
-        free(board3Str);
-    }
-
     //returns 0 if completed successfully
-    return ret;
-
+    return 0;
 }
 
-//return 0 = completed successfully
-//return 1 = something is wrong in given string argument, likely format, printf("Format is invalid\n");
-//return 2 = entered values are out of range, printf("Invalid Range\n");
-//return 3 = something wrong in cal.txt likely not valid format
-//return 4 = "String is empty\n"
+    //return 0 = completed successfully
+    //return 1 = something is wrong in given string argument, likely format, printf("Format is invalid\n");
+    //return 2 = entered values are out of range, printf("Invalid Range\n");
+    //return 3 = something wrong in cal.txt likely not valid format
+    //return 4 = "String is empty\n"
 
