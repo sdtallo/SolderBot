@@ -38,6 +38,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,14 +47,14 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(20, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 72);
+            this.label1.Size = new System.Drawing.Size(615, 71);
             this.label1.TabIndex = 2;
             this.label1.Text = "Step 2: Set Pins to Solder";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(951, 430);
+            this.button1.Location = new System.Drawing.Point(951, 442);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(210, 207);
             this.button1.TabIndex = 6;
@@ -64,9 +65,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 106);
+            this.label2.Location = new System.Drawing.Point(21, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1203, 161);
+            this.label2.Size = new System.Drawing.Size(1203, 117);
             this.label2.TabIndex = 7;
             this.label2.Text = "Record each column letter and row number for all pins that need to be soldered in" +
     " the textboxes below.";
@@ -74,7 +75,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 224);
+            this.label4.Location = new System.Drawing.Point(23, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(1203, 158);
             this.label4.TabIndex = 9;
@@ -85,7 +86,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(271, 417);
+            this.textBox1.Location = new System.Drawing.Point(271, 429);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(589, 57);
             this.textBox1.TabIndex = 10;
@@ -93,7 +94,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 420);
+            this.label5.Location = new System.Drawing.Point(56, 432);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(189, 52);
             this.label5.TabIndex = 11;
@@ -102,7 +103,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 508);
+            this.label6.Location = new System.Drawing.Point(56, 520);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(189, 52);
             this.label6.TabIndex = 12;
@@ -111,7 +112,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(56, 593);
+            this.label7.Location = new System.Drawing.Point(56, 605);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(189, 52);
             this.label7.TabIndex = 13;
@@ -120,7 +121,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(271, 505);
+            this.textBox2.Location = new System.Drawing.Point(271, 517);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(589, 57);
             this.textBox2.TabIndex = 14;
@@ -128,16 +129,27 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(271, 590);
+            this.textBox3.Location = new System.Drawing.Point(271, 602);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(589, 57);
             this.textBox3.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Firebrick;
+            this.label3.Location = new System.Drawing.Point(487, 383);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(267, 32);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Error Message Here";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1236, 698);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label7);
@@ -169,5 +181,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label3;
     }
 }

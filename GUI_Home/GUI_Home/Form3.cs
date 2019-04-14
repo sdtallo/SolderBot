@@ -13,12 +13,13 @@ namespace GUI_Home
 {
     public partial class Form3 : Form
     {
-        public Form3(string leftPins, string middlePins, string rightPins)
+        public Form3(string leftPins, string middlePins, string rightPins, string errMsg)
         {
             InitializeComponent();
             textBox1.Text = leftPins;
             textBox2.Text = middlePins;
             textBox3.Text = rightPins;
+            label3.Text = errMsg;
         }
 
         // Verify pin locations - next step
@@ -62,12 +63,12 @@ namespace GUI_Home
             }
             else
             {
-                // Redirect to error page
+                // Show error on page
+                label3.Text = errorMsg;
+
                 //this.Hide();
-                //Form9 f9 = new Form9(textBox1.Text, textBox2.Text, textBox3.Text);
-                //f9.ShowDialog();
-                //                Form1 f1 = new Form1();
-                //                f1.ShowDialog();
+                //Form3 f3 = new Form3(textBox1.Text, textBox2.Text, textBox3.Text, errorMsg);
+                //f3.ShowDialog();
                 //this.Close();
 
                 Console.WriteLine("INVALID STRING");

@@ -42,7 +42,7 @@ namespace GUI_Home
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form3 f3 = new Form3(Lpins, Mpins, Rpins);
+            Form3 f3 = new Form3(Lpins, Mpins, Rpins, null);
             f3.ShowDialog();
             this.Close();
         }
