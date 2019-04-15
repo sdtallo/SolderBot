@@ -41,9 +41,10 @@ namespace GUI_Home
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
             //runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
-            while(!runRobot.HasExited)
-            {
+            //while(!runRobot.HasExited)
+            //{
                 // Read line, if emergency stop line, execute that code
+                /*
                 string mymsg = runRobot.StandardOutput.ReadLine();
                 Console.WriteLine("MYMSG = " + mymsg);
 
@@ -57,9 +58,10 @@ namespace GUI_Home
                     this.Hide();
                     Form8 f8 = new Form8();
                     f8.ShowDialog();
-                    this.Close();*/
+                    this.Close();
                 }
-            }
+                */
+            //}
             //});
         }
 
