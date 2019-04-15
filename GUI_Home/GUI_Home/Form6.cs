@@ -23,20 +23,30 @@ namespace GUI_Home
             // When robot responds back with "done", move to next screen
             // make new event handler
             runRobot.EnableRaisingEvents = true;
+
+            // When program finishes soldering, move to next screen
             runRobot.Exited += new EventHandler(soldering_Complete);
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-//            while (!runRobot.HasExited)
-//            {
-
-                runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+            //            while (!runRobot.HasExited)
+            //            {
+            runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     // Read line, if emergency stop line, execute that code
                     string mymsg = runRobot.StandardOutput.ReadLine();
+                    
                     if (mymsg == "Emergency stop pressed")
                     {
-                        runRobot.Exited += new EventHandler(eStop);
+                        Console.WriteLine("E-stop");
+//                        runRobot.Exited += new EventHandler(eStop);
+
+                        Console.WriteLine("opening form 8");
+
+                        this.Hide();
+                        Form8 f8 = new Form8();
+                        f8.ShowDialog();
+                        this.Close();
                     }
                 });
 
