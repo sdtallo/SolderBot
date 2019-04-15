@@ -29,28 +29,29 @@ namespace GUI_Home
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-            //            while (!runRobot.HasExited)
-            //            {
+            //while (!runRobot.HasExited)
+            // {
             runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     // Read line, if emergency stop line, execute that code
                     string mymsg = runRobot.StandardOutput.ReadLine();
-                    
+                    Console.WriteLine("MYMSG = " + mymsg);
+
                     if (mymsg == "Emergency stop pressed")
                     {
                         Console.WriteLine("E-stop");
-//                        runRobot.Exited += new EventHandler(eStop);
+                        runRobot.Exited += new EventHandler(eStop);
 
                         Console.WriteLine("opening form 8");
-
+                        /*
                         this.Hide();
                         Form8 f8 = new Form8();
                         f8.ShowDialog();
-                        this.Close();
+                        this.Close();*/
                     }
                 });
 
-//            }
+            //}
         }
 
         // Need event - move to finish screen when robot finishes soldering
