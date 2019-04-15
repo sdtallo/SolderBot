@@ -24,8 +24,8 @@ namespace GUI_Home
             runRobot.StartInfo = new ProcessStartInfo("../../usr/bin/env", "solderbot/caller.py")
             {
                 RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
+                UseShellExecute = false
+//                CreateNoWindow = true
             };
             runRobot.Start();
 
@@ -36,17 +36,19 @@ namespace GUI_Home
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
             //while (!runRobot.HasExited)
-            //{
-            // Read line, if emergency stop line, execute that code
+            while (!runRobot.StandardOutput.EndOfStream)
+            {
+                // Read line, if emergency stop line, execute that code
                 string mymsg = runRobot.StandardOutput.ReadLine();
                 Console.WriteLine("MYMSG = " + mymsg);
 
                 if (mymsg == "Emergency stop pressed")
                 {
                     Console.WriteLine("E-stop, closing process");
-                    runRobot.Close();
+                    //runRobot.Close();
                     runRobot.Exited += new EventHandler(eStop);
-                    
+                    runRobot.Close();
+
                     /*
                     this.Hide();
                     Form8 f8 = new Form8();
@@ -54,7 +56,7 @@ namespace GUI_Home
                     this.Close();
                     */
                 }
-            //}
+            }
 
             /*
                         runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>

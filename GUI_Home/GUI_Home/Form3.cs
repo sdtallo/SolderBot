@@ -50,7 +50,6 @@ namespace GUI_Home
             while (!getGcode.StandardOutput.EndOfStream)
             {
                 string mymsg = getGcode.StandardOutput.ReadLine();
-                Console.WriteLine("Mymsg: |" + mymsg + "|");
             }
 
             // If pins are valid, go to next page
