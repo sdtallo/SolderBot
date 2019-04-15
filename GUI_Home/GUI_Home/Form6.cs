@@ -18,24 +18,29 @@ namespace GUI_Home
         {
             InitializeComponent();
             // Call robot - run from /home/pi or Desktop icon
-            Process runRobot = Process.Start("../../usr/bin/env","solderbot/caller.py");
+            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
             // make new event handler
             runRobot.EnableRaisingEvents = true;
             runRobot.Exited += new EventHandler(soldering_Complete);
-        }
 
-        // Emergency stop
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Make machine stop and raise up slightly
-            // Pass last location soldered to next page as argument
+            // While program is still going, if eStop is pressed
+            // Message is printed to command line & GUI moves to next screen
+            while (!runRobot.HasExited)
+            {
 
-            this.Hide();
-            Form8 f8 = new Form8();
-            f8.ShowDialog();
-            this.Close();
+                runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+                {
+                    // Read line, if emergency stop line, execute that code
+                    string mymsg = runRobot.StandardOutput.ReadLine();
+                    if (mymsg == "Emergency stop pressed")
+                    {
+                        runRobot.Exited += new EventHandler(eStop);
+                    }
+                });
+
+            }
         }
 
         // Need event - move to finish screen when robot finishes soldering
@@ -47,6 +52,15 @@ namespace GUI_Home
             this.Hide();
             Form7 f7 = new Form7();
             f7.ShowDialog();
+            this.Close();
+        }
+
+        // Emergency stop
+        private void eStop(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form8 f8 = new Form8();
+            f8.ShowDialog();
             this.Close();
         }
     }
