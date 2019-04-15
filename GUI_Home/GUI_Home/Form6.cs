@@ -35,8 +35,8 @@ namespace GUI_Home
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-            //while (!runRobot.HasExited)
-            while (!runRobot.StandardOutput.EndOfStream)
+            while (!runRobot.HasExited)
+            //while (!runRobot.StandardOutput.EndOfStream)
             {
                 // Read line, if emergency stop line, execute that code
                 string mymsg = runRobot.StandardOutput.ReadLine();
@@ -57,6 +57,8 @@ namespace GUI_Home
                     */
                 }
             }
+
+            Console.WriteLine("Exiting...");
 
             /*
                         runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
@@ -80,7 +82,7 @@ namespace GUI_Home
                             });
             */
             //}
-            
+
         }
 
         // Need event - move to finish screen when robot finishes soldering
