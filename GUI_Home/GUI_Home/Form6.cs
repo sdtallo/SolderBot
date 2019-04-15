@@ -18,7 +18,14 @@ namespace GUI_Home
         {
             InitializeComponent();
             // Call robot - run from /home/pi or Desktop icon
-            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
+            Process runRobot = new Process();
+            runRobot.StartInfo.FileName = "../../ usr / bin / env";
+            runRobot.StartInfo.Arguments = "solderbot/caller.py";
+            runRobot.StartInfo.UseShellExecute = false;
+            runRobot.StartInfo.RedirectStandardOutput = true;
+            runRobot.StartInfo.CreateNoWindow = true;
+
+            // Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
