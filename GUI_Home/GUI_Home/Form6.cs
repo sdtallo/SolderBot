@@ -27,8 +27,8 @@ namespace GUI_Home
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-            while (!runRobot.HasExited)
-            {
+//            while (!runRobot.HasExited)
+//            {
 
                 runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
@@ -40,7 +40,7 @@ namespace GUI_Home
                     }
                 });
 
-            }
+//            }
         }
 
         // Need event - move to finish screen when robot finishes soldering

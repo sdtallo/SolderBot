@@ -30,6 +30,7 @@ namespace GUI_Home
             this.Hide();
             Form6 f6 = new Form6();
             f6.ShowDialog();
+            this.Close();
         }
 
         // Not ready for machine to begin soldering
