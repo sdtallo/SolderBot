@@ -21,13 +21,12 @@ namespace GUI_Home
             Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 
             // When robot responds back with "done", move to next screen
-            // make new event handler
             runRobot.EnableRaisingEvents = true;
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-            while (!runRobot.HasExited)
-            {
+            //while (!runRobot.HasExited)
+            //{
                 // Read line, if emergency stop line, execute that code
                 string mymsg = runRobot.StandardOutput.ReadLine();
                 Console.WriteLine("MYMSG = " + mymsg);
@@ -45,7 +44,7 @@ namespace GUI_Home
                     this.Close();
                     */
                 }
-            }
+            //}
 
             /*
                         runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
