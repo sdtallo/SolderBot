@@ -24,19 +24,23 @@ namespace GUI_Home
             runRobot.StartInfo = new ProcessStartInfo("../../usr/bin/env", "solderbot/caller.py")
             {
                 RedirectStandardOutput = true,
-                UseShellExecute = false
-//                CreateNoWindow = true
+                UseShellExecute = false,
+                CreateNoWindow = true
             };
-            runRobot.Start();
-
+            
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
             runRobot.Exited += new EventHandler(soldering_Complete);
+//            runRobot.OutputDataReceived += new DataReceivedEventHandler(eStop);
+            
+            runRobot.Start();
+
+            // Asynchronously reads output lines from command line
+            runRobot.BeginOutputReadLine();
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
-            while (!runRobot.HasExited)
-            //while (!runRobot.StandardOutput.EndOfStream)
+            runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
             {
                 // Read line, if emergency stop line, execute that code
                 string mymsg = runRobot.StandardOutput.ReadLine();
@@ -47,42 +51,14 @@ namespace GUI_Home
                     Console.WriteLine("E-stop, closing process");
                     //runRobot.Close();
                     runRobot.Exited += new EventHandler(eStop);
-                    runRobot.Close();
-
                     /*
+                    Console.WriteLine("opening form 8");
                     this.Hide();
                     Form8 f8 = new Form8();
                     f8.ShowDialog();
-                    this.Close();
-                    */
+                    this.Close();*/
                 }
-            }
-
-            Console.WriteLine("Exiting...");
-
-            /*
-                        runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
-                            {
-                                // Read line, if emergency stop line, execute that code
-                                string mymsg = runRobot.StandardOutput.ReadLine();
-                                Console.WriteLine("MYMSG = " + mymsg);
-
-                                if (mymsg == "Emergency stop pressed")
-                                {
-                                    Console.WriteLine("E-stop, closing process");
-                                    runRobot.Close();
-                                    //runRobot.Exited += new EventHandler(eStop);
-                                    Console.WriteLine("opening form 8");
-
-                                    this.Hide();
-                                    Form8 f8 = new Form8();
-                                    f8.ShowDialog();
-                                    this.Close();
-                                }
-                            });
-            */
-            //}
-
+            });
         }
 
         // Need event - move to finish screen when robot finishes soldering
