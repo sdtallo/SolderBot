@@ -68,9 +68,9 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(170, 510);
+            this.label4.Location = new System.Drawing.Point(119, 508);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(889, 107);
+            this.label4.Size = new System.Drawing.Size(938, 107);
             this.label4.TabIndex = 7;
             this.label4.Text = "If needed, press the emergency button that is physically mounted on the baseboard" +
     " of the robot.";

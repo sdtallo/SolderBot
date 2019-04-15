@@ -36,7 +36,7 @@ namespace GUI_Home
             runRobot.Start();
 
             // Asynchronously reads output lines from command line
-            runRobot.BeginOutputReadLine();
+            //runRobot.BeginOutputReadLine();
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
