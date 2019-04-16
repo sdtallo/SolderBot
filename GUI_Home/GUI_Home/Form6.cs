@@ -18,6 +18,7 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
+            button2.Hide();
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
@@ -48,7 +49,7 @@ namespace GUI_Home
 
 
             // If cancelling job, exit runRobot process
-            button1.Click += delegate (object sender, EventArgs e) {
+            button2.Click += delegate (object sender, EventArgs e) {
                 endProc(sender, e, runRobot);
             };
             
@@ -56,7 +57,7 @@ namespace GUI_Home
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
-                nextScreen(sender, e, lastLine);
+                nextScreen(sender, e, lastLine, runRobot);
             };
 
             Console.WriteLine("after nextScreen event");
@@ -66,7 +67,7 @@ namespace GUI_Home
         // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
         // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
 
-        private void nextScreen(object sender, EventArgs e, string lastline)
+        private void nextScreen(object sender, EventArgs e, string lastline, Process myProc)
         {
             Console.WriteLine("choosing nextScreen");
 
@@ -84,7 +85,7 @@ namespace GUI_Home
                 Console.WriteLine("move to page 8");
 
                 this.Hide();
-                Form8 f8 = new Form8();
+                Form8 f8 = new Form8(myProc);
                 f8.ShowDialog();
                 this.Close();
             }
@@ -95,24 +96,24 @@ namespace GUI_Home
         }
 
         // Cancel job button - pressed once asks are you sure
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label5.Text = "Are you sure?";
+            button2.Show();
+            button1.Hide();
+        }
+
+        // Yes, cancel button - 
         private void endProc(object sender, EventArgs e, Process myProc)
         {
-            if (label5.Text == "Are you sure?")
-            {
-                Console.WriteLine("Job cancelled");
-                // Kill runRobot process
-                myProc.Close();
+            Console.WriteLine("Job cancelled");
+            // Kill runRobot process
+            myProc.Close();
 
-                this.Hide();
-                Form1 f1 = new Form1();
-                f1.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                label5.Text = "Are you sure?";
-                this.Text = "Yes, Cancel";
-            }
+            this.Hide();
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
+            this.Close();
         }
     }
 }
