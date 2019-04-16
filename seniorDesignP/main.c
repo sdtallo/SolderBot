@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     //if testing on personal computer
     }else{
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " _ a1:b4 _ ";
+        input = "A9, A2:A7, A1, A8, E1:E9 _  _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
     //shouldn't print error 3 unless cal.txt file is deleted
     char * error3 = "not valid format for calibration\n";
     char * error4 =  "String is empty\n";
-
 
     createFile(tempName);
     //copying the input string into a string I can edit without

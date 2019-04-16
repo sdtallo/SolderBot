@@ -70,6 +70,7 @@ void append(Location_List *head, Location *new_data)
     if (head->next == NULL)
     {
         head->next = new_node;
+        head->next->prev = head;
         //        printf("last value is ");
         //        print_loc(head->next->cur);
         return;
@@ -197,7 +198,7 @@ void createFile(char *fileLoc)
 
 
 void deleteRepeats(Location_List * head){
-    Location_List * current =head;
+    Location_List * current = head;
     while(current->next != NULL){
         Location_List * comp = current->next;
         while(comp != NULL){

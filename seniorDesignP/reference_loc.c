@@ -150,6 +150,7 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
         if(pToken == NULL)
             break;
 
+
         int ifSemiColon = countChars(pToken, ':');
         //checks if location in a range which more complicated to break up
         if(ifSemiColon > 0){
@@ -158,31 +159,27 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
             char *semiColon = (char *)malloc((iLen+1) * sizeof(char));
 
             strcpy(semiColon, pToken);
+            //splits the strings with ':' like a1:a8 into 2 letters and 2 numbers
+            int colonLoc = 0;
+            while(semiColon[colonLoc] != ':'){
+                colonLoc += 1;
+            }
 
-            char *s = ":";
-            char *t = strtok(semiColon, s);
-
-            iLen = strlen(t);
-            char * beforeColon = (char *)malloc((iLen+1) * sizeof(char));
-            strcpy(beforeColon, t);
-
-            t = strtok(NULL, s);
-
-            iLen = strlen(t);
-            char * afterColon = (char *)malloc((iLen+1) * sizeof(char));
-            strcpy(afterColon, t);
+            char * secondLetter = &semiColon[colonLoc+1];
 
             char letter1[1];
-            memcpy( letter1, &beforeColon[0], 1 );
+            memcpy( letter1, &semiColon[0], 1 );
 
-            char * num1 = &beforeColon[1];
+            iLen = (size_t)colonLoc;
+            char *num1 = (char *)malloc((iLen+1) * sizeof(char));
+            memcpy(num1, &semiColon[1], iLen);
             //converts char into int
             int row1 = atoi(num1);
 
             char letter2[1];
-            memcpy( letter2, &afterColon[0], 1 );
+            memcpy( letter2, secondLetter, 1 );
 
-            char * num2 = &afterColon[1];
+            char * num2 = &secondLetter[1];
 
             int row2 = atoi(num2);
             int lNum1 = converChartoNum(letter1[0]);
@@ -192,11 +189,12 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
             //since got the actual numbers to go through in the range here
             appendGivenRange(head, board, lNum1,lNum2,row1,row2, arrayPointer);
 
-            if(beforeColon){
-                free(beforeColon);
+            //free pointers
+            if(num1){
+                free(num1);
             }
-            if(afterColon){
-                free(afterColon);
+            if(semiColon){
+                free(semiColon);
             }
 
         }else{
@@ -216,7 +214,7 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
 
             if(temp1){
                 free(temp1);
-            }
+            } 
         }
         pToken = strtok(NULL, sSeparator);
     }
@@ -429,7 +427,6 @@ int checkFormat(char * c){
             if(t == 1){
                 t = 0;
             }
-
         }
 
     }for(size_t i =0; i<(itest-1);++i){//checks if invalid range in x
