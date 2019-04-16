@@ -4,6 +4,10 @@
 #include <string.h>
 
 
+//distance between our calibrated A0 to F0 or generally a to f
+//on each board in inches
+const static double calDistance = .68;
+
 int createArray(arrayConst ** arrayPointer, char *fileLoc){
     FILE* file_ptr = fopen(fileLoc, "rb");
     if(file_ptr == NULL){
@@ -71,25 +75,25 @@ int createArray(arrayConst ** arrayPointer, char *fileLoc){
     //was used because we were unsure how many calibration positions to intitially use and code was already written
     //when decided
     arrayConst absArray1[10][6] = {
-    {{x1,y1+0.0,z1},{x1+.7,y1+0.0,z1},{x2,y2+0.0,z2},{x2+.7,y2+0.0,z2},{x3,y3+0.0,z3},{x3+.7,y3+0.0,z3}},
+    {{x1,y1+0.0,z1},{x1+calDistance,y1+0.0,z1},{x2,y2+0.0,z2},{x2+calDistance,y2+0.0,z2},{x3,y3+0.0,z3},{x3+calDistance,y3+0.0,z3}},
 
-    {{x1,y1+0.5,z1},{x1+.7,y1+0.5,z1},{x2,y2+0.5,z2},{x2+.7,y2+0.5,z2},{x3,y3+0.5,z3},{x3+.7,y3+0.5,z3}},
+    {{x1,y1+0.5,z1},{x1+calDistance,y1+0.5,z1},{x2,y2+0.5,z2},{x2+calDistance,y2+0.5,z2},{x3,y3+0.5,z3},{x3+calDistance,y3+0.5,z3}},
 
-    {{x1,y1+1.0,z1},{x1+.7,y1+1.0,z1},{x2,y2+1.0,z2},{x2+.7,y2+1.0,z2},{x3,y3+1.0,z3},{x3+.7,y3+1.0,z3}},
+    {{x1,y1+1.0,z1},{x1+calDistance,y1+1.0,z1},{x2,y2+1.0,z2},{x2+calDistance,y2+1.0,z2},{x3,y3+1.0,z3},{x3+calDistance,y3+1.0,z3}},
 
-    {{x1,y1+1.5,z1},{x1+.7,y1+1.5,z1},{x2,y2+1.5,z2},{x2+.7,y2+1.5,z2},{x3,y3+1.5,z3},{x3+.7,y3+1.5,z3}},
+    {{x1,y1+1.5,z1},{x1+calDistance,y1+1.5,z1},{x2,y2+1.5,z2},{x2+calDistance,y2+1.5,z2},{x3,y3+1.5,z3},{x3+calDistance,y3+1.5,z3}},
 
-    {{x1,y1+2.0,z1},{x1+.7,y1+2.0,z1},{x2,y2+2.0,z2},{x2+.7,y2+2.0,z2},{x3,y3+2.0,z3},{x3+.7,y3+2.0,z3}},
+    {{x1,y1+2.0,z1},{x1+calDistance,y1+2.0,z1},{x2,y2+2.0,z2},{x2+calDistance,y2+2.0,z2},{x3,y3+2.0,z3},{x3+calDistance,y3+2.0,z3}},
 
-    {{x1,y1+2.5,z1},{x1+.7,y1+2.5,z1},{x2,y2+2.5,z2},{x2+.7,y2+2.5,z2},{x3,y3+2.5,z3},{x3+.7,y3+2.5,z3}},
+    {{x1,y1+2.5,z1},{x1+calDistance,y1+2.5,z1},{x2,y2+2.5,z2},{x2+calDistance,y2+2.5,z2},{x3,y3+2.5,z3},{x3+calDistance,y3+2.5,z3}},
 
-    {{x1,y1+3.0,z1},{x1+.7,y1+3.0,z1},{x2,y2+3.0,z2},{x2+.7,y2+3.0,z2},{x3,y3+3.0,z3},{x3+.7,y3+3.0,z3}},
+    {{x1,y1+3.0,z1},{x1+calDistance,y1+3.0,z1},{x2,y2+3.0,z2},{x2+calDistance,y2+3.0,z2},{x3,y3+3.0,z3},{x3+calDistance,y3+3.0,z3}},
 
-    {{x1,y1+3.5,z1},{x1+.7,y1+3.5,z1},{x2,y2+3.5,z2},{x2+.7,y2+3.5,z2},{x3,y3+3.5,z3},{x3+.7,y3+3.5,z3}},
+    {{x1,y1+3.5,z1},{x1+calDistance,y1+3.5,z1},{x2,y2+3.5,z2},{x2+calDistance,y2+3.5,z2},{x3,y3+3.5,z3},{x3+calDistance,y3+3.5,z3}},
 
-    {{x1,y1+4.0,z1},{x1+.7,y1+4.0,z1},{x2,y2+4.0,z2},{x2+.7,y2+4.0,z2},{x3,y3+4.0,z3},{x3+.7,y3+4.0,z3}},
+    {{x1,y1+4.0,z1},{x1+calDistance,y1+4.0,z1},{x2,y2+4.0,z2},{x2+calDistance,y2+4.0,z2},{x3,y3+4.0,z3},{x3+calDistance,y3+4.0,z3}},
 
-    {{x1,y1+4.5,z1},{x1+.7,y1+4.5,z1},{x2,y2+4.5,z2},{x2+.7,y2+4.5,z2},{x3,y3+4.5,z3},{x3+.7,y3+4.5,z3}}
+    {{x1,y1+4.5,z1},{x1+calDistance,y1+4.5,z1},{x2,y2+4.5,z2},{x2+calDistance,y2+4.5,z2},{x3,y3+4.5,z3},{x3+calDistance,y3+4.5,z3}}
 
     };
     //assign created array values to array const pointer

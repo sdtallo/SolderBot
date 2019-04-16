@@ -11,6 +11,8 @@ struct arrayConst{
 
 };
 
+
+
 int createArray(arrayConst ** arrayPointer, char *fileLoc);
 
 #endif
