@@ -26,21 +26,25 @@ namespace GUI_Home
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
+
             };
             runRobot.Start();
+            Console.WriteLine("running");
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
 
             // Determine what the last line is
-            string lastLine = "";
+            string lastLine = "mystring";
             while (!runRobot.StandardOutput.EndOfStream)
             {
-                lastLine = runRobot.StandardOutput.ReadLine();
+//                lastLine = runRobot.StandardOutput.ReadLine();
+                Console.WriteLine("lastLine is " + lastLine);
             }
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
+            Console.WriteLine("");
             runRobot.Exited += delegate (object sender, EventArgs e) {
                 nextScreen(sender, e, lastLine);
             };
