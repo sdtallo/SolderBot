@@ -37,15 +37,12 @@ namespace GUI_Home
             // https://stackoverflow.com/questions/44294314/process-start-not-working-in-c-sharp-to-call-python-script
 
             roboInfo.FileName = "../../usr/bin/env";
-            roboInfo.Arguments = "/c solderbot/caller.py";
-            roboInfo.WorkingDirectory = Path.GetDirectoryName("../../usr/bin/env");
+            roboInfo.Arguments = "solderbot/caller.py";
             roboInfo.RedirectStandardOutput = true;
             roboInfo.UseShellExecute = false;
             roboInfo.CreateNoWindow = true;
 
-            Process runRobot = new Process();
-            runRobot.StartInfo = roboInfo;
-            runRobot.Start();
+            Process runRobot = Process.Start(roboInfo);
 
 //            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 //            runRobot.StartInfo.RedirectStandardOutput = true;
@@ -57,7 +54,7 @@ namespace GUI_Home
             string lastLine = "mystring";
             while (!runRobot.StandardOutput.EndOfStream)
             {
-//                lastLine = runRobot.StandardOutput.ReadLine();
+                lastLine = runRobot.StandardOutput.ReadLine();
             }
             Console.WriteLine("lastLine is " + lastLine);
 
