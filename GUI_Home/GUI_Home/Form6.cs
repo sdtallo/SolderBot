@@ -27,27 +27,32 @@ namespace GUI_Home
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-            
-            // When robot responds back with "done", move to next screen
-            runRobot.EnableRaisingEvents = true;
-            runRobot.Exited += new EventHandler(soldering_Complete);
-//            runRobot.OutputDataReceived += new DataReceivedEventHandler(eStop);
-            
             runRobot.Start();
 
-            // Asynchronously reads output lines from command line
-            //runRobot.BeginOutputReadLine();
+            // When robot responds back with "done", move to next screen
+            runRobot.EnableRaisingEvents = true;
+
+            // Determine what the last line is
+            string lastLine = "";
+            while (!runRobot.StandardOutput.EndOfStream)
+            {
+                lastLine = runRobot.StandardOutput.ReadLine();
+            }
+
+            // Determine how the program exited
+            // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
+            runRobot.Exited += delegate (object sender, EventArgs e) {
+                nextScreen(sender, e, lastLine);
+            };
+
+            //runRobot.OutputDataReceived += new DataReceivedEventHandler(eStop);
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
             //runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
-            //while(!runRobot.HasExited)
-            //{
-                // Read line, if emergency stop line, execute that code
-                /*
-                string mymsg = runRobot.StandardOutput.ReadLine();
-                Console.WriteLine("MYMSG = " + mymsg);
+            // Read line, if emergency stop line, execute that code 
 
+            /*
                 if (mymsg == "Emergency stop pressed")
                 {
                     Console.WriteLine("E-stop, closing process");
@@ -61,7 +66,6 @@ namespace GUI_Home
                     this.Close();
                 }
                 */
-            //}
             //});
         }
 
@@ -69,14 +73,25 @@ namespace GUI_Home
         // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
         // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
 
-        private void soldering_Complete(object sender, EventArgs e)
+        private void nextScreen(object sender, EventArgs e, string lastline)
         {
-            this.Hide();
-            Form7 f7 = new Form7();
-            f7.ShowDialog();
-            this.Close();
+            if (lastline == "Job completed")
+            {
+                this.Hide();
+                Form7 f7 = new Form7();
+                f7.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                this.Hide();
+                Form8 f8 = new Form8();
+                f8.ShowDialog();
+                this.Close();
+            }
         }
 
+        /*
         // Emergency stop
         private void eStop(object sender, EventArgs e)
         {
@@ -87,5 +102,6 @@ namespace GUI_Home
             f8.ShowDialog();
             this.Close();
         }
+        */
     }
 }
