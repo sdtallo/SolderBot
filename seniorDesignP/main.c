@@ -9,36 +9,40 @@
 
 int main(int argc, char *argv[])
 {
-
     char *tempName;
     char *input;
     char *calRead;
-    if(argc > 1){//for integrated program since will be given arguments
+    //for integrated program since will be given arguments
+    if(argc > 1){
         tempName = "/home/pi/solderbot/gCodeLoc.txt";
         input = argv[1];
         calRead = "/home/pi/solderbot/cal.txt";
-
-    }else{//if testing on personal computer
+    //if testing on personal computer
+    }else{
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = " _ A0 _ ";
+        input = " _ a1 _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
     char * error1 = "Format is invalid\n";
     char * error2 = "Invalid Range\n";
-    char * error3 = "not valid format for calibration\n";//shouldn't print unless cal.txt file is deleted
+    //shouldn't print error 3 unless cal.txt file is deleted
+    char * error3 = "not valid format for calibration\n";
     char * error4 =  "String is empty\n";
 
 
     createFile(tempName);
-
+    //copying the input string into a string I can edit without
+    //worrying of erasing the initially given value
     size_t itest = strlen(input);
     char *sTest = (char *)malloc((itest+1) * sizeof(char));
 
     strcpy(sTest, input);
+    //remove the spaces in the string
     remove_all_chars(sTest, ' ');
-
+    //check the format
     int testS = checkFormat(sTest);
+    //free the temporary copy because is no longer needed
     free(sTest);
 
     if(testS == 1){
@@ -72,19 +76,20 @@ int main(int argc, char *argv[])
         printf("%s", error3);
         return 3;//return 3 if something is wrong in file
     }
-
+    //creates another copy of the initial input
     size_t iLen = strlen(input);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
     strcpy(sInput, input);
 
-    char *sSeparator = "_";
+    char *sSeparator = "_";//deleimiter seperating each board
     char *pToken = strtok(sInput, sSeparator);
 
     int boardNum = 1;
     char * board1Str = NULL;
     char * board2Str = NULL;
     char * board3Str = NULL;
+    //Code splitting the string into three seperate strings for each board
     //https://stackoverflow.com/questions/30415663/c-using-strtok-to-parse-command-line-inputs
     while(1)
     {
@@ -116,14 +121,15 @@ int main(int argc, char *argv[])
 
     Location_List* head = NULL;
     Location * loc0 = location_new(0,999,0);
+    //put a basic value in the head since my code LL code require LL not be empty
     head = createLL(loc0);
-    //Make sure Sam send " _ " otherwise this method is useless
+    //Make sure calling program sends " _ " otherwise this method is useless
     remove_all_chars(board1Str, ' ');
     remove_all_chars(board2Str, ' ');
     remove_all_chars(board3Str, ' ');
 
-
-    if(board1Str[0] != '\0'){
+    //goes about splitting each substring into smaller parts to get each location in each
+    if(board1Str[0] != '\0'){//checks if string is empty before splitting it further
         appendGivenBoardStr(head, 1,board1Str, arrayPointer);
     }
     if(board2Str[0] != '\0'){
@@ -138,7 +144,7 @@ int main(int argc, char *argv[])
         return 4;
     }
 
-    deleteRepeats(head);
+    deleteRepeats(head);//delete repeates in LL
 
     printf("This is a valid string\n");
     printf("String => %s\n", sInput);
@@ -147,21 +153,17 @@ int main(int argc, char *argv[])
     printf("Board 2 = .%s.\n", board2Str);
     printf("Board 3 = .%s.\n", board3Str);
 
-
     printf("Created DLL is: ");
-
 
     Location_List ** headPointer = &head;
 
     sortDLL(headPointer);//sorts the LL with largest Y's going first
 
-    if(head->next != NULL){
+    if(head->next != NULL){//checks if LL is empty before printing it and freeing variables
         printList(head->next);
         moveAllLoc(head->next,tempName);
 
         //freeing pointers
-
-        freeList(head);
 
         if(arrayPointer){
             for(int i=0;i<10;i++)
@@ -177,17 +179,22 @@ int main(int argc, char *argv[])
         if(board3Str){
             free(board3Str);
         }
-
     }
+
+    //still need to free LL if 'empty', I always put an initial value into it
+    //though unlikely since previous code
+    //already checks if given string is empty and returns
+    freeList(head);
+
     //returns 0 if completed successfully
     return 0;
 }
 
-    //return 0 = completed successfully
-    //return 1 = something is wrong in given string argument, likely format, printf("Format is invalid\n");
-    //return 2 = entered values are out of range, printf("Invalid Range\n");
-    //return 3 = something wrong in cal.txt likely not valid format
-    //return 4 = "String is empty\n"
+//return 0 = completed successfully
+//return 1 = something is wrong in given string argument, likely format, printf("Format is invalid\n");
+//return 2 = entered values are out of range, printf("Invalid Range\n");
+//return 3 = something wrong in cal.txt likely not valid format
+//return 4 = "String is empty\n"
 
 
 //links

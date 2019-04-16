@@ -6,8 +6,8 @@
 #include <stdio.h>
 
 
-
-Location_List * createLLWiR(int board, char column, int row, arrayConst ** arrayPointer){
+Location_List * createLLWiR(int board, char column, int row,
+                            arrayConst ** arrayPointer){
     Location_List *locL = NULL;
     locL = (Location_List*)malloc(sizeof(Location_List));
     Location * loc = createLocWiRef(board,  column, row, arrayPointer);
@@ -19,27 +19,29 @@ Location_List * createLLWiR(int board, char column, int row, arrayConst ** array
 
 }
 
-Location_List * addLocRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer){
+Location_List * addLocRef(Location_List* head, int board, char column,
+                          int row, arrayConst ** arrayPointer){
     Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     head = push(head,loc);
     return head;
 }
 
-void insertAfterRef(Location_List* prev_node, int board, char column, int row, arrayConst ** arrayPointer){
+void insertAfterRef(Location_List* prev_node, int board, char column, int row,
+                    arrayConst ** arrayPointer){
     Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     insertAfter(prev_node,loc);
 
 }
 
-void appendRef(Location_List* head, int board, char column, int row, arrayConst ** arrayPointer){
+void appendRef(Location_List* head, int board, char column, int row,
+               arrayConst ** arrayPointer){
     Location * loc = createLocWiRef(board,  column, row, arrayPointer);
     append(head,loc);
 
-
 }
 
-
-Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPointer){
+Location * createLocWiRef(int board, char column, int row,
+                          arrayConst ** arrayPointer){
 
     double locX;
     double locY;
@@ -82,6 +84,7 @@ Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPo
 
     int xArray = newColumn -1;
     int yArray;
+    //the row on the baords are 1-46 but in array is 0-45 so subtract 1
     if(row > 0){
         yArray = row -1;
     }else{
@@ -94,6 +97,8 @@ Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPo
 
     int remainderX;
     int remainderY;
+    //each board has 2 reference each so to get the reference locations
+    //multiple the board by 10 since it is made of 5 pins each in each column
     xArray += (board-1)*10;
 
 
@@ -102,31 +107,22 @@ Location * createLocWiRef(int board, char column, int row, arrayConst ** arrayPo
         absYArray = 9;
         remainderY = (yArray - 45);
     }else{
+        //finds the reference by divinding by 5
         absXArray = xArray/5;
         absYArray = yArray/5;
-
+        //finds remainder so know location in reference since spacing is
+        //assumed to be exact inside the reference
         remainderY = yArray%5;
     }
     remainderX = xArray%5;
-
-
-    //    locX = (absArray[absYArray][absXArray].x_loc)+(remainderX*.1);
-    //    locY = (absArray[absYArray][absXArray].y_loc)+(remainderY*.1);
-    //    locZ = (absArray[absYArray][absXArray].z_loc);
-
+    //creates the locations from the reference and relative postion in the reference
     locX = (arrayPointer[absYArray][absXArray].x_loc)+(remainderX*.1);
     locY = (arrayPointer[absYArray][absXArray].y_loc)+(remainderY*.1);
     locZ = (arrayPointer[absYArray][absXArray].z_loc);
 
-    //    locX = (absArray[absXArray][absYArray].x_loc)+(remainderX*.1);
-    //    locY = (absArray[absXArray][absYArray].y_loc)+(remainderY*.1);
-    //    locZ = (absArray[absXArray][absYArray].z_loc);
-
-
     return location_new(locX, locY,locZ);
 
 }
-
 
 //https://stackoverflow.com/questions/9895216/how-to-remove-all-occurrences-of-a-given-character-from-string-in-c
 void remove_all_chars(char* str, char c) {
@@ -138,8 +134,9 @@ void remove_all_chars(char* str, char c) {
     *pw = '\0';
 }
 
-
-void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst ** arrayPointer){
+//splits board strings into smaller stings of location values
+void appendGivenBoardStr(Location_List * head, int board, char * str1,
+                         arrayConst ** arrayPointer){
     size_t iLen = strlen(str1);
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
@@ -149,16 +146,14 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
 
     char *sSeparator = ",";
     char *pToken = strtok(sInput, sSeparator);
-
-
+    //continues to split string locations till empty and breaks
     while(1)
     {
         if(pToken == NULL)
             break;
-        //        printf("Token = %s\n", pToken);
 
         int ifSemiColon = countChars(pToken, ':');
-
+        //checks if location in a range which more complicated to break up
         if(ifSemiColon > 0){
             //if there is a semicolon
             size_t iLen = strlen(pToken);
@@ -166,15 +161,12 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
 
             strcpy(semiColon, pToken);
 
-            //            printf("semiColon = %s\n",semiColon);
-
             char *s = ":";
             char *t = strtok(semiColon, s);
 
             iLen = strlen(t);
             char * beforeColon = (char *)malloc((iLen+1) * sizeof(char));
             strcpy(beforeColon, t);
-            //            printf("before semiColon = %s\n",beforesemiColon);
 
             t = strtok(NULL, s);
 
@@ -182,16 +174,12 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
             char * afterColon = (char *)malloc((iLen+1) * sizeof(char));
             strcpy(afterColon, t);
 
-            //            printf("after semiColon = %s\n",aftersemiColon);
-
-
             char letter1[1];
             memcpy( letter1, &beforeColon[0], 1 );
 
             char * num1 = &beforeColon[1];
-
+            //converts char into int
             int row1 = atoi(num1);
-
 
             char letter2[1];
             memcpy( letter2, &afterColon[0], 1 );
@@ -202,12 +190,8 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
             int lNum1 = converChartoNum(letter1[0]);
             int lNum2 = converChartoNum(letter2[0]);
 
-
-            //            printf("first column is %i.\n",lNum1);
-            //            printf("last column is %i.\n",lNum2);
-            //            printf("first row is %i.\n",row1);
-            //            printf("last row is %i.\n",row2);
-
+            //code wrttin to call appends for all the values in t range
+            //since got the actual numbers to go through in the range here
             appendGivenRange(head, board, lNum1,lNum2,row1,row2, arrayPointer);
 
             if(beforeColon){
@@ -226,15 +210,11 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
 
             char letter[1];
             memcpy( letter, &temp1[0], 1 );
-            //           strncpy(letter, temp1[0],1);
 
+            char * temp2 = &temp1[1];
 
-            char * temp3 = &temp1[1];
-            //            printf("letter is %c\n", letter[0]);
-            //            printf("number is %s\n", temp3);
+            int row = atoi(temp2);
 
-            int row = atoi(temp3);
-            //            printf("this is row int %i\n",row);
             appendRef(head,board, letter[0], row, arrayPointer);
 
             if(temp1){
@@ -249,7 +229,7 @@ void appendGivenBoardStr(Location_List * head,int board, char * str1, arrayConst
 
 
 //https://stackoverflow.com/questions/4235519/counting-number-of-occurrences-of-a-char-in-a-string-in-c
-int countChars( char* s, char c )
+int countChars(char* s, char c)
 {
     return *s == '\0'
             ? 0
@@ -322,12 +302,15 @@ char convertNumtoChar(int n){
 
 
 
-
-void appendGivenRange(Location_List * head, int board, int firstColumn, int lastColumn, int firstRow, int lastRow, arrayConst ** arrayPointer){
+//goes through a given range value like 1-1 to 5-6 it requires the columns
+//be converted to ints first to make it easier the converts columnes
+//back into characters before colled the appedRef which takes in a location
+void appendGivenRange(Location_List * head, int board, int firstColumn,
+                      int lastColumn, int firstRow, int lastRow, arrayConst ** arrayPointer){
 
     for(int j = firstRow;j<=lastRow;++j){
         for(int i = firstColumn; i <= lastColumn;++i){
-
+            //convertes num back to char because appendRef requires it
             char col = convertNumtoChar(i);
             appendRef(head,board,col,j, arrayPointer);
         }
@@ -336,7 +319,7 @@ void appendGivenRange(Location_List * head, int board, int firstColumn, int last
 }
 
 
-int isNum(char c){
+int isNum(char c){//checks if character is a num ie (0,1,2,...9)
     int check;
     if(c == '0'){
         check = 1;
@@ -374,7 +357,7 @@ int isNum(char c){
     return check;
 }
 
-int isLet(char c){
+int isLet(char c){//checks if valid letter on board ie (a,b,c...j)
 
     int check;
     if(c == 'A' || c == 'a'){
@@ -413,7 +396,7 @@ int isLet(char c){
     return check;
 }
 
-
+//check if the format is valid and if the range is valid as well
 int checkFormat(char * c){
     size_t itest = strlen(c);
     char * sTest = (char *)malloc((itest+1) * sizeof(char));
@@ -469,11 +452,11 @@ int checkFormat(char * c){
                 }
             }
         }
-
     }
     size_t begining = 0;
     size_t end = 0;
-    for(size_t i =0; i<(itest-1);++i){//checks if invalid range for y
+    //checks if invalid range for y
+    for(size_t i =0; i<(itest-1);++i){
         current = sTest[i];
         next = sTest[i+1];
         if(isNum(current) == 1&& begining ==0){
@@ -481,7 +464,8 @@ int checkFormat(char * c){
 
         }if(isNum(current) == 1 && isNum(next) != 1){
             end = i;
-        }else if(i == itest - 2 && isNum(next) == 1){//if there is a number at the very end of the string
+        //if there is a number at the very end of the string
+        }else if(i == itest - 2 && isNum(next) == 1){
             end = i + 1;
         }
         if(begining != 0 && end != 0){
@@ -497,7 +481,6 @@ int checkFormat(char * c){
                     t = 2;
                 }
             }
-
         }
     }
     if(sTest){

@@ -11,8 +11,6 @@ struct arrayConst{
 
 };
 
-//extern struct arrayConst absArray[10][6];
-
 int createArray(arrayConst ** arrayPointer, char *fileLoc);
 
 #endif

@@ -93,12 +93,6 @@ void printList(Location_List* node){
         //        last = node;
         node = node->next;
     }
-    //    printf("#######################################################");
-    //    printf("\nTraversal in reverse direction \n");
-    //    while(last != NULL){
-    //        print_loc(last->cur);
-    //        last = last->prev;
-    //    }
 }
 
 
@@ -150,11 +144,8 @@ void moveAllLoc(Location_List *head,char *fileLoc){
         Location *loc1 = location_new(temp->cur->x_loc,temp->cur->y_loc,temp->cur->z_loc);
         Location *loc2 = location_new(temp->next->cur->x_loc,temp->next->cur->y_loc,temp->next->cur->z_loc);
 
-
         moveLocToLoc(loc1,loc2,fileLoc);
-        //        solder();
-        //        location_free(loc1);
-        //        location_free(loc2);
+
         temp = temp->next;
 
     }
@@ -165,9 +156,11 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
     char firstCommand[75];
     char secondCommand[75];
     char thirdCommand[75];
-    double upZ = 3;//location of z we want it to go to, to avoid hitting the pins before we move it to the next location;
+    //location of z we want it to go to, to avoid hitting the pins before we move it to the next location;
+    double upZ = 3;
     double downZ = .8;
-    Location * moveUp = location_new(firstLoc->x_loc,firstLoc->y_loc,downZ);//creat a location above the first pin to move to
+    //creat a location above the first pin to move to
+    Location * moveUp = location_new(firstLoc->x_loc,firstLoc->y_loc,downZ);
     move_loc2(moveUp,firstCommand);
     Location * moveAboveSecond = location_new(secondLoc->x_loc,secondLoc->y_loc,upZ);
     move_loc2(moveAboveSecond,secondCommand);
@@ -185,10 +178,6 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
         printf("Error opening file!\n");
         exit(1);
     }
-    //    fputs (firstCommand, file_ptr);
-    //    fputs ("\n", file_ptr);
-    //    fputs (secondCommand, file_ptr);
-    //    fputs ("\n", file_ptr);
     fputs (thirdCommand, file_ptr);
     fputs ("\n", file_ptr);
 
@@ -218,7 +207,9 @@ void deleteRepeats(Location_List * head){
             }else{
                 compare = 0;
             }
-
+            //if an identical value is found delete it
+            //and change the pointers to point correctly
+            //to the other locations
             if(compare == 1){
                 Location_List * temp = comp->next;
                 comp->prev->next = comp->next;
@@ -228,12 +219,10 @@ void deleteRepeats(Location_List * head){
                 free(comp->cur);
                 free(comp);
                 comp = temp;
-                //                printf("deleted repeats\n");
             }else{
                 comp = comp->next;
 
             }
-
         }
         if(current->next != NULL)
             current = current->next;
@@ -243,21 +232,25 @@ void deleteRepeats(Location_List * head){
 
 void sortDLL(Location_List ** head){
     double largestValue = 0;
+    //starts with largest pointer pointing to the head
     Location_List * largeValuePointer = *head;
     Location_List * currentPointer;
     Location_List * sortValuePointer = NULL;
     currentPointer = largeValuePointer;
-
+    //if the LL is empty or only 1 value return
     if(largeValuePointer->next == NULL){
         return;
     }else if(largeValuePointer->next->next == NULL){
         return;
     }
-
+    //the largest value pointer will move down the LL
+    //with each value once moved being the largest
+    //value for that section of the LL
     while(largeValuePointer->next != NULL){
         largestValue = 0;
         sortValuePointer = NULL;
         currentPointer = largeValuePointer;
+        //find the largest value in the LL section
         while(currentPointer->next != NULL){
             currentPointer = currentPointer->next;
             if(currentPointer->cur->y_loc >= largestValue){
@@ -265,6 +258,9 @@ void sortDLL(Location_List ** head){
                 sortValuePointer = currentPointer;
             }
         }
+        //if a value is found, put it after the largest value
+        //then move the pointer so the "second" largest is now
+        //the largest for that section
         if(sortValuePointer != NULL){
             currentPointer = sortValuePointer;
             if(currentPointer != largeValuePointer){
@@ -282,6 +278,8 @@ void sortDLL(Location_List ** head){
                 largeValuePointer = currentPointer;
             }
         }else{
+            //if there isn't a value found to be the largest just move
+            //the pointer down until breaks out of loop
             if(largeValuePointer->next != NULL)
                 largeValuePointer = largeValuePointer->next;
         }

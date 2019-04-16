@@ -4,32 +4,6 @@
 #include <string.h>
 
 
-/*
-struct arrayConst absArray[10][6] = {
-{{6.26,4.69,0.63},{6.96,4.69,0.63},{7.63,4.69,0.62},{8.33,4.69,0.62},{9.02,4.69,0.61},{9.72,4.69,0.61}},
-
-{{6.26,5.19,0.63},{6.96,5.19,0.63},{7.63,5.19,0.62},{8.33,5.19,0.62},{9.02,5.19,0.61},{9.27,5.19,0.61}},
-
-{{6.26,5.69,0.63},{6.96,5.69,0.63},{7.63,5.69,0.62},{8.33,5.69,0.62},{9.02,5.69,0.61},{9.27,5.69,0.61}},
-
-{{6.26,6.19,0.63},{6.96,6.19,0.63},{7.63,6.19,0.62},{8.33,6.19,0.62},{9.02,6.19,0.61},{9.27,6.19,0.61}},
-
-{{6.26,6.69,0.63},{6.96,6.69,0.63},{7.63,6.69,0.62},{8.33,6.69,0.62},{9.02,6.69,0.61},{9.27,6.69,0.61}},
-
-{{6.26,7.19,0.63},{6.96,7.19,0.63},{7.63,7.19,0.62},{8.33,7.19,0.62},{9.02,7.19,0.61},{9.27,7.19,0.61}},
-
-{{6.26,7.69,0.63},{6.96,7.69,0.63},{7.63,7.69,0.62},{8.33,7.69,0.62},{9.02,7.69,0.61},{9.27,7.69,0.61}},
-
-{{6.26,8.19,0.63},{6.96,8.19,0.63},{7.63,8.19,0.62},{8.33,8.19,0.62},{9.02,8.19,0.61},{9.27,8.19,0.61}},
-
-{{6.26,8.69,0.63},{6.96,8.69,0.63},{7.63,8.69,0.62},{8.33,8.69,0.62},{9.02,8.69,0.61},{9.27,8.69,0.61}},
-
-{{6.26,9.19,0.63},{6.96,9.19,0.63},{7.63,9.19,0.62},{8.33,9.19,0.62},{9.02,9.19,0.61},{9.27,9.19,0.61}}
-
-};
-*/
-
-
 int createArray(arrayConst ** arrayPointer, char *fileLoc){
     FILE* file_ptr = fopen(fileLoc, "rb");
     if(file_ptr == NULL){
@@ -37,11 +11,11 @@ int createArray(arrayConst ** arrayPointer, char *fileLoc){
         exit(1);
     }
 
-
     char buffer[255];
     int lineNum = 0;
-
-
+    //initialize as all zero since cal.txt is not going to be those numbers
+    //and I can assume something went wrong if still have those values
+    //asfter scanning the file
     double x1 = 0;
     double x2 = 0;
     double x3 = 0;
@@ -53,7 +27,7 @@ int createArray(arrayConst ** arrayPointer, char *fileLoc){
     double z1 = 0;
     double z2 = 0;
     double z3 = 0;
-
+    //gets the specific calibrations numbers in the cal.txt file
     while(fgets(buffer, 255, (FILE*) file_ptr)) {
         char temp[4];
         strncpy ( temp, buffer+2, 4);
@@ -82,6 +56,7 @@ int createArray(arrayConst ** arrayPointer, char *fileLoc){
 
     fclose(file_ptr);
 
+    //this is where I check I something might have went wrong
     if(x1 == 0.0 || x2 == 0.0 || x3 == 0.0){
         return 1;
     }else if(y1 == 0.0 || y2 == 0.0 || y3 == 0.0){
@@ -92,8 +67,9 @@ int createArray(arrayConst ** arrayPointer, char *fileLoc){
 
     }
 
-
-
+    //3 boards of a-j and 1-46 are split into 5 by 5 location references based on 3 calibrations given
+    //was used because we were unsure how many calibration positions to intitially use and code was already written
+    //when decided
     arrayConst absArray1[10][6] = {
     {{x1,y1+0.0,z1},{x1+.7,y1+0.0,z1},{x2,y2+0.0,z2},{x2+.7,y2+0.0,z2},{x3,y3+0.0,z3},{x3+.7,y3+0.0,z3}},
 
