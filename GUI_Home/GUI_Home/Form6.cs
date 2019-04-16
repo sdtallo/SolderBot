@@ -27,7 +27,7 @@ namespace GUI_Home
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
             roboInfo.WorkingDirectory = "";
-            roboInfo.RedirectStandardOutput = true;
+//            roboInfo.RedirectStandardOutput = true;
             roboInfo.UseShellExecute = false;
             roboInfo.CreateNoWindow = true;
 
@@ -59,7 +59,8 @@ namespace GUI_Home
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
-                lastLine = runRobot.StandardOutput.ReadLine();
+
+//                lastLine = runRobot.StandardOutput.ReadLine();
                 count = count + 1;
                 Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
 
