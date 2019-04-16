@@ -21,10 +21,12 @@ namespace GUI_Home
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
+            Console.WriteLine("UserInteractive: {0}", Environment.UserInteractive);
 
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
+            roboInfo.WorkingDirectory = "";
             roboInfo.RedirectStandardOutput = true;
             roboInfo.UseShellExecute = false;
             roboInfo.CreateNoWindow = true;
