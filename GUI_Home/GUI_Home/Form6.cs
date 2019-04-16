@@ -106,9 +106,9 @@ namespace GUI_Home
             }
         }
 
-        private void Form6_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            this.ShowDialog();
+            // do nothing
         }
     }
 }
