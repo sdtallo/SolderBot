@@ -19,23 +19,9 @@ namespace GUI_Home
         {
             InitializeComponent();
             // Call robot - run from /home/pi or Desktop icon
-            // Assistance from https://stackoverflow.com/questions/11779143/how-do-i-run-a-python-script-from-c
-/*
-            Process runRobot = new Process();
-            runRobot.StartInfo = new ProcessStartInfo("../../usr/bin/env", "solderbot/caller.py")
-            {
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            runRobot.Start();
-            */
             Console.WriteLine("running");
 
             ProcessStartInfo roboInfo = new ProcessStartInfo();
-
-            // https://stackoverflow.com/questions/44294314/process-start-not-working-in-c-sharp-to-call-python-script
-
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
             roboInfo.RedirectStandardOutput = true;
@@ -43,9 +29,10 @@ namespace GUI_Home
             roboInfo.CreateNoWindow = true;
 
             Process runRobot = Process.Start(roboInfo);
+            Console.WriteLine("process started");
 
-//            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
-//            runRobot.StartInfo.RedirectStandardOutput = true;
+            //Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
+            //runRobot.StartInfo.RedirectStandardOutput = true;
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
@@ -60,10 +47,11 @@ namespace GUI_Home
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
-            Console.WriteLine("");
             runRobot.Exited += delegate (object sender, EventArgs e) {
                 nextScreen(sender, e, lastLine);
             };
+
+            Console.WriteLine("after nextScreen event");
 
             //runRobot.OutputDataReceived += new DataReceivedEventHandler(eStop);
 
@@ -95,6 +83,8 @@ namespace GUI_Home
 
         private void nextScreen(object sender, EventArgs e, string lastline)
         {
+            Console.WriteLine("choosing nextScreen");
+
             if (lastline == "Job completed")
             {
                 this.Hide();
@@ -110,18 +100,5 @@ namespace GUI_Home
                 this.Close();
             }
         }
-
-        /*
-        // Emergency stop
-        private void eStop(object sender, EventArgs e)
-        {
-            Console.WriteLine("opening form 8");
-
-            this.Hide();
-            Form8 f8 = new Form8();
-            f8.ShowDialog();
-            this.Close();
-        }
-        */
     }
 }
