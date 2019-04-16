@@ -26,7 +26,6 @@ namespace GUI_Home
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
-
             };
             runRobot.Start();
             Console.WriteLine("running");
@@ -39,8 +38,8 @@ namespace GUI_Home
             while (!runRobot.StandardOutput.EndOfStream)
             {
 //                lastLine = runRobot.StandardOutput.ReadLine();
-                Console.WriteLine("lastLine is " + lastLine);
             }
+            Console.WriteLine("lastLine is " + lastLine);
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
