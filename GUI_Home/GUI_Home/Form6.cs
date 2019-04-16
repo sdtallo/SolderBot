@@ -22,7 +22,7 @@ namespace GUI_Home
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
-/*
+
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
@@ -33,7 +33,7 @@ namespace GUI_Home
 
             Process runRobot = Process.Start(roboInfo);
             Console.WriteLine("process started");
-
+/*
             //Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
