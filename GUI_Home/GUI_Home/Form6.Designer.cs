@@ -33,7 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.process1 = new System.Diagnostics.Process();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +60,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(190, 521);
+            this.label3.Location = new System.Drawing.Point(472, 525);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(261, 65);
             this.label3.TabIndex = 6;
@@ -70,11 +69,11 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 311);
+            this.label4.Location = new System.Drawing.Point(32, 323);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(1158, 144);
             this.label4.TabIndex = 7;
-            this.label4.Text = "If needed, press the emergency button that is physically mounted on the baseboard" +
+            this.label4.Text = "If needed, press the EMERGENCY BUTTON that is physically mounted on the baseboard" +
     " of the robot.";
             // 
             // process1
@@ -87,21 +86,11 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(742, 420);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(316, 68);
-            this.label5.TabIndex = 9;
-            this.label5.Text = " ";
-            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1236, 698);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -122,6 +111,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Diagnostics.Process process1;
-        private System.Windows.Forms.Label label5;
     }
 }

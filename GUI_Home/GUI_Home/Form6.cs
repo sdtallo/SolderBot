@@ -18,7 +18,6 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-//            button2.Hide();
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
@@ -39,22 +38,7 @@ namespace GUI_Home
 
             // Determine what the last line is
             string lastLine = "mystring";
-            int count = 0;
-
-            // This line is what's broken...
-/*            //while (!runRobot.StandardOutput.EndOfStream)
-            if (runRobot.HasExited == true)
-            {
-                lastLine = runRobot.StandardOutput.ReadLine();
-                count = count + 1;
-                Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
-            }
-
-            // If cancelling job, exit runRobot process
-            button2.Click += delegate (object sender, EventArgs e) {
-                endProc(sender, e, runRobot);
-            };
-*/            
+            int count = 0;        
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
@@ -83,7 +67,8 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 7");
 
-                this.Hide();
+                // Didn't move to page 7
+//                this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
@@ -102,27 +87,5 @@ namespace GUI_Home
                 Console.WriteLine("uh oh");
             }
         }
-/*
-        // Cancel job button - pressed once asks are you sure
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label5.Text = "Are you sure?";
-            button2.Show();
-            button1.Hide();
-        }
-
-        // Yes, cancel button - 
-        private void endProc(object sender, EventArgs e, Process myProc)
-        {
-            Console.WriteLine("Job cancelled");
-            // Kill runRobot process
-            myProc.Close();
-
-            this.Hide();
-            Form1 f1 = new Form1();
-            f1.ShowDialog();
-            this.Close();
-        }
-*/
     }
 }
