@@ -141,8 +141,6 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
     char *sInput = (char *)malloc((iLen+1) * sizeof(char));
 
     strcpy(sInput, str1);
-    //    printf("String => %s\n", sInput);
-
 
     char *sSeparator = ",";
     char *pToken = strtok(sInput, sSeparator);
@@ -201,7 +199,6 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
                 free(afterColon);
             }
 
-
         }else{
             //if not get parts and split them
             size_t numLen = strlen(pToken);
@@ -223,10 +220,7 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
         }
         pToken = strtok(NULL, sSeparator);
     }
-
-
 }
-
 
 //https://stackoverflow.com/questions/4235519/counting-number-of-occurrences-of-a-char-in-a-string-in-c
 int countChars(char* s, char c)
@@ -301,7 +295,6 @@ char convertNumtoChar(int n){
 }
 
 
-
 //goes through a given range value like 1-1 to 5-6 it requires the columns
 //be converted to ints first to make it easier the converts columnes
 //back into characters before colled the appedRef which takes in a location
@@ -317,7 +310,6 @@ void appendGivenRange(Location_List * head, int board, int firstColumn,
     }
 
 }
-
 
 int isNum(char c){//checks if character is a num ie (0,1,2,...9)
     int check;

@@ -68,13 +68,15 @@ int main(int argc, char *argv[])
     if(arrayReport == 0){
 
     }else{
-        if(arrayPointer){//frees before leaving
+        if(arrayPointer){
+            //frees pointers before leaving
             for(int i=0;i<10;i++)
                 free(arrayPointer[i]);
             free(arrayPointer);
         }
         printf("%s", error3);
-        return 3;//return 3 if something is wrong in file
+        //return 3 if something is wrong in file
+        return 3;
     }
     //creates another copy of the initial input
     size_t iLen = strlen(input);
@@ -143,8 +145,8 @@ int main(int argc, char *argv[])
         printf("%s", error4);
         return 4;
     }
-
-    deleteRepeats(head);//delete repeates in LL
+    //delete repeates in LL
+    deleteRepeats(head);
 
     printf("This is a valid string\n");
     printf("String => %s\n", sInput);
@@ -157,9 +159,11 @@ int main(int argc, char *argv[])
 
     Location_List ** headPointer = &head;
 
-    sortDLL(headPointer);//sorts the LL with largest Y's going first
+    //sorts the LL with largest Y's going first
+    sortDLL(headPointer);
 
-    if(head->next != NULL){//checks if LL is empty before printing it and freeing variables
+    //checks if LL is empty before printing it and freeing variables
+    if(head->next != NULL){
         printList(head->next);
         moveAllLoc(head->next,tempName);
 
