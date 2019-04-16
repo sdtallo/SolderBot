@@ -29,6 +29,8 @@ namespace GUI_Home
         {
             this.Hide();
             Form6 f6 = new Form6();
+//            f6.Load += (sender, e) => (sender as Form6).Visible = true;
+//            f6.Visible = true;
             f6.ShowDialog();
             this.Close();
         }

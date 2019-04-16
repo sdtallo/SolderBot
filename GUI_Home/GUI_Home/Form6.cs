@@ -18,6 +18,7 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
+            
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
 
@@ -53,7 +54,7 @@ namespace GUI_Home
 
             Console.WriteLine("after nextScreen event");
 
-            //runRobot.OutputDataReceived += new DataReceivedEventHandler(eStop);
+            //runRobot.OutputDataReceived += new DataReceivedEventHandler();
 
             // While program is still going, if eStop is pressed
             // Message is printed to command line & GUI moves to next screen
@@ -87,6 +88,8 @@ namespace GUI_Home
 
             if (lastline == "Job completed")
             {
+                Console.WriteLine("move to page 7");
+
                 this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
@@ -94,6 +97,8 @@ namespace GUI_Home
             }
             else
             {
+                Console.WriteLine("move to page 8");
+
                 this.Hide();
                 Form8 f8 = new Form8();
                 f8.ShowDialog();
