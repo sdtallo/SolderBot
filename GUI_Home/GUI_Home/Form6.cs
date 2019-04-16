@@ -18,11 +18,10 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-//            button2.Hide();
+            button2.Hide();
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
-            Console.WriteLine("UserInteractive: {0}", Environment.UserInteractive);
 /*
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
