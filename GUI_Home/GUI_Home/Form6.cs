@@ -35,8 +35,6 @@ namespace GUI_Home
             Console.WriteLine("process started");
 
             //Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
-            //runRobot.StartInfo.RedirectStandardOutput = true;
-
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
 
@@ -48,6 +46,13 @@ namespace GUI_Home
             }
             Console.WriteLine("lastLine is " + lastLine);
 
+
+            // If cancelling job, exit runRobot process
+            button1.Click += delegate (object sender, EventArgs e) {
+                endProc(sender, e, runRobot);
+            };
+            
+
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
@@ -55,29 +60,6 @@ namespace GUI_Home
             };
 
             Console.WriteLine("after nextScreen event");
-
-            //runRobot.OutputDataReceived += new DataReceivedEventHandler();
-
-            // While program is still going, if eStop is pressed
-            // Message is printed to command line & GUI moves to next screen
-            //runRobot.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
-            // Read line, if emergency stop line, execute that code 
-
-            /*
-                if (mymsg == "Emergency stop pressed")
-                {
-                    Console.WriteLine("E-stop, closing process");
-                    //runRobot.Close();
-                    runRobot.Exited += new EventHandler(eStop);
-                    /*
-                    Console.WriteLine("opening form 8");
-                    this.Hide();
-                    Form8 f8 = new Form8();
-                    f8.ShowDialog();
-                    this.Close();
-                }
-                */
-            //});
         }
 
         // Need event - move to finish screen when robot finishes soldering
@@ -97,7 +79,7 @@ namespace GUI_Home
                 f7.ShowDialog();
                 this.Close();
             }
-            else
+            else if (lastline == "Emergency stop pressed")
             {
                 Console.WriteLine("move to page 8");
 
@@ -106,11 +88,31 @@ namespace GUI_Home
                 f8.ShowDialog();
                 this.Close();
             }
+            else 
+            {
+                Console.WriteLine("uh oh");
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Cancel job button - pressed once asks are you sure
+        private void endProc(object sender, EventArgs e, Process myProc)
         {
-            label3.Text = "Soldering...";
+            if (label5.Text == "Are you sure?")
+            {
+                Console.WriteLine("Job cancelled");
+                // Kill runRobot process
+                myProc.Close();
+
+                this.Hide();
+                Form1 f1 = new Form1();
+                f1.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                label5.Text = "Are you sure?";
+                this.Text = "Yes, Cancel";
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.process1 = new System.Diagnostics.Process();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(466, 359);
+            this.label3.Location = new System.Drawing.Point(190, 521);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(261, 65);
             this.label3.TabIndex = 6;
@@ -70,9 +71,9 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(119, 508);
+            this.label4.Location = new System.Drawing.Point(32, 311);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(938, 107);
+            this.label4.Size = new System.Drawing.Size(1158, 144);
             this.label4.TabIndex = 7;
             this.label4.Text = "If needed, press the emergency button that is physically mounted on the baseboard" +
     " of the robot.";
@@ -90,19 +91,28 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(360, 326);
+            this.button1.Location = new System.Drawing.Point(681, 487);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(475, 124);
+            this.button1.Size = new System.Drawing.Size(359, 131);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Soldering...";
+            this.button1.Text = "Cancel Job";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(729, 421);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(273, 63);
+            this.label5.TabIndex = 9;
+            this.label5.Text = " ";
             // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1236, 698);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -125,5 +135,6 @@
         private System.Windows.Forms.Label label4;
         private System.Diagnostics.Process process1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
     }
 }
