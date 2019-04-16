@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace GUI_Home
 {
@@ -19,7 +20,7 @@ namespace GUI_Home
             InitializeComponent();
             // Call robot - run from /home/pi or Desktop icon
             // Assistance from https://stackoverflow.com/questions/11779143/how-do-i-run-a-python-script-from-c
-
+/*
             Process runRobot = new Process();
             runRobot.StartInfo = new ProcessStartInfo("../../usr/bin/env", "solderbot/caller.py")
             {
@@ -28,7 +29,10 @@ namespace GUI_Home
                 CreateNoWindow = true
             };
             runRobot.Start();
+            */
             Console.WriteLine("running");
+            Process runRobot = Process.Start("../../usr/bin/env", "solderbot / caller.py");
+            runRobot.StartInfo.RedirectStandardOutput = true;
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
