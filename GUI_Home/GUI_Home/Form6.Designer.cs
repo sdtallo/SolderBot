@@ -33,9 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.process1 = new System.Diagnostics.Process();
-            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -89,17 +87,6 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(681, 487);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(359, 131);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Cancel Job";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,24 +96,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = " ";
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(681, 487);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(359, 131);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Yes, Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1236, 698);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -147,8 +122,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Diagnostics.Process process1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
     }
 }

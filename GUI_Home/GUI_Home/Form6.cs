@@ -18,7 +18,7 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-            button2.Hide();
+//            button2.Hide();
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
@@ -49,17 +49,18 @@ namespace GUI_Home
                 count = count + 1;
                 Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
             }
-*/
+
             // If cancelling job, exit runRobot process
             button2.Click += delegate (object sender, EventArgs e) {
                 endProc(sender, e, runRobot);
             };
-            
+*/            
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
-
+                
+                // Read last line of output from Travis
                 lastLine = runRobot.StandardOutput.ReadLine();
                 count = count + 1;
                 Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
@@ -101,7 +102,7 @@ namespace GUI_Home
                 Console.WriteLine("uh oh");
             }
         }
-
+/*
         // Cancel job button - pressed once asks are you sure
         private void button1_Click(object sender, EventArgs e)
         {
@@ -122,5 +123,6 @@ namespace GUI_Home
             f1.ShowDialog();
             this.Close();
         }
+*/
     }
 }
