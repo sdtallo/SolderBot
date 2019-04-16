@@ -31,8 +31,21 @@ namespace GUI_Home
             runRobot.Start();
             */
             Console.WriteLine("running");
-            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
-            runRobot.StartInfo.RedirectStandardOutput = true;
+
+            ProcessStartInfo roboInfo = new ProcessStartInfo();
+            
+            roboInfo.FileName = "\"../../usr/bin/env\"";
+            roboInfo.Arguments = "solderbot/caller.py";
+            roboInfo.RedirectStandardOutput = true;
+            roboInfo.UseShellExecute = false;
+            roboInfo.CreateNoWindow = true;
+
+            Process runRobot = new Process();
+            runRobot.StartInfo = roboInfo;
+            runRobot.Start();
+
+//            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
+//            runRobot.StartInfo.RedirectStandardOutput = true;
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
