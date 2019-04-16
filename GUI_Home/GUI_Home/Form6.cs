@@ -39,12 +39,14 @@ namespace GUI_Home
 
             // Determine what the last line is
             string lastLine = "mystring";
-            while (!runRobot.StandardOutput.EndOfStream)
+
+            // This line is what's broken...
+//            while (!runRobot.StandardOutput.EndOfStream)
+            if (runRobot.HasExited == true)
             {
-//                lastLine = runRobot.StandardOutput.ReadLine();
+                lastLine = runRobot.StandardOutput.ReadLine();
             }
             Console.WriteLine("lastLine is " + lastLine);
-/*
 
             // If cancelling job, exit runRobot process
             button2.Click += delegate (object sender, EventArgs e) {
@@ -91,7 +93,7 @@ namespace GUI_Home
             {
                 Console.WriteLine("uh oh");
             }
-*/        }
+        }
 
         // Cancel job button - pressed once asks are you sure
         private void button1_Click(object sender, EventArgs e)
@@ -102,7 +104,7 @@ namespace GUI_Home
         }
 
         // Yes, cancel button - 
-/*        private void endProc(object sender, EventArgs e, Process myProc)
+        private void endProc(object sender, EventArgs e, Process myProc)
         {
             Console.WriteLine("Job cancelled");
             // Kill runRobot process
@@ -113,5 +115,5 @@ namespace GUI_Home
             f1.ShowDialog();
             this.Close();
         }
-*/    }
+    }
 }
