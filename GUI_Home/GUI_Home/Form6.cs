@@ -90,7 +90,7 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 7");
 
-                //this.Hide();
+                this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
@@ -99,11 +99,16 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 8");
 
-                //this.Hide();
+                this.Hide();
                 Form8 f8 = new Form8();
                 f8.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            this.ShowDialog();
         }
     }
 }

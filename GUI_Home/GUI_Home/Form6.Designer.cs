@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.process1 = new System.Diagnostics.Process();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +60,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(480, 359);
+            this.label3.Location = new System.Drawing.Point(466, 359);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(261, 65);
             this.label3.TabIndex = 6;
@@ -75,6 +76,16 @@
             this.label4.Text = "If needed, press the emergency button that is physically mounted on the baseboard" +
     " of the robot.";
             // 
+            // process1
+            // 
+            this.process1.StartInfo.Domain = "";
+            this.process1.StartInfo.LoadUserProfile = false;
+            this.process1.StartInfo.Password = null;
+            this.process1.StartInfo.StandardErrorEncoding = null;
+            this.process1.StartInfo.StandardOutputEncoding = null;
+            this.process1.StartInfo.UserName = "";
+            this.process1.SynchronizingObject = this;
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
@@ -88,6 +99,7 @@
             this.Name = "Form6";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solderbot";
+            this.Load += new System.EventHandler(this.Form6_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Diagnostics.Process process1;
     }
 }
