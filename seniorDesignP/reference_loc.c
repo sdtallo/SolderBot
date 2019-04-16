@@ -492,7 +492,7 @@ int checkFormat(char * c){
             free(c);
             begining = 0;
             end = 0;
-            if(test > 46){
+            if(test > 46 || test < 1){
                 if(t==1){
                     t = 2;
                 }
