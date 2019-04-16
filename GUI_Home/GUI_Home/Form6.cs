@@ -34,7 +34,7 @@ namespace GUI_Home
 
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             
-            roboInfo.FileName = "\"../../usr/bin/env\"";
+            roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
             roboInfo.RedirectStandardOutput = true;
             roboInfo.UseShellExecute = false;
