@@ -18,12 +18,12 @@ namespace GUI_Home
         public Form6()
         {
             InitializeComponent();
-            button2.Hide();
+//            button2.Hide();
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
             Console.WriteLine("UserInteractive: {0}", Environment.UserInteractive);
-
+/*
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
@@ -93,7 +93,7 @@ namespace GUI_Home
             {
                 Console.WriteLine("uh oh");
             }
-        }
+*/        }
 
         // Cancel job button - pressed once asks are you sure
         private void button1_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace GUI_Home
         }
 
         // Yes, cancel button - 
-        private void endProc(object sender, EventArgs e, Process myProc)
+/*        private void endProc(object sender, EventArgs e, Process myProc)
         {
             Console.WriteLine("Job cancelled");
             // Kill runRobot process
@@ -115,5 +115,5 @@ namespace GUI_Home
             f1.ShowDialog();
             this.Close();
         }
-    }
+*/    }
 }
