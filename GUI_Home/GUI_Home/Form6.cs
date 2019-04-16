@@ -33,8 +33,7 @@ namespace GUI_Home
 
             Process runRobot = Process.Start(roboInfo);
             Console.WriteLine("process started");
-/*
-            //Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
+
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;
 
@@ -45,7 +44,7 @@ namespace GUI_Home
                 lastLine = runRobot.StandardOutput.ReadLine();
             }
             Console.WriteLine("lastLine is " + lastLine);
-
+/*
 
             // If cancelling job, exit runRobot process
             button2.Click += delegate (object sender, EventArgs e) {
