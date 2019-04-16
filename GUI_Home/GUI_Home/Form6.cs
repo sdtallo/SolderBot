@@ -41,7 +41,7 @@ namespace GUI_Home
             string lastLine = "mystring";
             while (!runRobot.StandardOutput.EndOfStream)
             {
-                lastLine = runRobot.StandardOutput.ReadLine();
+//                lastLine = runRobot.StandardOutput.ReadLine();
             }
             Console.WriteLine("lastLine is " + lastLine);
 /*
