@@ -39,15 +39,17 @@ namespace GUI_Home
 
             // Determine what the last line is
             string lastLine = "mystring";
+            int count = 0;
 
             // This line is what's broken...
-//            while (!runRobot.StandardOutput.EndOfStream)
+/*            //while (!runRobot.StandardOutput.EndOfStream)
             if (runRobot.HasExited == true)
             {
                 lastLine = runRobot.StandardOutput.ReadLine();
+                count = count + 1;
+                Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
             }
-            Console.WriteLine("lastLine is " + lastLine);
-
+*/
             // If cancelling job, exit runRobot process
             button2.Click += delegate (object sender, EventArgs e) {
                 endProc(sender, e, runRobot);
@@ -57,6 +59,10 @@ namespace GUI_Home
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
+                lastLine = runRobot.StandardOutput.ReadLine();
+                count = count + 1;
+                Console.WriteLine("lastLine is " + lastLine + " - run #" + count);
+
                 nextScreen(sender, e, lastLine, runRobot);
             };
 
