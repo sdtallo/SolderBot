@@ -108,7 +108,7 @@ namespace GUI_Home
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // do nothing
+            label3.Text = "Soldering...";
         }
     }
 }
