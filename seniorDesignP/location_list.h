@@ -33,5 +33,3 @@ void deleteRepeats(Location_List * head);//destructor
 void sortDLL(Location_List ** head);
 
 #endif
-
-

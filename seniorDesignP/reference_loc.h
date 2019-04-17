@@ -1,7 +1,6 @@
 #ifndef REFERENCE_LOC_H
 #define REFERENCE_LOC_H
 #include "location_list.h"
-//#include "gcode_decoder.h"
 #include "arrayConst.h"
 #include <ctype.h>
 
@@ -61,5 +60,3 @@ int checkFormat(char * c);
 
 
 #endif
-
-

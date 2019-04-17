@@ -1,11 +1,5 @@
-//#include "arrayConst.h"
-//#include "gcode_decoder.h"
 #include "location_list.h"
 #include "reference_loc.h"
-#include <stdio.h>
-//#include <stdlib.h>
-#include <string.h>
-
 
 int main(int argc, char *argv[])
 {
@@ -17,10 +11,10 @@ int main(int argc, char *argv[])
         tempName = "/home/pi/solderbot/gCodeLoc.txt";
         input = argv[1];
         calRead = "/home/pi/solderbot/cal.txt";
-    //if testing on personal computer
+        //if testing on personal computer
     }else{
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = "D15:A1 _  _ ";
+        input = " _  _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages
@@ -161,27 +155,30 @@ int main(int argc, char *argv[])
     //sorts the LL with largest Y's going first
     sortDLL(headPointer);
 
-    //checks if LL is empty before printing it and freeing variables
+    //checks if LL is empty before printing it
     if(head->next != NULL){
         printList(head->next);
         moveAllLoc(head->next,tempName);
+    }
+    //freeing pointers
 
-        //freeing pointers
+    if(arrayPointer){
+        for(int i=0;i<10;i++)
+            free(arrayPointer[i]);
+        free(arrayPointer);
+    }
+    if(board1Str){
+        free(board1Str);
+    }
+    if(board2Str){
+        free(board2Str);
+    }
+    if(board3Str){
+        free(board3Str);
+    }
 
-        if(arrayPointer){
-            for(int i=0;i<10;i++)
-                free(arrayPointer[i]);
-            free(arrayPointer);
-        }
-        if(board1Str){
-            free(board1Str);
-        }
-        if(board2Str){
-            free(board2Str);
-        }
-        if(board3Str){
-            free(board3Str);
-        }
+    if(sInput){
+        free(sInput);
     }
 
     //still need to free LL if 'empty', I always put an initial value into it

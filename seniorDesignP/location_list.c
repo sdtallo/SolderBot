@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "location_list.h"
-//#include "gcode_decoder.h"
 
 Location_List * createLL(Location *new_data){
     Location_List *locL = NULL;
@@ -67,8 +63,7 @@ void append(Location_List *head, Location *new_data)
     new_node->prev = NULL;
     /* 4. If the Linked List is empty, then make the new
           node as head */
-    if (head->next == NULL)
-    {
+    if (head->next == NULL){
         head->next = new_node;
         head->next->prev = head;
         //        printf("last value is ");
@@ -129,7 +124,6 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     sprintf(tempgloc, "%.3f", temp->cur->z_loc);
     strcat(firstLoc, tempgloc);
 
-
     FILE* file_ptr = fopen(fileLoc, "a+");
     if(file_ptr == NULL){
         printf("Error opening file!\n");
@@ -171,11 +165,9 @@ void moveLocToLoc(Location * firstLoc, Location * secondLoc, char *fileLoc){
     Location * moveDown = location_new(secondLoc->x_loc,secondLoc->y_loc,secondLoc->z_loc);
     move_loc2(moveDown,thirdCommand);
 
-
     location_free(moveUp);
     location_free(moveAboveSecond);
     location_free(moveDown);
-
 
     FILE* file_ptr = fopen(fileLoc, "a+");
     if(file_ptr == NULL){
@@ -290,8 +282,6 @@ void sortDLL(Location_List ** head){
 
         if(largeValuePointer->next == NULL)
             break;
-
     }
 
 }
-

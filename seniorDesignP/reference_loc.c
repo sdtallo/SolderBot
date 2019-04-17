@@ -1,10 +1,4 @@
-#include <stdlib.h>
 #include "reference_loc.h"
-//#include "location_list.h"
-//#include "arrayConst.h"
-#include <string.h>
-#include <stdio.h>
-
 
 Location_List * createLLWiR(int board, char column, int row,
                             arrayConst ** arrayPointer){
@@ -49,7 +43,6 @@ Location * createLocWiRef(int board, char column, int row,
 
     int newColumn;
 
-
     if(column == 'A' || column == 'a'){
         newColumn = 1;
 
@@ -91,7 +84,6 @@ Location * createLocWiRef(int board, char column, int row,
         yArray = 0;
     }
 
-
     int absXArray;
     int absYArray;
 
@@ -100,7 +92,6 @@ Location * createLocWiRef(int board, char column, int row,
     //each board has 2 reference each so to get the reference locations
     //multiple the board by 10 since it is made of 5 pins each in each column
     xArray += (board-1)*10;
-
 
     if(yArray > 45){
         absXArray = 5;
@@ -121,7 +112,6 @@ Location * createLocWiRef(int board, char column, int row,
     locZ = (arrayPointer[absYArray][absXArray].z_loc);
 
     return location_new(locX, locY,locZ);
-
 }
 
 //https://stackoverflow.com/questions/9895216/how-to-remove-all-occurrences-of-a-given-character-from-string-in-c
@@ -149,7 +139,6 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
     {
         if(pToken == NULL)
             break;
-
 
         int ifSemiColon = countChars(pToken, ':');
         //checks if location in a range which more complicated to break up
@@ -217,6 +206,9 @@ void appendGivenBoardStr(Location_List * head, int board, char * str1,
             } 
         }
         pToken = strtok(NULL, sSeparator);
+    }
+    if(sInput){
+        free(sInput);
     }
 }
 

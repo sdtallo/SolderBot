@@ -1,6 +1,8 @@
 #ifndef GCODE_DECODER_H
 #define GCODE_DECODER_H
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct Location Location;
 
@@ -27,4 +29,3 @@ int loc_comp(Location *loc1, Location *loc2);
 int Equality(double a, double b, double epsilon);
 
 #endif
-

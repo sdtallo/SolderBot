@@ -1,8 +1,4 @@
 #include "arrayConst.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 
 //distance between our calibrated A0 to F0 or generally a to f
 //on each board in inches

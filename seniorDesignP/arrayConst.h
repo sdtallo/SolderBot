@@ -1,6 +1,8 @@
 #ifndef ARRAYCONST_H
 #define ARRAYCONST_H
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct arrayConst arrayConst;
 
@@ -11,12 +13,6 @@ struct arrayConst{
 
 };
 
-
-
 int createArray(arrayConst ** arrayPointer, char *fileLoc);
 
 #endif
-
-
-
-

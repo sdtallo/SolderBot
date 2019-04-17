@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "gcode_decoder.h"
-
 
 int loc_comp(Location *loc1, Location *loc2){
     if ((Equality(loc1->x_loc,loc2->x_loc,.001) == 0) &&
@@ -92,5 +88,3 @@ int Equality(double a, double b, double epsilon){
         return 1;
     }
 }
-
-
