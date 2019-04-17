@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     //if testing on personal computer
     }else{
         tempName = "C:\\Users\\andre\\desktop\\testFile.txt";
-        input = "A9, A2:A7, A1, A8, E1:E9 _  _ ";
+        input = "D15:A1 _  _ ";
         calRead = "C:\\Users\\andre\\desktop\\cal.txt";
     }
     //error messages

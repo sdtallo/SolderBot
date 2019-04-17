@@ -142,8 +142,11 @@ void moveAllLoc(Location_List *head,char *fileLoc){
     fclose(file_ptr);
 
     while(temp->next != NULL){
-        Location *loc1 = location_new(temp->cur->x_loc,temp->cur->y_loc,temp->cur->z_loc);
-        Location *loc2 = location_new(temp->next->cur->x_loc,temp->next->cur->y_loc,temp->next->cur->z_loc);
+        Location *loc1 = location_new(temp->cur->x_loc,temp->cur->y_loc,
+                                      temp->cur->z_loc);
+        Location *loc2 = location_new(temp->next->cur->x_loc,
+                                      temp->next->cur->y_loc,
+                                      temp->next->cur->z_loc);
 
         moveLocToLoc(loc1,loc2,fileLoc);
 

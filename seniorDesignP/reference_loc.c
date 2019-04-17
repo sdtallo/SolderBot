@@ -298,7 +298,16 @@ char convertNumtoChar(int n){
 //back into characters before colled the appedRef which takes in a location
 void appendGivenRange(Location_List * head, int board, int firstColumn,
                       int lastColumn, int firstRow, int lastRow, arrayConst ** arrayPointer){
-
+    if(firstRow > lastRow){
+        int temp = lastRow;
+        lastRow = firstRow;
+        firstRow = temp;
+    }
+    if(firstColumn > lastColumn){
+        int temp = lastColumn;
+        lastColumn = firstColumn;
+        firstColumn = temp;
+    }
     for(int j = firstRow;j<=lastRow;++j){
         for(int i = firstColumn; i <= lastColumn;++i){
             //convertes num back to char because appendRef requires it
