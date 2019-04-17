@@ -43,11 +43,11 @@ namespace GUI_Home
             Console.WriteLine("process started");
 
             // When robot responds back with "done", move to next screen
-            runRobot.EnableRaisingEvents = true;  
+//            runRobot.EnableRaisingEvents = true;  
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
-            runRobot.Exited += new EventHandler(Process_Exited);
+            runRobot.Exited += new EventHandler(soldering_Complete);
             /*
                         runRobot.Exited += delegate (object sender, EventArgs e) {
                             nextScreen(sender, e, runRobot);
@@ -55,12 +55,12 @@ namespace GUI_Home
             */
         }
 
-        private void Process_Exited(object sender, EventArgs e)
+        private void soldering_Complete(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 f1 = new Form1();
-            f1.ShowDialog();
-            this.Close();
+            Form7 f7 = new Form7();
+            f7.ShowDialog();
+//            this.Close();
         }
 /*
                 // Need event - move to finish screen when robot finishes soldering
