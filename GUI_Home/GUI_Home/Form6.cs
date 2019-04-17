@@ -43,22 +43,25 @@ namespace GUI_Home
             Console.WriteLine("process started");
 
             // When robot responds back with "done", move to next screen
-            runRobot.EnableRaisingEvents = true;     
-/*
+            runRobot.EnableRaisingEvents = true;  
+
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
+            runRobot.Exited += new EventHandler(nextScreen);
+/*
             runRobot.Exited += delegate (object sender, EventArgs e) {
                 nextScreen(sender, e, runRobot);
             };
-        }
-
+*/        }
+/*
         // Need event - move to finish screen when robot finishes soldering
         // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
         // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
-
-        private void nextScreen(object sender, EventArgs e, Process myProc)
+*/
+        private void nextScreen(object sender, EventArgs e)
+//        private void nextScreen(object sender, EventArgs e, Process myProc)
         {
-            Console.WriteLine("Choosing the next screen");
+//            Console.WriteLine("Choosing the next screen");
 
             // Read last line of output from Travis and print to command line
 //            string lastLine = myProc.StandardOutput.ReadLine();
@@ -68,12 +71,12 @@ namespace GUI_Home
 
             if (lastLine == "Job completed")
             {
-*/                this.Hide();
+                this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
-/*            }
-            else if (lastLine == "Emergency stop pressed")
+            }
+/*            else if (lastLine == "Emergency stop pressed")
             {
                 this.Hide();
                 Form8 f8 = new Form8(myProc);
