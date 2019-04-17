@@ -30,9 +30,8 @@ namespace GUI_Home
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
-            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 
-/*            ProcessStartInfo roboInfo = new ProcessStartInfo();
+            ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
             roboInfo.WorkingDirectory = "";
@@ -41,55 +40,42 @@ namespace GUI_Home
             roboInfo.CreateNoWindow = true;
 
             Process runRobot = Process.Start(roboInfo);
-*/            Console.WriteLine("process started");
+            Console.WriteLine("process started");
 
             // When robot responds back with "done", move to next screen
-            runRobot.EnableRaisingEvents = true;  
+            runRobot.EnableRaisingEvents = true;
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
-            runRobot.Exited += new EventHandler(soldering_Complete);
-            /*
-                        runRobot.Exited += delegate (object sender, EventArgs e) {
-                            nextScreen(sender, e, runRobot);
-                        };
-            */
+
+            runRobot.Exited += delegate (object sender, EventArgs e) {
+                nextScreen(sender, e, runRobot);
+            };
         }
 
-        private void soldering_Complete(object sender, EventArgs e)
-        {
-            Console.WriteLine("soldering complete");
-            this.Hide();
-            Form7 f7 = new Form7();
-            f7.ShowDialog();
-//            this.Close();
-        }
-/*
-                // Need event - move to finish screen when robot finishes soldering
-                // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
-                // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
+        // Need event - move to finish screen when robot finishes soldering
+        // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
+        // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
 
-                private void nextScreen(object sender, EventArgs e)
-        //        private void nextScreen(object sender, EventArgs e, Process myProc)
+        private void nextScreen(object sender, EventArgs e, Process myProc)
         {
             Console.WriteLine("Choosing the next screen");
 
             // Read last line of output from Travis and print to command line
-            //            string lastLine = myProc.StandardOutput.ReadLine();
-            //            string lastLine = "Job completed";
+            string lastLine = myProc.StandardOutput.ReadLine();
 
-            //            Console.WriteLine("lastLine is: " + lastLine);
+            Console.WriteLine("lastLine is: " + lastLine);
 
-            //            if (lastLine == "Job completed")
-            //            {
-            this.Hide();
-            Form7 f7 = new Form7();
-            f7.ShowDialog();
-            this.Close();
-        //            }
-                    else if (lastLine == "Emergency stop pressed")
+            if (lastLine == "Job completed")
             {
-                this.Hide();
+//                this.Hide();
+                Form7 f7 = new Form7();
+                f7.ShowDialog();
+                this.Close();
+            }
+            else if (lastLine == "Emergency stop pressed")
+            {
+//                this.Hide();
                 Form8 f8 = new Form8(myProc);
                 f8.ShowDialog();
                 this.Close();
@@ -101,6 +87,5 @@ namespace GUI_Home
 
             Console.WriteLine("End of nextScreen function");
         }
-*/
     }
 }
