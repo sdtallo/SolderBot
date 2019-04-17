@@ -61,21 +61,21 @@ namespace GUI_Home
         private void nextScreen(object sender, EventArgs e)
 //        private void nextScreen(object sender, EventArgs e, Process myProc)
         {
-//            Console.WriteLine("Choosing the next screen");
+            Console.WriteLine("Choosing the next screen");
 
             // Read last line of output from Travis and print to command line
 //            string lastLine = myProc.StandardOutput.ReadLine();
-            string lastLine = "Job completed";
+//            string lastLine = "Job completed";
 
 //            Console.WriteLine("lastLine is: " + lastLine);
 
-            if (lastLine == "Job completed")
-            {
+//            if (lastLine == "Job completed")
+//            {
                 this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
-            }
+//            }
 /*            else if (lastLine == "Emergency stop pressed")
             {
                 this.Hide();
@@ -89,6 +89,7 @@ namespace GUI_Home
             }
 
             Console.WriteLine("End of nextScreen function");
-*/        }
+*/
+        }
     }
 }
