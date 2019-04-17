@@ -26,7 +26,7 @@ namespace GUI_Home
         public Form8(Form6 lastPage)
         {
             InitializeComponent();
-            lastPage.Hide();
+//            lastPage.Hide();
             lastPage.Close();
         }
 
