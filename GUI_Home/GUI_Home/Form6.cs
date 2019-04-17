@@ -67,8 +67,8 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 7");
 
-                // Didn't move to page 7
 //                this.Hide();
+                this.Visible = false;
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
@@ -77,7 +77,8 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 8");
 
-                this.Hide();
+//                this.Hide();
+                this.Visible = false;
                 Form8 f8 = new Form8(myProc);
                 f8.ShowDialog();
                 this.Close();
