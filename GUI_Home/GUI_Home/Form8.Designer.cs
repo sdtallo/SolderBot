@@ -1,4 +1,14 @@
-﻿namespace GUI_Home
+﻿/**********************************************************************
+*
+* Original Author: Samantha Stensland
+* File Creation Date: February 11, 2019 
+* Description: This code is sets up functions, event handlers, and components
+* of the page for users to interact with on Form8. It was originally generated
+* by Microsoft Visual Studio and edited further.
+*
+**********************************************************************/
+
+namespace GUI_Home
 {
     partial class Form8
     {
