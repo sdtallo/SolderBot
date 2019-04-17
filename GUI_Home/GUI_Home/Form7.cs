@@ -24,6 +24,7 @@ namespace GUI_Home
         public Form7()
         {
             InitializeComponent();
+            this.ShowDialog();
         }
 
         // Back to home page
