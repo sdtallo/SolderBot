@@ -68,14 +68,14 @@ namespace GUI_Home
 
             if (lastLine == "Job completed")
             {
-//                this.Hide();
+                this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
             }
             else if (lastLine == "Emergency stop pressed")
             {
-//                this.Hide();
+                this.Hide();
                 Form8 f8 = new Form8(myProc);
                 f8.ShowDialog();
                 this.Close();

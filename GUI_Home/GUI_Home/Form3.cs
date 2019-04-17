@@ -73,12 +73,6 @@ namespace GUI_Home
             {
                 // Show error on page
                 label3.Text = errorMsg;
-
-                //this.Hide();
-                //Form3 f3 = new Form3(textBox1.Text, textBox2.Text, textBox3.Text, errorMsg);
-                //f3.ShowDialog();
-                //this.Close();
-
                 Console.WriteLine("INVALID STRING");
             }
         }
