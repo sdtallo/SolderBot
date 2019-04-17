@@ -47,16 +47,16 @@ namespace GUI_Home
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
-
+/*
             runRobot.Exited += delegate (object sender, EventArgs e) {
                 nextScreen(sender, e, runRobot);
             };
         }
-
+*/
         // Need event - move to finish screen when robot finishes soldering
         // https://stackoverflow.com/questions/12273825/c-sharp-process-start-how-do-i-know-if-the-process-ended
         // https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process.enableraisingevents?view=netframework-4.7.2
-
+/*
         private void nextScreen(object sender, EventArgs e, Process myProc)
         {
             Console.WriteLine("Choosing the next screen");
@@ -86,6 +86,7 @@ namespace GUI_Home
             }
 
             Console.WriteLine("End of nextScreen function");
+        */
         }
     }
 }
