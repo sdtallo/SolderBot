@@ -50,7 +50,7 @@ namespace GUI_Home
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(20, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(432, 72);
+            this.label1.Size = new System.Drawing.Size(424, 71);
             this.label1.TabIndex = 4;
             this.label1.Text = "Emergency Stop!";
             // 
@@ -73,6 +73,7 @@ namespace GUI_Home
             this.button2.TabIndex = 12;
             this.button2.Text = "Abandon Project";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

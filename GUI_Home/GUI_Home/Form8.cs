@@ -23,14 +23,10 @@ namespace GUI_Home
 {
     public partial class Form8 : Form
     {
-        public Form8(Process myProcess)
+        public Form8(Form6 lastPage)
         {
             InitializeComponent();
-
-            button2.Click += delegate (object sender, EventArgs e)
-            {
-                endProcess(sender, e, myProcess);
-            };
+            lastPage.Close();
         }
 
         // Resuming Soldering - call Travis's program again
@@ -43,11 +39,8 @@ namespace GUI_Home
         }
 
         // Return to home page - write null or "\n" to gCodeLoc.txt & kill process
-        private void endProcess(object sender, EventArgs e, Process myProc)
+        private void button2_Click(object sender, EventArgs e)
         {
-            // Kill process
-            myProc.Kill();
-
             // Write null or "\n" to gCodeLoc.txt
             string path = "/home/pi/solderbot/gCodeLoc.txt";
             // This text is added only once to the file.
@@ -62,6 +55,6 @@ namespace GUI_Home
             Form1 f1 = new Form1();
             f1.ShowDialog();
             this.Close();
-        }        
+        }
     }
 }

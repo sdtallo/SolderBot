@@ -66,17 +66,17 @@ namespace GUI_Home
 
             if (lastLine == "Job completed")
             {
-                this.Hide();
-                Form7 f7 = new Form7();
+//                this.Hide();
+                Form7 f7 = new Form7(this);
                 f7.ShowDialog();
-                this.Close();
+ //               this.Close();
             }
             else if (lastLine == "Emergency stop pressed")
             {
-                this.Hide();
-                Form8 f8 = new Form8(myProc);
+//                this.Hide();
+                Form8 f8 = new Form8(this);
                 f8.ShowDialog();
-                this.Close();
+//                this.Close();
             }
             else 
             {
