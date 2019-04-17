@@ -21,10 +21,11 @@ namespace GUI_Home
 {
     public partial class Form7 : Form
     {
-        public Form7(Form6 f6)
+        public Form7(Form6 lastPage)
         {
             InitializeComponent();
-            f6.Close();
+            lastPage.Hide();
+            lastPage.Close();
         }
 
         // Back to home page
