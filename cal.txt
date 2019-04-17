@@ -1,0 +1,14 @@
+Board 1
+x=6.32
+y=4.90
+z=0.52
+Board 2
+x=7.71 
+y=4.91
+z=0.51
+Board 3
+x=9.10
+y=4.91
+z=0.5
+
+WARNING DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING!!!!!!
