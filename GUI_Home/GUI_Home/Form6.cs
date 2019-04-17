@@ -67,21 +67,20 @@ namespace GUI_Home
             {
                 Console.WriteLine("move to page 7");
 
-//                this.Hide();
-                this.Visible = false;
+                this.Hide();
                 Form7 f7 = new Form7();
-                f7.ShowDialog();
-                this.Close();
+                f7.Show();
+                this.Hide();
+//                this.Close();
             }
             else if (lastline == "Emergency stop pressed")
             {
                 Console.WriteLine("move to page 8");
 
-//                this.Hide();
-                this.Visible = false;
+                this.Hide();
                 Form8 f8 = new Form8(myProc);
-                f8.ShowDialog();
-                this.Close();
+                f8.Show();
+//                this.Close();
             }
             else 
             {
