@@ -30,17 +30,18 @@ namespace GUI_Home
             
             // Call robot - run from /home/pi or Desktop icon
             Console.WriteLine("running");
+            Process runRobot = Process.Start("../../usr/bin/env", "solderbot/caller.py");
 
-            ProcessStartInfo roboInfo = new ProcessStartInfo();
+/*            ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
-//            roboInfo.WorkingDirectory = "";
-//            roboInfo.RedirectStandardOutput = true;
-//            roboInfo.UseShellExecute = false;
-//            roboInfo.CreateNoWindow = true;
+            roboInfo.WorkingDirectory = "";
+            roboInfo.RedirectStandardOutput = true;
+            roboInfo.UseShellExecute = false;
+            roboInfo.CreateNoWindow = true;
 
             Process runRobot = Process.Start(roboInfo);
-            Console.WriteLine("process started");
+*/            Console.WriteLine("process started");
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;  
@@ -57,6 +58,7 @@ namespace GUI_Home
 
         private void soldering_Complete(object sender, EventArgs e)
         {
+            Console.WriteLine("soldering complete");
             this.Hide();
             Form7 f7 = new Form7();
             f7.ShowDialog();
