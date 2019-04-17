@@ -44,7 +44,7 @@ namespace GUI_Home
 
             // When robot responds back with "done", move to next screen
             runRobot.EnableRaisingEvents = true;     
-
+/*
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
             runRobot.Exited += delegate (object sender, EventArgs e) {
@@ -61,16 +61,18 @@ namespace GUI_Home
             Console.WriteLine("Choosing the next screen");
 
             // Read last line of output from Travis and print to command line
-            string lastLine = myProc.StandardOutput.ReadLine();
-            Console.WriteLine("lastLine is: " + lastLine);
+//            string lastLine = myProc.StandardOutput.ReadLine();
+            string lastLine = "Job completed";
+
+//            Console.WriteLine("lastLine is: " + lastLine);
 
             if (lastLine == "Job completed")
             {
-                this.Hide();
+*/                this.Hide();
                 Form7 f7 = new Form7();
                 f7.ShowDialog();
                 this.Close();
-            }
+/*            }
             else if (lastLine == "Emergency stop pressed")
             {
                 this.Hide();
@@ -84,6 +86,6 @@ namespace GUI_Home
             }
 
             Console.WriteLine("End of nextScreen function");
-        }
+*/        }
     }
 }
