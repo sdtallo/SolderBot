@@ -108,8 +108,6 @@ int main(int argc, char *argv[])
         }
         boardNum += 1;
 
-        //        printf("Token = %s\n", pToken);
-
         pToken = strtok(NULL, sSeparator);
     }
 
