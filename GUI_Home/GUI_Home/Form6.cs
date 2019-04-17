@@ -34,16 +34,16 @@ namespace GUI_Home
             ProcessStartInfo roboInfo = new ProcessStartInfo();
             roboInfo.FileName = "../../usr/bin/env";
             roboInfo.Arguments = "solderbot/caller.py";
-            roboInfo.WorkingDirectory = "";
-            roboInfo.RedirectStandardOutput = true;
-            roboInfo.UseShellExecute = false;
-            roboInfo.CreateNoWindow = true;
+//            roboInfo.WorkingDirectory = "";
+//            roboInfo.RedirectStandardOutput = true;
+//            roboInfo.UseShellExecute = false;
+//            roboInfo.CreateNoWindow = true;
 
             Process runRobot = Process.Start(roboInfo);
             Console.WriteLine("process started");
 
             // When robot responds back with "done", move to next screen
-//            runRobot.EnableRaisingEvents = true;  
+            runRobot.EnableRaisingEvents = true;  
 
             // Determine how the program exited
             // Assistance from https://www.c-sharpcorner.com/blogs/passing-parameters-to-events-c-sharp1
